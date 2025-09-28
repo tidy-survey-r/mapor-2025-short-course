@@ -1,0 +1,30 @@
+---
+title: "Categorical Analysis of Complex Survey Data in R: A Hands-On Course"
+subtitle: MAPOR 2025 short course
+backgroundcolor: "white"
+---
+
+🗓️ Date: 21 November 2025
+
+🕗 Time: 8:30 - 10:30 am CT
+
+## Abstract
+
+This interactive short course will introduce how to analyze categorical survey data in R. We will cover the R functions needed to create the survey design object to account for the sampling design, obtain weighted proportions from survey data, and conduct chi-sq tests and simple linear regression models. Throughout the course, you will get hands-on experience using data from the American National Election Studies. We will be using Posit Cloud, so you do not need to have R or RStudio preinstalled on your computer. For the best learning experience, we recommend you have prior experience with R and the tidyverse, including familiarity with summarize() and group_by().
+
+
+## Instructors
+
+Dr. Rebecca Powell is the director of Data & Research Operations at Fors Marsh. Her research interests focus on visual design of questionnaires and contact materials. Dr. Powell is a Certified RStudio Tidyverse Trainer and has taught courses and webinars on data management in R and tidy survey analysis in R at both AAPOR and MAPOR. She has a PhD in Survey Research and Methodology from the University of Nebraska-Lincoln and a BS and MS in Applied Statistics from Rochester Institute of Technology. 
+
+[{{< fa brands linkedin >}}](https://www.linkedin.com/in/rebecca-powell-1416226b/) [{{< fa brands github >}}](https://github.com/rpowell22)
+
+Isabella Velásquez is a Senior Product Marketing Manager at Posit, PBC. She is also a content strategist, data enthusiast, and author. Her goal is to drive engagement around all the awesome things happening at Posit.
+
+[{{< fa brands linkedin >}}](https://www.linkedin.com/in/ivelasq/) [{{< fa brands github >}}](https://github.com/ivelasq) [{{< fa brands bluesky >}}](https://bsky.app/profile/ivelasq3.bsky.social)
+
+------------------------------------------------------------------------
+
+![](https://i.creativecommons.org/l/by/4.0/88x31.png) This work is licensed under a [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
+
+The website is based on a template by [Mine Çetinkaya-Rundel](https://mine-cr.com/), used with appreciation and adapted for this workshop.

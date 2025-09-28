@@ -1,0 +1,55 @@
+project:
+  type: website
+
+website:
+  title: "Categorical Analysis of Complex Survey Data in R: A Hands-On Course"
+  description: "Homepage for the MAPOR 2025 Short course titled Categorical Analysis of Complex Survey Data in R: A Hands-On Course."
+  site-url: https://tidy-survey-r.github.io/mapor-2025-short-course/
+  repo-url: https://github.com/tidy-survey-r/mapor-2025-short-course
+  repo-actions: [source, issue]
+  page-navigation: true
+  favicon: images/favicon.png
+  search: false
+  sidebar:
+    background: "#ecf3f9"
+    logo: "images/logo.png"
+    pinned: true
+    align: center
+    style: docked
+    collapse-level: 2
+    contents:
+      - href: index.qmd
+        text: Home
+      - href: 01-introduction/index.qmd
+        text: 01 - Introduction
+      - href: 02-getting-started/index.qmd
+        text: 02 - Getting Started
+      - href: 03-descriptive-analysis/index.qmd
+        text: 03 - Descriptive Analysis
+      - href: 04-stattesting/index.qmd
+        text: 04 - Statistical Testing
+      - href: 05-design/index.qmd
+        text: 05 - Sampling Designs
+
+  page-footer:
+    right: "This page is built with 💜 and [Quarto](https://quarto.org/)."
+    left: "&copy; Copyright 2025"
+    background: "#087e8b"
+
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
+    css: styles.css
+    toc: true
+
+editor: source
+
+execute:
+  freeze: auto
+  echo: true
+
+highlight-style: atom-one
+
+
