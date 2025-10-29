@@ -1,0 +1,1 @@
+# mapor-2025-short-course
