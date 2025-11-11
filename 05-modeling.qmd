@@ -1,0 +1,45 @@
+---
+title: "Modeling"
+format: revealjs
+---
+
+```{r}
+#| label: setup-modeling
+```
+
+## Introduction
+
+::: incremental
+
+* Modeling investigates the relationship between a single dependent variable and one or more independent variables.
+* **Logistic regression** is a specific case of the generalized linear model (GLM).
+* Logistic regression is used to model binary outcomes, such as whether or not someone voted.
+
+:::
+
+## Introduction
+
+Assumptions in logistic regression using survey data include:
+
+* The outcome variable has two levels
+* There is a linear relationship between the independent variables and the log odds (the equation for the logit function)
+* The residuals are homoscedastic; that is, the error term is the same across all values of independent variables
+
+## `svyglm`: syntax
+
+```r
+des_obj %>%
+  svyglm(
+    formula = outcomevar ~ x1 + x2 + x3,
+    design = .,
+    na.action = na.omit,
+    df.resid = NULL,
+    family = quasibinomial
+  )
+```
+
+## `svyglm`: example
+
+Model whether someone usually has trust in the government26 by whom someone voted for president in 2024:
+
+1. Create a single 
