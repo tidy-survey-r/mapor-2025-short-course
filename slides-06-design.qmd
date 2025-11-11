@@ -15,7 +15,7 @@ library(srvyrexploR)
 library(gt)
 ```
 
-# Sampling designs in {srvyr} {background-color="{{< brand color secondary >}}"}
+# Sampling designs in {srvyr} {background-color='{{< brand color secondary >}}'}
 
 ## Sampling methods
 
