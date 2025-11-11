@@ -1,7 +1,7 @@
 ---
-title: "Getting Started"
 format: revealjs
 slide-number: true
+echo: true
 title-slide-attributes: 
   data-background: "#087e8b"
 ---
@@ -162,6 +162,7 @@ anes_2024 %>%
 #| label: anes-des-disp
 #| code-line-numbers: "|1|2|3-8"
 anes_des <- anes_2024 %>%
+  filter(InterviewMode_Pre != "3. Paper (PAPI)") %>% 
   mutate(Weight = V240108b / sum(V240108b) * 232449541) %>%
   as_survey_design(
     weights = Weight,
