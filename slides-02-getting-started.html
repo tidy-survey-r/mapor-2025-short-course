@@ -260,7 +260,7 @@ $ pop_change_2016_2021_pct &lt;dbl&gt; 0.0932, 0.0070, 0.0013, 0.0204, 0.0584, -
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_4649556e" data-warn-when="180" data-update-every="1" data-play-sound="true" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_8b8e6fe6" data-warn-when="180" data-update-every="1" data-play-sound="true" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">08</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -382,7 +382,7 @@ $ Income7                 &lt;fct&gt; "$125k or more", "$125k or more", "$100k t
 <h2>American National Election Studies Design Object</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8" data-code-line-numbers="|1|2|3|4-8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a>anes_des <span class="ot">&lt;-</span> anes_2024 <span class="sc">%&gt;%</span></span>
-<span id="cb8-2"><a href=""></a>  <span class="fu">filter</span>(InterviewMode_Pre <span class="sc">!=</span> <span class="st">"3. Paper (PAPI)"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-2"><a href=""></a>  <span class="fu">filter</span>(InterviewMode_Post <span class="sc">!=</span> <span class="st">"3. Paper (PAPI)"</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb8-3"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">Weight =</span> V240108b <span class="sc">/</span> <span class="fu">sum</span>(V240108b) <span class="sc">*</span> <span class="dv">232449541</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb8-4"><a href=""></a>  <span class="fu">as_survey_design</span>(</span>
 <span id="cb8-5"><a href=""></a>    <span class="at">weights =</span> Weight,</span>
