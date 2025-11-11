@@ -48,7 +48,7 @@ glimpse(towny)
 ```{r}
 #| label: gs-ex-time
 #| echo: false
-gs_ex_time <- 10
+gs_ex_time <- 8
 gs_ex_warn <- 3
 ```
 
