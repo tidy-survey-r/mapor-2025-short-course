@@ -43,7 +43,7 @@ glimpse(towny)
 - Navigate to "MAPOR 2025 Short Course" under Projects then click name to get started
 
 
-# Your Turn {background-color='{{< brand color pink >}}'}
+# Your Turn {background-image="images/header.png"}
 
 ```{r}
 #| label: gs-ex-time
@@ -85,7 +85,7 @@ install.packages(c("tidyverse", "survey", "srvyr"))
 
 . . .
 
-Install {srvyrexploR} to access the survey data for today's workshop:
+Install {srvyrexploR} to access the survey data for today's short course:
 
 ```r
 install.packages("pak")
@@ -110,24 +110,17 @@ library(srvyrexploR)
 Note: Installation of packages is already done for you on Posit Cloud
 :::
 
-# Data {background-color='{{< brand color secondary >}}'}
-
-## Today's Data
-
-**American National Election Studies (ANES – DeBell 2010)**
-
-  * Stored as `anes_2024` in {srvyrexploR}
-
+# Data and Design Object {background-color='{{< brand color secondary >}}'}
 
 ## American National Election Studies (ANES) 2024 {.smaller}
 
 ::: incremental
-
+- Stored as `anes_2024` in {srvyrexploR}
 - Pre- and post-election surveys fielded almost every 2 years since 1948
 - Topics include voter registration status, candidate preference, opinions on country and government, party and ideology affiliation, opinions on policy, news sources, and more
 - Collaboration of Stanford, University of Michigan - funding by the National Science Foundation
 - <b>Target Population</b>: US citizens, 18 and older living in US 
-- <b>Mode</b>: In-Person, Web, videoconference, or telephone
+- <b>Mode</b>: In-Person, Web, videoconference, Paper, or telephone
 - <b>Sample Information</b>: Pseudo-strata and pseudo-cluster included for variance estimation
 
 [https://electionstudies.org/](https://electionstudies.org/)
@@ -143,16 +136,14 @@ anes_2024 %>%
   glimpse()
 ```
 
-# Design Objects {background-color='{{< brand color secondary >}}'}
-
-## Design Objects
+## Design Object
 
 ::: incremental
 
 - Backbone for survey analysis
 - Specify the sampling design, weights, and other necessary information to account for errors in the data
 - Survey analysis and inference should be performed with the survey design objects, not the original survey data
-- **We will be covering survey design in more detail later today!**
+- **We will be covering survey design in more detail later!**
 
 :::
 
@@ -160,7 +151,7 @@ anes_2024 %>%
 
 ```{r}
 #| label: anes-des-disp
-#| code-line-numbers: "|1|2|3-8"
+#| code-line-numbers: "|1|2|3|4-8"
 anes_des <- anes_2024 %>%
   filter(InterviewMode_Pre != "3. Paper (PAPI)") %>% 
   mutate(Weight = V240108b / sum(V240108b) * 232449541) %>%
@@ -240,11 +231,9 @@ towny %>%
 
 ```{r}
 #| label: filt-sv-ex
-anes_des_mod <- anes_des %>%
+anes_des %>%
   filter(EducationGroup == "Graduate") %>%
   select(Sex)
-
-anes_des_mod
 ```
 
 ## Grouping

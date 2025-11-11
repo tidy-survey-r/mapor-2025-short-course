@@ -252,7 +252,7 @@ $ pop_change_2016_2021_pct &lt;dbl&gt; 0.0932, 0.0070, 0.0013, 0.0204, 0.0584, -
 <li>Navigate to “MAPOR 2025 Short Course” under Projects then click name to get started</li>
 </ul>
 </section></section>
-<section id="your-turn" class="title-slide slide level1 center" data-background-color="#ff8484">
+<section id="your-turn" class="title-slide slide level1 center" data-background-image="images/header.png">
 <h1>Your Turn</h1>
 <ul>
 <li>Go to bit.ly/MAPOR-2025-short-course</li>
@@ -260,7 +260,7 @@ $ pop_change_2016_2021_pct &lt;dbl&gt; 0.0932, 0.0070, 0.0013, 0.0204, 0.0584, -
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_c3e43b03" data-warn-when="180" data-update-every="1" data-play-sound="true" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_1daecf3d" data-warn-when="180" data-update-every="1" data-play-sound="true" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -295,7 +295,7 @@ $ pop_change_2016_2021_pct &lt;dbl&gt; 0.0932, 0.0070, 0.0013, 0.0204, 0.0584, -
 <p>Install packages for data wrangling and survey analysis:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"tidyverse"</span>, <span class="st">"survey"</span>, <span class="st">"srvyr"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
-<p>Install {srvyrexploR} to access the survey data for today’s workshop:</p>
+<p>Install {srvyrexploR} to access the survey data for today’s short course:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a><span class="fu">install.packages</span>(<span class="st">"pak"</span>)</span>
 <span id="cb4-2"><a href=""></a>pak<span class="sc">::</span><span class="fu">pak</span>(<span class="st">"tidy-survey-r/srvyrexploR"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -313,26 +313,20 @@ $ pop_change_2016_2021_pct &lt;dbl&gt; 0.0932, 0.0070, 0.0013, 0.0204, 0.0584, -
 <p>Note: Installation of packages is already done for you on Posit Cloud</p>
 </div></aside></section></section>
 <section>
-<section id="data" class="title-slide slide level1 center" data-background-color="#087e8b">
-<h1>Data</h1>
+<section id="data-and-design-object" class="title-slide slide level1 center" data-background-color="#087e8b">
+<h1>Data and Design Object</h1>
 
-</section>
-<section id="todays-data" class="slide level2">
-<h2>Today’s Data</h2>
-<p><strong>American National Election Studies (ANES – DeBell 2010)</strong></p>
-<ul>
-<li>Stored as <code>anes_2024</code> in {srvyrexploR}</li>
-</ul>
 </section>
 <section id="american-national-election-studies-anes-2024" class="slide level2 smaller">
 <h2>American National Election Studies (ANES) 2024</h2>
 <div>
 <ul>
+<li class="fragment">Stored as <code>anes_2024</code> in {srvyrexploR}</li>
 <li class="fragment">Pre- and post-election surveys fielded almost every 2 years since 1948</li>
 <li class="fragment">Topics include voter registration status, candidate preference, opinions on country and government, party and ideology affiliation, opinions on policy, news sources, and more</li>
 <li class="fragment">Collaboration of Stanford, University of Michigan - funding by the National Science Foundation</li>
 <li class="fragment"><b>Target Population</b>: US citizens, 18 and older living in US</li>
-<li class="fragment"><b>Mode</b>: In-Person, Web, videoconference, or telephone</li>
+<li class="fragment"><b>Mode</b>: In-Person, Web, videoconference, Paper, or telephone</li>
 <li class="fragment"><b>Sample Information</b>: Pseudo-strata and pseudo-cluster included for variance estimation</li>
 </ul>
 <p><a href="https://electionstudies.org/">https://electionstudies.org/</a></p>
@@ -372,27 +366,22 @@ $ EducationGroup          &lt;fct&gt; Bachelor's, Post HS, Post HS, Post HS, Gra
 $ Income7                 &lt;fct&gt; "$125k or more", "$125k or more", "$100k to…</code></pre>
 </div>
 </div>
-</section></section>
-<section>
-<section id="design-objects" class="title-slide slide level1 center" data-background-color="#087e8b">
-<h1>Design Objects</h1>
-
 </section>
-<section id="design-objects-1" class="slide level2">
-<h2>Design Objects</h2>
+<section id="design-object" class="slide level2">
+<h2>Design Object</h2>
 <div>
 <ul>
 <li class="fragment">Backbone for survey analysis</li>
 <li class="fragment">Specify the sampling design, weights, and other necessary information to account for errors in the data</li>
 <li class="fragment">Survey analysis and inference should be performed with the survey design objects, not the original survey data</li>
-<li class="fragment"><strong>We will be covering survey design in more detail later today!</strong></li>
+<li class="fragment"><strong>We will be covering survey design in more detail later!</strong></li>
 </ul>
 </div>
 </section>
 <section id="american-national-election-studies-design-object" class="slide level2">
 <h2>American National Election Studies Design Object</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8" data-code-line-numbers="|1|2|3-8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a>anes_des <span class="ot">&lt;-</span> anes_2024 <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb8" data-code-line-numbers="|1|2|3|4-8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a>anes_des <span class="ot">&lt;-</span> anes_2024 <span class="sc">%&gt;%</span></span>
 <span id="cb8-2"><a href=""></a>  <span class="fu">filter</span>(InterviewMode_Pre <span class="sc">!=</span> <span class="st">"3. Paper (PAPI)"</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb8-3"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">Weight =</span> V240108b <span class="sc">/</span> <span class="fu">sum</span>(V240108b) <span class="sc">*</span> <span class="dv">232449541</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb8-4"><a href=""></a>  <span class="fu">as_survey_design</span>(</span>
@@ -522,11 +511,9 @@ Data variables:
 <h2>Using {dplyr} functions</h2>
 <h3 id="survey-object-1">Survey object:</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href=""></a>anes_des_mod <span class="ot">&lt;-</span> anes_des <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href=""></a>anes_des <span class="sc">%&gt;%</span></span>
 <span id="cb17-2"><a href=""></a>  <span class="fu">filter</span>(EducationGroup <span class="sc">==</span> <span class="st">"Graduate"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb17-3"><a href=""></a>  <span class="fu">select</span>(Sex)</span>
-<span id="cb17-4"><a href=""></a></span>
-<span id="cb17-5"><a href=""></a>anes_des_mod</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-3"><a href=""></a>  <span class="fu">select</span>(Sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Stratified 1 - level Cluster Sampling design (with replacement)
 With (492) clusters.
