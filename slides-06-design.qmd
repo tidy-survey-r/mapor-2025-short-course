@@ -1,9 +1,13 @@
 ---
-format: revealjs
+format: 
+  revealjs:
+    include-after-body:
+      - "tabset.html"
 echo: true
 slide-number: true
 title-slide-attributes:
       data-background: "#087e8b"
+      
 ---
 
 ```{r}
@@ -62,7 +66,7 @@ Designs can also incorporate stratification and/or clustering:
 -   We will show both ANES and RECS examples when diving into code
 :::
 
-# Designs **without** replicate weights {background-color="{{< brand color secondary >}}"}
+# Designs **without** replicate weights {background-color='{{< brand color secondary >}}'}
 
 ## `as_survey_design()`: Syntax
 
@@ -139,7 +143,7 @@ apistrat %>% as_survey_design(ids = dnum, strata = stype, weights =pw, nest = TR
 Examples from `srvyr` help documentation
 :::
 
-# Example {background-color="{{< brand color blue >}}"}
+# Example {background-color='{{< brand color blue >}}'}
 
 ## Example: ANES 2024 {.smaller}
 
@@ -205,7 +209,7 @@ weight_tbl |>
 
 ```{r}
 #| label: design-anes-example
-#| code-line-numbers: "|1|2|3|4-9|5|6|7,8|"
+#| code-line-numbers: "|1|2|3|4-9|5|6|7,8"
 
 anes_des <- anes_2024 %>%
   filter(InterviewMode_Post != "3. Paper (PAPI)") %>% 
@@ -219,7 +223,7 @@ anes_des <- anes_2024 %>%
 
 ```
 
-- Target population: 232449541
+- Target population: 232,449,541
 - Isabella has a blog post on calculating the population for ANES 2024 data: [https://rworks.netlify.app/posts/anes2024/](https://rworks.netlify.app/posts/anes2024/)
 
 ## Example: ANES 2024 Design
@@ -263,32 +267,28 @@ nhanes_des <- nhanes %>%
 ```
 :::
 
-# Replicate weight methods {background-color="{{< brand color secondary >}}"}
+:::: {.fragment .tabswitch}
+:::
 
-## Replicate weights overview {.smaller}
+# Designs **with** replicate weights {background-color='{{< brand color secondary >}}'}
 
-Replicate weights are another method to estimate variability. In general, they are constructed by:
+## Replicate weights overview
 
-1.  Divide the sample into subsample replicates that mirror the design of the sample
-2.  Calculate weights for each replicate using the same procedures for the full-sample weight (i.e., nonresponse and post-stratification)
-3.  Calculate estimates for each replicate using the same method as the full-sample estimate
-4.  Calculate the estimated variance, which is proportional to the variance of the replicate estimates
+- Replicate weights are a method to estimate variability that does not rely on stratum and clusters (can assist with disclosure)
+- Common replicate weight methods
 
-## Common replicate weight methods
+    -   Balanced repeated replication (BRR)
+    -   Fay's BRR
+    -   Jackknife
+    -   Bootstrap
 
--   Balanced repeated replication (BRR)
--   Fay's BRR
--   Jackknife
--   Bootstrap
+## `as_survey_rep()`: Syntax {.smaller}
 
-# Specifying sampling designs in {srvyr} **with** replicate weights {background-color="{{< brand color secondary >}}"}
-
-## `as_survey_rep()`: Syntax
-
--   `as_survey_rep()` creates a `tbl_svy` object that then correctly calculates weighted estimates and SEs
+`as_survey_rep()` creates a `tbl_svy` object that then correctly calculates weighted estimates and SEs
 
 ```{r}
 #| eval: false
+#| code-line-numbers: "|1|2|3|4|5|6-9|10-16"
 as_survey_rep(
   .data,
   variables = NULL, # defaults to all in .data
@@ -352,7 +352,7 @@ bs_des <- dat %>%
 
 -   Note: this uses fake data and can't be run, just syntax examples
 
-# Example {background-color="{{< brand color blue >}}"}
+# Example {background-color='{{< brand color blue >}}'}
 
 ## Example: RECS 2020 {.smaller}
 
@@ -382,29 +382,23 @@ RECS <- svrepdesign(
 
 ```{r}
 #| label: design-recs-example
-
+#| code-line-numbers: "|1|2,8|3|4|5-7"
 recs_des <- recs_2020 %>%
   as_survey_rep(
-    weight = NWEIGHT, #<1>
-    repweights = NWEIGHT1:NWEIGHT60, #<2>
-    type = "JK1", #<3>
-    scale = 59 / 60, #<4>
-    mse = TRUE #<5>
+    weight = NWEIGHT, 
+    repweights = NWEIGHT1:NWEIGHT60, 
+    type = "JK1", 
+    scale = 59 / 60, 
+    mse = TRUE 
   )
 ```
-
-1.  Specify the weight variable
-2.  Specify the replicate weight variables
-3.  Specify the replicate type per documentation
-4.  Specify the scale
-5.  Specify using MSE for variance estimation
 
 ## Example: RECS 2020 Output
 
 ```{r}
 #| label: design-recs-examp-print
 
-summary(recs_des) #<6>
+summary(recs_des) 
 ```
 
 ## American Community Survey (ACS)
@@ -439,4 +433,23 @@ acs_des <- acs_pums %>%
 ```
 :::
 
-# Thanks! {background-color="{{< brand color secondary >}}"}
+
+:::: {.fragment .tabswitch}
+:::
+
+## Tips for correctly specifying 
+
+::: {.incremental}
+
+- For public use datasets: **Documentation, Documentation, Documentation**
+
+    - Read through user guides
+    - Search for keywords (e.g., "weight", "strata") in the user guides
+    - Google
+    - Reach out to the study contact with questions
+    
+- For data you create: Please provide good documentation!
+
+:::
+
+# Thanks! {background-color='{{< brand color secondary >}}'}
