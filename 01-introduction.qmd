@@ -24,7 +24,7 @@ title-slide-attributes:
 
 ::: {.column}
 
-![](images/RebeccaPowell_Headshot.jpeg){fig-align="center"}
+![](images/RebeccaPowell_Headshot.jpeg){fig-align="center" width=200px}
 
 <center>
 **Rebecca Powell**
@@ -36,7 +36,7 @@ Fors Marsh
 
 ::: {.column}
 
-![](images/IsabellaVelasquez_Headshot.jpeg){fig-align="center"}
+![](images/IsabellaVelasquez_Headshot.jpeg){fig-align="center" width=200px}
 
 <center>
 **Isabella Velásquez**
@@ -105,8 +105,7 @@ Each of us give a brief intro on our experience/background
 
 ## Logistics
 
-  - We will be using Posit Cloud for exercises 
+  - We will be using Posit Cloud for exercises
   - All materials are found at:
     - <https://tidy-survey-r.github.io/mapor-2025-short-course/> (Site)
     - <https://github.com/tidy-survey-r/mapor-2025-short-course/> (Source)
-  - Sticky notes
