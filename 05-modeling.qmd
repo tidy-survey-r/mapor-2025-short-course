@@ -73,7 +73,7 @@ anes_des_der <- anes_des %>%
 
 ## `svyglm`: example
 
-2. Summarize the data.
+2. Summarize the data:
 
 ```{r}
 #| echo: true
@@ -93,10 +93,11 @@ anes_des_summary <-
 
 ## `svyglm`: example
 
-3. Plot the summary of the data.
+3. Plot the summary of the data:
 
 ```{r}
 #| dpi: 300
+#| code-fold: true
 anes_des_summary %>%
   ggplot(aes(
     x = VotedPres2024_selection, y = pct_trust,
@@ -116,7 +117,7 @@ anes_des_summary %>%
 
 ## `svyglm`: example
 
-4. Verify by fitting the model.
+4. Verify by fitting the model:
 
 ```{r}
 #| output: slide
@@ -132,7 +133,7 @@ logistic_trust_vote <- anes_des_der %>%
 
 ## `svyglm`: example
 
-4. Verify by fitting the model.
+4. Verify by fitting the model:
 
 ```{r}
 #| echo: true
@@ -181,7 +182,7 @@ The coefficient of **-1.24** represents the increase in the log odds of usually 
 
 ## `svyglm`: example
 
-To talk about odds rather than log odds, we can exponentiate the coefficients.
+To talk about odds rather than log odds, we can exponentiate the coefficients:
 
 ```{r}
 #| code-line-numbers: "|1"
@@ -204,7 +205,7 @@ tidy(logistic_trust_vote, exponentiate = TRUE) %>%
   fmt_number()
 ```
 
-The odds that a Trump voter usually trusts the government are about **26%** of the odds for a Harris voter, who serves as the reference group.
+The odds that a Trump voter usually trusts the government are about **29%** of the odds for a Harris voter, who serves as the reference group.
 
 ## Interaction effects
 
@@ -213,6 +214,7 @@ Next, examine the interaction between early voting and income group in the model
 1. Subset to 2024 voters and create an indicator for Harris voters.
 
 ```{r}
+#| echo: true
 anes_des_ind <- anes_des %>%
   filter(!is.na(VotedPres2024_selection)) %>%
   mutate(VoteHarris = case_when(
@@ -227,6 +229,7 @@ anes_des_ind <- anes_des %>%
 
 ```{r}
 #| echo: true
+#| code-line_numbers: "|7"
 log_harris_main <- anes_des_ind %>%
   mutate(
     EarlyVote2024 = fct_relevel(EarlyVote2024, "2. Have not voted", after = 0)
@@ -283,5 +286,3 @@ tidy(log_harris_int) %>%
   gt() %>%
   fmt_number()
 ```
-
-None of the interactions were significant!
