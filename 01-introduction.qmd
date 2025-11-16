@@ -71,7 +71,7 @@ Each of us give a brief intro on our experience/background
 
 - We are R users who work with survey data regularly
 - We wanted to share knowledge with
-  - R users who are inaccurately analyzing survey data
+  - R users who may be inaccurately analyzing survey data
   - SAS/SUDAAN/Stata users who may not know about the capabilities of R
 - {srvyr} package developed using tidyverse style syntax
 
