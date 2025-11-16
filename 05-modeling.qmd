@@ -286,3 +286,26 @@ tidy(log_harris_int) %>%
   gt() %>%
   fmt_number()
 ```
+
+
+# Your Turn {background-image="images/header.png"}
+
+- Go to bit.ly/MAPOR-2025-short-course
+- Open `05-modeling-exercises.qmd`
+
+```{r}
+#| label: modeling-ex-time
+#| echo: false
+gs_ex_time <- 8
+gs_ex_warn <- 3
+```
+
+```{r}
+#| label: modeling-ex-clock
+#| echo: false
+countdown::countdown(minutes = gs_ex_time, seconds = 0, play_sound = TRUE, warn_when = gs_ex_warn * 60)
+```
+
+::: footer
+bit.ly/MAPOR-2025-short-course
+:::
