@@ -37,8 +37,6 @@ anes_des <- anes_2024 %>%
   )
 ```
 
-### Exercises - Part 1
-
 1. How many females have a graduate degree (according to the ANES data)?
 
 ```{r}
@@ -81,8 +79,6 @@ anes_des %>%
   ) %>%
   filter(EarlyVote2020 == "Yes")
 ```
-
-### Exercises - Part 2
 
 1. What percentage of people who voted for president in the 2024 election identify as “Strong Republican”? 
 

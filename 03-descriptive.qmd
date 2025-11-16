@@ -242,18 +242,6 @@ anes_des %>%
   summarize(p = survey_prop())
 ```
 
-# Your Turn {background-color='{{< brand color pink >}}'}
-
-* Open `03-descriptive-exercises.qmd`
-* Work through **Exercises - Part 1**
-
-```{r}
-#| label: descriptive-ex-clock-1
-#| echo: false
-# 10 minutes, warning at 5 minutes
-countdown::countdown(minutes = 10, seconds = 0, play_sound = TRUE, warn_when = 5 * 60)
-```
-
 # Helper functions for survey analysis {background-color='{{< brand color secondary >}}'}
 
 ## `filter()`
@@ -347,14 +335,24 @@ anes_des %>%
           .fill_level_top = TRUE)
 ```
 
-# Your Turn {background-color='{{< brand color pink >}}'}
+# Your Turn {background-image="images/header.png"}
 
-* Open `03-descriptive-exercises.qmd`
-* Work through **Exercises - Part 2**
+- Go to bit.ly/MAPOR-2025-short-course
+- Open `03-descriptive-exercises.qmd`
 
 ```{r}
-#| label: descriptive-ex-clock-2
+#| label: gs-ex-time
 #| echo: false
-# 10 minutes, warning at 5 minutes
-countdown::countdown(minutes = 10, seconds = 0, play_sound = TRUE, warn_when = 5 * 60)
+gs_ex_time <- 8
+gs_ex_warn <- 3
 ```
+
+```{r}
+#| label: gs-ex-clock
+#| echo: false
+countdown::countdown(minutes = gs_ex_time, seconds = 0, play_sound = TRUE, warn_when = gs_ex_warn * 60)
+```
+
+::: footer
+bit.ly/MAPOR-2025-short-course
+:::
