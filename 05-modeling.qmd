@@ -54,11 +54,11 @@ des_obj %>%
 
 ## `svyglm`: example
 
-Model whether someone usually has trust in the government by whom someone voted for president in 2024[^1]:
+Model whether a person usually trusts the government based on who they voted for in 2024[^1]:
 
 . . .
 
-1. Create a binary outcome for trusting in the government by collapsing "Always" and "Most of the time" into a single-factor variable, then the other responses into a second factor variable
+1. Create a binary trust variable by grouping ‘Always’ and ‘Most of the time’ into one category, and all remaining responses into the other.
 
 ```{r}
 #| echo: true
@@ -73,11 +73,11 @@ anes_des_der <- anes_des %>%
 
 ## `svyglm`: example
 
-2. Summarize the data
+2. Summarize the data.
 
 ```{r}
 #| echo: true
-#| code-line-numbers: "|3|4-9"
+#| code-line-numbers: "|3|4-10"
 anes_des_summary <-
   anes_des_der %>%
   group_by(VotedPres2024_selection) %>%
@@ -86,15 +86,17 @@ anes_des_summary <-
     na.rm = TRUE,
     proportion = TRUE,
     vartype = "ci"),
-    .groups = "drop") %>%
+    .groups = "drop"
+    ) %>%
   filter(complete.cases(.))
 ```
 
 ## `svyglm`: example
 
-3. Plot a summary of the data
+3. Plot the summary of the data.
 
 ```{r}
+#| dpi: 300
 anes_des_summary %>%
   ggplot(aes(
     x = VotedPres2024_selection, y = pct_trust,
@@ -114,12 +116,12 @@ anes_des_summary %>%
 
 ## `svyglm`: example
 
-4. Verify by fitting the model:
+4. Verify by fitting the model.
 
 ```{r}
 #| output: slide
 #| echo: true
-#| code-line-numbers: "|2,5|3|4|5"
+#| code-line-numbers: "|2,6|3|4|5"
 logistic_trust_vote <- anes_des_der %>%
   svyglm(
     design = .,
@@ -130,10 +132,11 @@ logistic_trust_vote <- anes_des_der %>%
 
 ## `svyglm`: example
 
-4. Verify by fitting the model:
+4. Verify by fitting the model.
 
 ```{r}
 #| echo: true
+#| code-line-numbers: "|2,5|3,6|1,7,8"
 library(gt)
 library(broom)
 library(prettyunits)
@@ -146,6 +149,8 @@ tidy(logistic_trust_vote) %>%
 
 ## `svyglm`: example
 
+Result:
+
 ```{r}
 tidy(logistic_trust_vote) %>%
   mutate(p.value = pretty_p_value(p.value)) %>%
@@ -155,7 +160,7 @@ tidy(logistic_trust_vote) %>%
 
 1. Estimated coefficients (`estimate`)
 2. Estimated standard errors of the coefficients (`std.error`)
-3. p-value for each coefficients
+3. p-value for each coefficient
 
 ## `svyglm`: example
 
@@ -168,15 +173,15 @@ tidy(logistic_trust_vote) %>%
   fmt_number()
 ```
 
-This output indicates that respondents who voted for Trump are more likely to have trust less in the government compared to those who voted for Harris (the reference level).
+Compared with Harris voters, Trump voters show lower levels of trust in the government.
 
 . . .
 
-The coefficient of -1.24 represents the increase in the log odds of usually trusting the government.
+The coefficient of **-1.24** represents the increase in the log odds of usually trusting the government.
 
 ## `svyglm`: example
 
-To talk about odds rather than log odds, we can exponentiate the coefficients:
+To talk about odds rather than log odds, we can exponentiate the coefficients.
 
 ```{r}
 #| code-line-numbers: "|1"
@@ -199,13 +204,13 @@ tidy(logistic_trust_vote, exponentiate = TRUE) %>%
   fmt_number()
 ```
 
-We can interpret this as saying that the odds of usually trusting the government for someone who voted for Trump is 26% as likely to trust the government compared to a person who voted for Harris (the reference level).
+The odds that a Trump voter usually trusts the government are about **26%** of the odds for a Harris voter, who serves as the reference group.
 
 ## Interaction effects
 
-Let's see the interaction effect of early voting and income in our model:
+Next, examine the interaction between early voting and income group in the model.
 
-1. Subset to 2024 voters and create an indicator for Harris voters
+1. Subset to 2024 voters and create an indicator for Harris voters.
 
 ```{r}
 anes_des_ind <- anes_des %>%
@@ -218,7 +223,7 @@ anes_des_ind <- anes_des %>%
 
 ## Interaction effects
 
-2. Let’s look at the main effects of income grouping and early voting behavior
+2. Let’s look at the main effects of income grouping and early voting behavior.
 
 ```{r}
 #| echo: true
@@ -248,7 +253,7 @@ This indicates that people with incomes of \$125,000 or more were more likely to
 
 . . .
 
-Early voting behavior was not significant,
+Early voting behavior was not significant.
 
 ## Interaction effects
 
