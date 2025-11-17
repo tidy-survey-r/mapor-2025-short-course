@@ -1,0 +1,353 @@
+## Introduction
+
+```{r}
+#| label: setup
+#| include: false
+library(tidyverse)
+library(srvyr)
+library(srvyrexploR)
+
+data(anes_2024)
+
+anes_des <- anes_2024 %>%
+  filter(InterviewMode_Post != "3. Paper (PAPI)") %>%
+  mutate(Weight = V240108b / sum(V240108b) * 232449541) %>%
+  as_survey_design(
+    weights = Weight,
+    strata = V240108d,
+    ids = V240108c,
+    nest = TRUE
+  )
+```
+
+Descriptive analyses lay the groundwork for the next steps of running statistical tests or developing models.
+
+. . .
+
+Calculate point estimates of...
+
+- *Unknown population parameters*, such as mean.
+
+. . .
+
+- *Uncertainty estimates*, such as confidence intervals.
+
+## Types of data
+
+* **Categorical/nominal data**: variables with levels or descriptions that cannot be ordered, such as the region of the country (North, South, East, and West)
+
+::: {.fragment  .semi-fade-out}
+
+* **Ordinal data**: variables that can be ordered, such as those from a Likert scale (strongly disagree, disagree, agree, and strongly agree)
+* **Discrete data**: variables that are counted or measured, such as number of children
+* **Continuous data**: variables that are measured and whose values can lie anywhere on an interval, such as income
+
+:::
+
+## Types of measures
+
+- **Measures of distribution** describe how often an event or response occurs. 
+  - Count of observations with `survey_count()`
+- **Measures of central tendency** find the central (or average) responses.
+  - Proportions with `survey_prop()` and `survey_total()`
+  
+## Overview of survey analysis using the {srvyr} package
+
+::: {.fragment  .semi-fade-out}
+1. Create a `tbl_svy` object (a survey object) using: `as_survey_design()` or `as_survey_rep()`
+:::
+
+2. Subset data (if needed) using `filter()` (to create subpopulations)
+
+3. Specify domains of analysis using `group_by()`
+
+4. Specify variables to calculate, including means, totals, proportions, quantiles, and more
+
+# Counts and totals {background-color='{{< brand color secondary >}}'}
+
+## `survey_count()`
+
+::: incremental
+- Calculate the estimated observation counts for a given variable or combination of variables
+- Applied to categorical data
+- Sometimes called "cross-tabulations" or "cross-tabs"
+- `survey_count()` functions similarly to `dplyr::count()` in that it is <b>NOT</b> called within `summarize()`
+:::
+
+## `survey_count()`: syntax
+
+```{r}
+#| eval: false
+#| echo: true
+#| code-line-numbers: "|2|3|4|5|6|7|8"
+#| label: survey-count-syntax
+survey_count(
+  x,
+  ...,
+  wt = NULL,
+  sort = FALSE,
+  name = "n",
+  .drop = dplyr::group_by_drop_default(x),
+  vartype = c("se", "ci", "var", "cv")
+)
+```
+
+## `survey_count`: example
+
+Estimate the number of U.S. adults (18+) living in the continental United States using ANES data:
+
+```{r}
+#| echo: true
+#| output-location: fragment
+#| code-line-numbers: "|2"
+#| label: survey-count-ex
+anes_des %>%
+  survey_count()
+```
+
+## `survey_count`: subgroup example
+
+Calculate the weighted estimate of respondents by voting status in the 2024 election:
+
+```{r}
+#| output-location: fragment
+#| echo: true
+#| code-line-numbers: "|2|3"
+#| label: survey-count-subgroup-ex
+anes_des %>%
+  survey_count(
+    VotedPres2024, 
+    name = "N"
+    )
+```
+
+## `survey_total()`: syntax
+
+- The `survey_total()` function is analogous to `sum()`
+- `survey_total()` must be used within `summarize()`
+- If used with no x-variable, `survey_total()` calculates a population count estimate within `summarize()`
+
+## `survey_total()`: example
+
+Estimate the number of U.S. adults (18+) living in the continental United States using ANES data:
+
+```{r}
+#| echo: true
+#| label: survey-tot-ex
+anes_des %>%
+  summarize(
+    survey_total()
+  )
+```
+
+## `unweighted()`
+
+::: incremental
+
+- Sometimes, it is helpful to calculate an unweighted estimate of a given variable
+- `unweighted()` does not extrapolate to a population estimate
+- Used in conjunction with any {dplyr} functions
+
+:::
+
+## `unweighted()`: example 
+
+Calculate the weighted and unweighted number of survey respondents:
+
+```{r}
+#| output: fragment
+#| echo: true
+#| code-line-numbers: "|2,5|3|4"
+#| label: unweighted-ex
+anes_des %>%
+  summarize(
+    n_unweighted = unweighted(n()),
+    n_weighted = survey_total()
+  )
+```
+
+# Proportions {background-color='{{< brand color secondary >}}'}
+
+## `survey_prop()`
+
+::: incremental
+- Calculate the estimated observation counts for a given variable or combination of variables
+- `survey_prop()` to categorical data
+- Must be called within `summarize()`
+:::
+
+## `survey_prop()`: syntax
+
+```{r}
+#| eval: false
+#| echo: true
+#| code-line-numbers: "|1,2|5"
+#| label: survey-prop-syntax
+survey_prop(
+  na.rm = FALSE,
+  vartype = c("se", "ci", "var", "cv"),
+  level = 0.95,
+  proportion = TRUE,
+  prop_method =
+    c("logit", "likelihood", "asin", "beta", "mean", "xlogit"),
+  deff = FALSE,
+  df = NULL
+)
+```
+
+## `survey_prop()`: one variable proportion example
+
+Calculate the proportion of respondents by voting status in the 2024 election:
+
+```{r}
+#| output: fragment
+#| echo: true
+#| code-line-numbers: "|2|3"
+#| label: survey-prop-example-one-var
+anes_des %>%
+  group_by(VotedPres2024) %>%
+  summarize(p = survey_prop())
+```
+
+## `survey_prop()`: conditional proportions example
+
+Calculate the proportion of whether someone voted by campaign interest:
+
+```{r}
+#| output: fragment
+#| echo: true
+#| code-line-numbers: "|2|3"
+#| label: survey-prop-example-cond
+anes_des %>%
+  group_by(VotedPres2024, CampaignInterest) %>%
+  summarize(p = survey_prop())
+```
+
+## `survey_prop()`: joint proportions example
+
+Calculate the joint proportions for each variable combination using `interact()`:
+
+```{r}
+#| output: fragment
+#| echo: true
+#| code-line-numbers: "|2|3"
+#| label: survey-prop-example-joint
+anes_des %>%
+  group_by(interact(VotedPres2024, CampaignInterest)) %>%
+  summarize(p = survey_prop())
+```
+
+# Helper functions for survey analysis {background-color='{{< brand color secondary >}}'}
+
+## `filter()`
+
+::: incremental
+- Allows for subpopulation analysis
+- Use `filter()` to subset a survey object for analysis
+- Must be done after creating the survey design object
+:::
+
+# `filter()`: example {background-color='{{< brand color blue >}}'}
+
+## `filter()`: example
+
+Estimate the proportion of 2024 voters among respondents who voted in 2020:
+
+```{r}
+#| output: fragment
+#| echo: true
+#| label: filter-ex
+anes_des %>%
+  filter(VotedPres2020 == "1. Yes, voted") %>%
+  group_by(VotedPres2024) %>%
+  summarize(
+    survey_prop()
+  )
+```
+
+## `cascade()`
+
+::: incremental
+- The {srvyr} package has the convenient `cascade()` function
+- Used instead of `summarize()`
+- Creates a summary row for the estimate representing the entire population
+:::
+
+## `cascade()`: syntax
+
+```r
+cascade(
+  .data, 
+  ..., 
+  .fill = NA, 
+  .fill_level_top = FALSE, 
+  .groupings = NULL
+)
+```
+
+## `cascade()`: example
+
+Estimate the share of respondents who did and did not vote in the 2024 election, then demonstrate the features of `cascade()`:
+
+```{r}
+#| output: fragment
+#| echo: true
+#| code-line-numbers: "|2"
+#| label: cascade-ex-1
+anes_des %>%
+  group_by(VotedPres2024) %>%
+  cascade(prop = survey_prop())
+```
+
+## `cascade()`: example
+
+Give the summary row a better name with `.fill`:
+
+```{r}
+#| eval: false
+#| echo: true
+#| code-line-numbers: "|4"
+#| label: cascade-ex-2
+anes_des %>%
+  group_by(VotedPres2024) %>%
+  cascade(prop = survey_prop(),
+          .fill = "All")
+```
+
+## `cascade()`: example
+
+Move the summary row to the top with `.fill_level_top = TRUE`:
+
+```{r}
+#| output: fragment
+#| echo: true
+#| code-line-numbers: "|5"
+#| label: cascade-ex-3
+anes_des %>%
+  group_by(VotedPres2024) %>%
+  cascade(prop = survey_prop(),
+          .fill = "All",
+          .fill_level_top = TRUE)
+```
+
+# Your Turn {background-image="images/header.png"}
+
+- Go to bit.ly/MAPOR-2025-short-course
+- Open `03-descriptive-exercises.qmd`
+
+```{r}
+#| label: des-ex-time
+#| echo: false
+gs_ex_time <- 8
+gs_ex_warn <- 3
+```
+
+```{r}
+#| label: des-ex-clock
+#| echo: false
+countdown::countdown(minutes = gs_ex_time, seconds = 0, play_sound = TRUE, warn_when = gs_ex_warn * 60)
+```
+
+::: footer
+bit.ly/MAPOR-2025-short-course
+:::

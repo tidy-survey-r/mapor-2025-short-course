@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.15">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>slides-03-descriptive</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./../images/favicon.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-4576267147431a310ec27e40e99ae70b.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-1f6f300e52c19a3a756e2427acbf95f7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link href="site_libs/countdown-0.4.0/countdown.css" rel="stylesheet">
+<script src="site_libs/countdown-0.4.0/countdown.js"></script>
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-search-results"></div>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Descriptive analyses lay the groundwork for the next steps of running statistical tests or developing models.</p>
+<p>. . .</p>
+<p>Calculate point estimates of…</p>
+<ul>
+<li><em>Unknown population parameters</em>, such as mean.</li>
+</ul>
+<p>. . .</p>
+<ul>
+<li><em>Uncertainty estimates</em>, such as confidence intervals.</li>
+</ul>
+</section>
+<section id="types-of-data" class="level2">
+<h2 class="anchored" data-anchor-id="types-of-data">Types of data</h2>
+<ul>
+<li><strong>Categorical/nominal data</strong>: variables with levels or descriptions that cannot be ordered, such as the region of the country (North, South, East, and West)</li>
+</ul>
+<div class="fragment semi-fade-out">
+<ul>
+<li><strong>Ordinal data</strong>: variables that can be ordered, such as those from a Likert scale (strongly disagree, disagree, agree, and strongly agree)</li>
+<li><strong>Discrete data</strong>: variables that are counted or measured, such as number of children</li>
+<li><strong>Continuous data</strong>: variables that are measured and whose values can lie anywhere on an interval, such as income</li>
+</ul>
+</div>
+</section>
+<section id="types-of-measures" class="level2">
+<h2 class="anchored" data-anchor-id="types-of-measures">Types of measures</h2>
+<ul>
+<li><strong>Measures of distribution</strong> describe how often an event or response occurs.
+<ul>
+<li>Count of observations with <code>survey_count()</code></li>
+</ul></li>
+<li><strong>Measures of central tendency</strong> find the central (or average) responses.
+<ul>
+<li>Proportions with <code>survey_prop()</code> and <code>survey_total()</code></li>
+</ul></li>
+</ul>
+</section>
+<section id="overview-of-survey-analysis-using-the-srvyr-package" class="level2">
+<h2 class="anchored" data-anchor-id="overview-of-survey-analysis-using-the-srvyr-package">Overview of survey analysis using the {srvyr} package</h2>
+<div class="fragment semi-fade-out">
+<ol type="1">
+<li>Create a <code>tbl_svy</code> object (a survey object) using: <code>as_survey_design()</code> or <code>as_survey_rep()</code></li>
+</ol>
+</div>
+<ol start="2" type="1">
+<li><p>Subset data (if needed) using <code>filter()</code> (to create subpopulations)</p></li>
+<li><p>Specify domains of analysis using <code>group_by()</code></p></li>
+<li><p>Specify variables to calculate, including means, totals, proportions, quantiles, and more</p></li>
+</ol>
+</section>
+<section id="counts-and-totals" class="level1" data-background-color="#087e8b">
+<h1 data-background-color="#087e8b">Counts and totals</h1>
+<section id="survey_count" class="level2">
+<h2 class="anchored" data-anchor-id="survey_count"><code>survey_count()</code></h2>
+<div class="incremental">
+<ul class="incremental">
+<li>Calculate the estimated observation counts for a given variable or combination of variables</li>
+<li>Applied to categorical data</li>
+<li>Sometimes called “cross-tabulations” or “cross-tabs”</li>
+<li><code>survey_count()</code> functions similarly to <code>dplyr::count()</code> in that it is <b>NOT</b> called within <code>summarize()</code></li>
+</ul>
+</div>
+</section>
+<section id="survey_count-syntax" class="level2">
+<h2 class="anchored" data-anchor-id="survey_count-syntax"><code>survey_count()</code>: syntax</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">survey_count</span>(</span>
+<span id="cb1-2"><a href="#cb1-2"></a>  x,</span>
+<span id="cb1-3"><a href="#cb1-3"></a>  ...,</span>
+<span id="cb1-4"><a href="#cb1-4"></a>  <span class="at">wt =</span> <span class="cn">NULL</span>,</span>
+<span id="cb1-5"><a href="#cb1-5"></a>  <span class="at">sort =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb1-6"><a href="#cb1-6"></a>  <span class="at">name =</span> <span class="st">"n"</span>,</span>
+<span id="cb1-7"><a href="#cb1-7"></a>  <span class="at">.drop =</span> dplyr<span class="sc">::</span><span class="fu">group_by_drop_default</span>(x),</span>
+<span id="cb1-8"><a href="#cb1-8"></a>  <span class="at">vartype =</span> <span class="fu">c</span>(<span class="st">"se"</span>, <span class="st">"ci"</span>, <span class="st">"var"</span>, <span class="st">"cv"</span>)</span>
+<span id="cb1-9"><a href="#cb1-9"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="survey_count-example" class="level2">
+<h2 class="anchored" data-anchor-id="survey_count-example"><code>survey_count</code>: example</h2>
+<p>Estimate the number of U.S. adults (18+) living in the continental United States using ANES data:</p>
+<div class="cell" data-output-location="fragment">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>anes_des <span class="sc">%&gt;%</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>  <span class="fu">survey_count</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 2
+          n     n_se
+      &lt;dbl&gt;    &lt;dbl&gt;
+1 232449541 5069171.</code></pre>
+</div>
+</div>
+</section>
+<section id="survey_count-subgroup-example" class="level2">
+<h2 class="anchored" data-anchor-id="survey_count-subgroup-example"><code>survey_count</code>: subgroup example</h2>
+<p>Calculate the weighted estimate of respondents by voting status in the 2024 election:</p>
+<div class="cell" data-output-location="fragment">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>anes_des <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>  <span class="fu">survey_count</span>(</span>
+<span id="cb4-3"><a href="#cb4-3"></a>    VotedPres2024, </span>
+<span id="cb4-4"><a href="#cb4-4"></a>    <span class="at">name =</span> <span class="st">"N"</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+  VotedPres2024                             N     N_se
+  &lt;fct&gt;                                 &lt;dbl&gt;    &lt;dbl&gt;
+1 1. Yes, voted for President      170473497. 4000913.
+2 2. No, didn't vote for President   1887456.  401215.
+3 &lt;NA&gt;                              60088589. 3058218.</code></pre>
+</div>
+</div>
+</section>
+<section id="survey_total-syntax" class="level2">
+<h2 class="anchored" data-anchor-id="survey_total-syntax"><code>survey_total()</code>: syntax</h2>
+<ul>
+<li>The <code>survey_total()</code> function is analogous to <code>sum()</code></li>
+<li><code>survey_total()</code> must be used within <code>summarize()</code></li>
+<li>If used with no x-variable, <code>survey_total()</code> calculates a population count estimate within <code>summarize()</code></li>
+</ul>
+</section>
+<section id="survey_total-example" class="level2">
+<h2 class="anchored" data-anchor-id="survey_total-example"><code>survey_total()</code>: example</h2>
+<p>Estimate the number of U.S. adults (18+) living in the continental United States using ANES data:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>anes_des <span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">survey_total</span>()</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 2
+       coef    `_se`
+      &lt;dbl&gt;    &lt;dbl&gt;
+1 232449541 5069171.</code></pre>
+</div>
+</div>
+</section>
+<section id="unweighted" class="level2">
+<h2 class="anchored" data-anchor-id="unweighted"><code>unweighted()</code></h2>
+<div class="incremental">
+<ul class="incremental">
+<li>Sometimes, it is helpful to calculate an unweighted estimate of a given variable</li>
+<li><code>unweighted()</code> does not extrapolate to a population estimate</li>
+<li>Used in conjunction with any {dplyr} functions</li>
+</ul>
+</div>
+</section>
+<section id="unweighted-example" class="level2">
+<h2 class="anchored" data-anchor-id="unweighted-example"><code>unweighted()</code>: example</h2>
+<p>Calculate the weighted and unweighted number of survey respondents:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>anes_des <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb8-3"><a href="#cb8-3"></a>    <span class="at">n_unweighted =</span> <span class="fu">unweighted</span>(<span class="fu">n</span>()),</span>
+<span id="cb8-4"><a href="#cb8-4"></a>    <span class="at">n_weighted =</span> <span class="fu">survey_total</span>()</span>
+<span id="cb8-5"><a href="#cb8-5"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+  n_unweighted n_weighted n_weighted_se
+         &lt;int&gt;      &lt;dbl&gt;         &lt;dbl&gt;
+1         4764  232449541      5069171.</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="proportions" class="level1" data-background-color="#087e8b">
+<h1 data-background-color="#087e8b">Proportions</h1>
+<section id="survey_prop" class="level2">
+<h2 class="anchored" data-anchor-id="survey_prop"><code>survey_prop()</code></h2>
+<div class="incremental">
+<ul class="incremental">
+<li>Calculate the estimated observation counts for a given variable or combination of variables</li>
+<li><code>survey_prop()</code> to categorical data</li>
+<li>Must be called within <code>summarize()</code></li>
+</ul>
+</div>
+</section>
+<section id="survey_prop-syntax" class="level2">
+<h2 class="anchored" data-anchor-id="survey_prop-syntax"><code>survey_prop()</code>: syntax</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">survey_prop</span>(</span>
+<span id="cb10-2"><a href="#cb10-2"></a>  <span class="at">na.rm =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb10-3"><a href="#cb10-3"></a>  <span class="at">vartype =</span> <span class="fu">c</span>(<span class="st">"se"</span>, <span class="st">"ci"</span>, <span class="st">"var"</span>, <span class="st">"cv"</span>),</span>
+<span id="cb10-4"><a href="#cb10-4"></a>  <span class="at">level =</span> <span class="fl">0.95</span>,</span>
+<span id="cb10-5"><a href="#cb10-5"></a>  <span class="at">proportion =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb10-6"><a href="#cb10-6"></a>  <span class="at">prop_method =</span></span>
+<span id="cb10-7"><a href="#cb10-7"></a>    <span class="fu">c</span>(<span class="st">"logit"</span>, <span class="st">"likelihood"</span>, <span class="st">"asin"</span>, <span class="st">"beta"</span>, <span class="st">"mean"</span>, <span class="st">"xlogit"</span>),</span>
+<span id="cb10-8"><a href="#cb10-8"></a>  <span class="at">deff =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb10-9"><a href="#cb10-9"></a>  <span class="at">df =</span> <span class="cn">NULL</span></span>
+<span id="cb10-10"><a href="#cb10-10"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="survey_prop-one-variable-proportion-example" class="level2">
+<h2 class="anchored" data-anchor-id="survey_prop-one-variable-proportion-example"><code>survey_prop()</code>: one variable proportion example</h2>
+<p>Calculate the proportion of respondents by voting status in the 2024 election:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>anes_des <span class="sc">%&gt;%</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a>  <span class="fu">group_by</span>(VotedPres2024) <span class="sc">%&gt;%</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a>  <span class="fu">summarize</span>(<span class="at">p =</span> <span class="fu">survey_prop</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>When `proportion` is unspecified, `survey_prop()` now defaults to `proportion = TRUE`.
+ℹ This should improve confidence interval coverage.
+This message is displayed once per session.</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+  VotedPres2024                          p    p_se
+  &lt;fct&gt;                              &lt;dbl&gt;   &lt;dbl&gt;
+1 1. Yes, voted for President      0.733   0.0108 
+2 2. No, didn't vote for President 0.00812 0.00173
+3 &lt;NA&gt;                             0.259   0.0106 </code></pre>
+</div>
+</div>
+</section>
+<section id="survey_prop-conditional-proportions-example" class="level2">
+<h2 class="anchored" data-anchor-id="survey_prop-conditional-proportions-example"><code>survey_prop()</code>: conditional proportions example</h2>
+<p>Calculate the proportion of whether someone voted by campaign interest:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>anes_des <span class="sc">%&gt;%</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a>  <span class="fu">group_by</span>(VotedPres2024, CampaignInterest) <span class="sc">%&gt;%</span></span>
+<span id="cb14-3"><a href="#cb14-3"></a>  <span class="fu">summarize</span>(<span class="at">p =</span> <span class="fu">survey_prop</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 4
+# Groups:   VotedPres2024 [3]
+   VotedPres2024                    CampaignInterest              p    p_se
+   &lt;fct&gt;                            &lt;fct&gt;                     &lt;dbl&gt;   &lt;dbl&gt;
+ 1 1. Yes, voted for President      1. Very much interested 0.537   0.0114 
+ 2 1. Yes, voted for President      2. Somewhat interested  0.372   0.0115 
+ 3 1. Yes, voted for President      3. Not much interested  0.0914  0.00653
+ 4 2. No, didn't vote for President 1. Very much interested 0.191   0.0770 
+ 5 2. No, didn't vote for President 2. Somewhat interested  0.359   0.0981 
+ 6 2. No, didn't vote for President 3. Not much interested  0.451   0.108  
+ 7 &lt;NA&gt;                             1. Very much interested 0.228   0.0187 
+ 8 &lt;NA&gt;                             2. Somewhat interested  0.452   0.0211 
+ 9 &lt;NA&gt;                             3. Not much interested  0.319   0.0196 
+10 &lt;NA&gt;                             &lt;NA&gt;                    0.00140 0.00140</code></pre>
+</div>
+</div>
+</section>
+<section id="survey_prop-joint-proportions-example" class="level2">
+<h2 class="anchored" data-anchor-id="survey_prop-joint-proportions-example"><code>survey_prop()</code>: joint proportions example</h2>
+<p>Calculate the joint proportions for each variable combination using <code>interact()</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>anes_des <span class="sc">%&gt;%</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a>  <span class="fu">group_by</span>(<span class="fu">interact</span>(VotedPres2024, CampaignInterest)) <span class="sc">%&gt;%</span></span>
+<span id="cb16-3"><a href="#cb16-3"></a>  <span class="fu">summarize</span>(<span class="at">p =</span> <span class="fu">survey_prop</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 4
+   VotedPres2024                    CampaignInterest               p     p_se
+   &lt;fct&gt;                            &lt;fct&gt;                      &lt;dbl&gt;    &lt;dbl&gt;
+ 1 1. Yes, voted for President      1. Very much interested 0.394    0.00999 
+ 2 1. Yes, voted for President      2. Somewhat interested  0.272    0.00974 
+ 3 1. Yes, voted for President      3. Not much interested  0.0671   0.00474 
+ 4 2. No, didn't vote for President 1. Very much interested 0.00155  0.000681
+ 5 2. No, didn't vote for President 2. Somewhat interested  0.00291  0.000959
+ 6 2. No, didn't vote for President 3. Not much interested  0.00366  0.00126 
+ 7 &lt;NA&gt;                             1. Very much interested 0.0589   0.00512 
+ 8 &lt;NA&gt;                             2. Somewhat interested  0.117    0.00747 
+ 9 &lt;NA&gt;                             3. Not much interested  0.0824   0.00626 
+10 &lt;NA&gt;                             &lt;NA&gt;                    0.000361 0.000361</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="helper-functions-for-survey-analysis" class="level1" data-background-color="#087e8b">
+<h1 data-background-color="#087e8b">Helper functions for survey analysis</h1>
+<section id="filter" class="level2">
+<h2 class="anchored" data-anchor-id="filter"><code>filter()</code></h2>
+<div class="incremental">
+<ul class="incremental">
+<li>Allows for subpopulation analysis</li>
+<li>Use <code>filter()</code> to subset a survey object for analysis</li>
+<li>Must be done after creating the survey design object</li>
+</ul>
+</div>
+</section>
+</section>
+<section id="filter-example" class="level1" data-background-color="#0b3954">
+<h1 data-background-color="#0b3954"><code>filter()</code>: example</h1>
+<section id="filter-example-1" class="level2">
+<h2 class="anchored" data-anchor-id="filter-example-1"><code>filter()</code>: example</h2>
+<p>Estimate the proportion of 2024 voters among respondents who voted in 2020:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>anes_des <span class="sc">%&gt;%</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(VotedPres2020 <span class="sc">==</span> <span class="st">"1. Yes, voted"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(VotedPres2024) <span class="sc">%&gt;%</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">survey_prop</span>()</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+  VotedPres2024                       coef   `_se`
+  &lt;fct&gt;                              &lt;dbl&gt;   &lt;dbl&gt;
+1 1. Yes, voted for President      0.860   0.0102 
+2 2. No, didn't vote for President 0.00781 0.00189
+3 &lt;NA&gt;                             0.133   0.0101 </code></pre>
+</div>
+</div>
+</section>
+<section id="cascade" class="level2">
+<h2 class="anchored" data-anchor-id="cascade"><code>cascade()</code></h2>
+<div class="incremental">
+<ul class="incremental">
+<li>The {srvyr} package has the convenient <code>cascade()</code> function</li>
+<li>Used instead of <code>summarize()</code></li>
+<li>Creates a summary row for the estimate representing the entire population</li>
+</ul>
+</div>
+</section>
+<section id="cascade-syntax" class="level2">
+<h2 class="anchored" data-anchor-id="cascade-syntax"><code>cascade()</code>: syntax</h2>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cascade</span>(</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  .data, </span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  ..., </span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">.fill =</span> <span class="cn">NA</span>, </span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">.fill_level_top =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">.groupings =</span> <span class="cn">NULL</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="cascade-example" class="level2">
+<h2 class="anchored" data-anchor-id="cascade-example"><code>cascade()</code>: example</h2>
+<p>Estimate the share of respondents who did and did not vote in the 2024 election, then demonstrate the features of <code>cascade()</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>anes_des <span class="sc">%&gt;%</span></span>
+<span id="cb21-2"><a href="#cb21-2"></a>  <span class="fu">group_by</span>(VotedPres2024) <span class="sc">%&gt;%</span></span>
+<span id="cb21-3"><a href="#cb21-3"></a>  <span class="fu">cascade</span>(<span class="at">prop =</span> <span class="fu">survey_prop</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: There was 1 warning in `dplyr::summarise()`.
+ℹ In argument: `prop = survey_prop()`.
+Caused by warning:
+! glm.fit: algorithm did not converge</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 3
+  VotedPres2024                       prop prop_se
+  &lt;fct&gt;                              &lt;dbl&gt;   &lt;dbl&gt;
+1 1. Yes, voted for President      0.733   0.0108 
+2 2. No, didn't vote for President 0.00812 0.00173
+3 &lt;NA&gt;                             0.259   0.0106 
+4 &lt;NA&gt;                             1.000   0      </code></pre>
+</div>
+</div>
+</section>
+<section id="cascade-example-1" class="level2">
+<h2 class="anchored" data-anchor-id="cascade-example-1"><code>cascade()</code>: example</h2>
+<p>Give the summary row a better name with <code>.fill</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>anes_des <span class="sc">%&gt;%</span></span>
+<span id="cb24-2"><a href="#cb24-2"></a>  <span class="fu">group_by</span>(VotedPres2024) <span class="sc">%&gt;%</span></span>
+<span id="cb24-3"><a href="#cb24-3"></a>  <span class="fu">cascade</span>(<span class="at">prop =</span> <span class="fu">survey_prop</span>(),</span>
+<span id="cb24-4"><a href="#cb24-4"></a>          <span class="at">.fill =</span> <span class="st">"All"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="cascade-example-2" class="level2">
+<h2 class="anchored" data-anchor-id="cascade-example-2"><code>cascade()</code>: example</h2>
+<p>Move the summary row to the top with <code>.fill_level_top = TRUE</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>anes_des <span class="sc">%&gt;%</span></span>
+<span id="cb25-2"><a href="#cb25-2"></a>  <span class="fu">group_by</span>(VotedPres2024) <span class="sc">%&gt;%</span></span>
+<span id="cb25-3"><a href="#cb25-3"></a>  <span class="fu">cascade</span>(<span class="at">prop =</span> <span class="fu">survey_prop</span>(),</span>
+<span id="cb25-4"><a href="#cb25-4"></a>          <span class="at">.fill =</span> <span class="st">"All"</span>,</span>
+<span id="cb25-5"><a href="#cb25-5"></a>          <span class="at">.fill_level_top =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: There was 1 warning in `dplyr::summarise()`.
+ℹ In argument: `prop = survey_prop()`.
+Caused by warning:
+! glm.fit: algorithm did not converge</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 3
+  VotedPres2024                       prop prop_se
+  &lt;fct&gt;                              &lt;dbl&gt;   &lt;dbl&gt;
+1 All                              1.000   0      
+2 1. Yes, voted for President      0.733   0.0108 
+3 2. No, didn't vote for President 0.00812 0.00173
+4 &lt;NA&gt;                             0.259   0.0106 </code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="your-turn" class="level1" data-background-image="images/header.png">
+<h1 data-background-image="images/header.png">Your Turn</h1>
+<ul>
+<li>Go to bit.ly/MAPOR-2025-short-course</li>
+<li>Open <code>03-descriptive-exercises.qmd</code></li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div class="countdown" id="timer_e6a0e384" data-warn-when="180" data-update-every="1" data-play-sound="true" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">08</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+</div>
+</div>
+<div class="footer">
+<p>bit.ly/MAPOR-2025-short-course</p>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

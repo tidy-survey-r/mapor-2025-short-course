@@ -1,16 +1,26 @@
 ---
-format: revealjs
+title: "Categorical Survey of <br>Complex Survey Data in R"
+subtitle: "A Hands-On Course"
+author: 
+  - Rebecca J. Powell
+  - Isabella C. Velásquez
+institute:
+  - Fors Marsh
+  - Posit
+format: 
+  revealjs:
+    theme: [brand, styles.scss]
+    include-after-body:
+      - "tabset.html"
+date: 2025-11-21
 slide-number: true
-echo: true
 title-slide-attributes: 
   data-background: "#087e8b"
----
+--- 
 
-<!-- {{< include slides-01-introduction.qmd >}} -->
+{{< include slides-01-introduction.qmd >}}
 {{< include slides-02-getting-started.qmd >}}
-<!-- {{< include slides-03-descriptive.qmd >}} -->
+{{< include slides-03-descriptive.qmd >}}
 {{< include slides-04-stattesting.qmd >}}
-<!-- {{< include slides-05-models.qmd >}} -->
+{{< include slides-05-modeling.qmd >}}
 {{< include slides-06-design.qmd >}}
-
-
