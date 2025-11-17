@@ -1,0 +1,376 @@
+---
+format: revealjs
+echo: true
+slide-number: true
+title-slide-attributes:
+      data-background: "#087e8b"
+---
+
+```{r}
+#| label: load-pkgs
+#| echo: false
+
+library(tidyverse)
+library(survey)
+library(srvyr)
+library(srvyrexploR)
+library(gt)
+
+anes_des <- anes_2024 %>%
+  filter(InterviewMode_Post != "3. Paper (PAPI)") %>% 
+  mutate(Weight = V240108b / sum(V240108b) * 232449541) %>%
+  as_survey_design(
+    weights = Weight,
+    strata = V240108d,
+    ids = V240108c,
+    nest = TRUE
+  )
+
+options(width = 77)
+```
+
+
+# Chi-square tests {background-color='{{< brand color secondary >}}'}
+
+## Chi-square tests
+
+- Compare multiple proportions to see if they are statistically different from each other
+
+::: {.incremental}
+- Different types:
+  - Goodness-of-fit tests compare observed data to expected data
+  - Tests of independence compare two types of observed data to see if there is a relationship
+  - Tests of homogeneity compare two distributions to see if they match
+  
+:::
+
+## Chi-square syntax
+
+There are two functions that we use to compare proportions:
+
+- `svygofchisq()`: For goodness-of-fit tests
+- `svychisq()`: For tests of independence and homogeneity
+
+## Syntax for goodness-of-fit tests
+
+```{r}
+#| label: syntax-chisq-1
+#| eval: false
+#| code-line-numbers: "|1|2|3"
+
+svygofchisq(
+  formula,
+  p,
+  design,
+  na.rm = TRUE,
+  ...
+)
+```
+
+## Syntax for tests of independence and homogeneity
+
+```{r}
+#| label: syntax-chisq-2
+#| eval: false
+#| code-line-numbers: "|1|2|3-6"
+svychisq(
+  formula,
+  design,
+  statistic = c(
+    "F", "Chisq", "Wald", "adjWald",
+    "lincom", "saddlepoint"
+  ),
+  na.rm = TRUE,
+  ...
+)
+```
+
+# Example <br>goodness-of-fit test {background-color='{{< brand color blue >}}'}
+
+## Example: goodness-of-fit test
+
+- Let's check to see if the education levels from the ANES match the levels from the ACS
+- Here is the education breakdown from the ACS in 2024
+  - 10% had less than a high school degree
+  - 27% had a high school degree
+  - 29% had some college or an associate’s degree
+  - 34% had a bachelor’s degree or higher
+
+## Example: goodness-of-fit test
+
+- Let's check to see if the education levels from the ANES match the levels from the ACS
+- Here is the education breakdown from our survey data
+
+```{r}
+#| label: chisq-gof-educ1
+
+anes_des %>%
+  drop_na(EducationGroup) %>%
+  group_by(EducationGroup) %>%
+  summarize(p = survey_mean())
+```
+::: {.notes}
+- Use `drop_na()` to first remove any missing data from the `Education` variable
+- Use `group_by()` and `summarize()` to get the proportions by `Education` level
+:::
+
+## Example: goodness-of-fit test
+
+Let's collapse Bachelor's and Graduate degrees into a single category for comparison.
+
+```{r}
+#| label: chisq-gof-educ2
+#| code-line-numbers: "|1|3-5"
+
+anes_des_educ <- anes_des %>%
+  mutate(
+    Education2 =
+      fct_collapse(EducationGroup,
+        "Bachelor or Higher" = c("Bachelor's", "Graduate")
+      )
+  )
+```
+
+## Example: goodness-of-fit test
+
+```{r}
+#| label: chisq-gof-educ3
+anes_des_educ %>%
+  drop_na(Education2) %>%
+  group_by(Education2) %>%
+  summarize(p = survey_mean())
+```
+
+
+## Example: goodness-of-fit test
+
+Test to see if the ANES education matches the population percentages 
+
+```{r}
+#| label: chisq-gof-results-error
+#| code-line-numbers: "|1|2|3|4|5|"
+#| error: true
+#| output-location: fragment
+anes_des_educ %>%
+  svygofchisq(
+    ~Education2,
+    p = c(0.10, 0.27, 0.29, 0.34),
+    na.rm = TRUE
+  )
+```
+
+::: {.notes}
+- as `design` argument is the second argument, dot notation is needed
+:::
+
+# Dot notation {background-color='{{< brand color secondary >}}'}
+
+## Dot notation
+
+Let's walk through an example using the `towny` data.
+
+```{r}
+#| label: dot-notation-0
+
+towny
+```
+
+## Dot notation 
+
+Using the `towny` data, let's filter to only cities.
+
+```{r}
+#| label: dot-notation-1
+
+filter(towny, csd_type == "city")
+```
+
+## Dot notation
+
+Using the `towny` data, let's filter to only cities.
+
+```{r}
+#| label: dot-notation-2
+#| eval: false
+#| code-line-numbers: "2"
+
+filter(towny, csd_type == "city")
+towny %>% filter(csd_type == "city")
+```
+
+```{r}
+#| label: dot-notation-2-run
+#| echo: false
+
+towny %>% filter(csd_type == "city")
+```
+
+## Dot notation 
+
+Using the `towny` data, let's filter to only cities.
+
+```{r}
+#| label: dot-notation-3
+#| eval: false
+#| code-line-numbers: "3"
+
+filter(towny, csd_type == "city")
+towny %>% filter(csd_type == "city")
+towny %>% filter(., csd_type == "city")
+```
+
+```{r}
+#| label: dot-notation-3-run
+#| echo: false
+
+towny %>% filter(., csd_type == "city")
+```
+
+## Dot notation 
+
+Using the `towny` data, let's filter to only cities.
+
+```{r}
+#| label: dot-notation-4
+#| eval: false
+#| code-line-numbers: "4"
+
+filter(towny, csd_type == "city")
+towny %>% filter(csd_type == "city")
+towny %>% filter(., csd_type == "city")
+towny %>% filter(.data = ., csd_type == "city")
+```
+
+```{r}
+#| label: dot-notation-4-run
+#| echo: false
+
+towny %>% filter(.data = ., csd_type == "city")
+```
+
+
+## Results: goodness-of-fit test
+
+Test to see if the ANES education matches the population percentages 
+
+```{r}
+#| label: chisq-gof-results
+#| code-line-numbers: "|5"
+#| output-location: fragment
+anes_des_educ %>%
+  svygofchisq(
+    formula = ~Education2,
+    p = c(0.10, 0.27, 0.29, 0.34),
+    design = .,
+    na.rm = TRUE
+  )
+```
+
+## Results: goodness-of-fit test
+
+```{r}
+#| label: chisq-gof-graph
+#| code-fold: true
+
+anes_des_educ %>%
+  drop_na(Education2) %>%
+  group_by(Education2) %>%
+  summarize(Observed = survey_mean(vartype = "ci")) %>%
+  rename(Education = Education2) %>%
+  mutate(Expected = c(0.10, 0.27, 0.29, 0.34)) %>%
+  select(Education, Expected, everything()) %>%
+  pivot_longer(
+    cols = c("Expected", "Observed"),
+    names_to = "Names",
+    values_to = "Proportion"
+  ) %>%
+  mutate(
+    Observed_low = if_else(Names == "Observed", Observed_low, NA_real_),
+    Observed_upp = if_else(Names == "Observed", Observed_upp, NA_real_),
+    Names = if_else(Names == "Observed",
+      "ANES (observed)", "ACS (expected)"
+    )
+  ) %>%
+  ggplot(aes(x = Education, y = Proportion, color = Names)) +
+  geom_point(alpha = 0.75, size = 2) +
+  geom_errorbar(aes(ymin = Observed_low, ymax = Observed_upp),
+    width = 0.25
+  ) +
+  theme_bw() +
+  scale_color_manual(name = "Type", values = c("#ff8484", "#0b3954")) +
+  theme(legend.position = "bottom", legend.title = element_blank())
+```
+
+# Example <br> test of independence {background-color='{{< brand color blue >}}'}
+
+## Example: test of independence
+
+ANES asked respondents two questions about trust:
+
+  - Question text: “How often can you trust the federal government to do what is right?”
+  - Question text: “How often can you trust other people?”
+  
+Run a test of independence to see if there is a relationship between these two questions.
+
+## Example: test of independence
+
+Run a test of independence to see if there is a relationship between these two questions.
+
+```{r}
+#| label: chisq-ex2
+#| code-line-numbers: "|1|2|3|4|5|"
+#| output-location: fragment
+anes_des %>%
+  svychisq(
+    formula = ~ TrustGovernment + TrustPeople,
+    design = .,
+    statistic = "Wald",
+    na.rm = TRUE
+  )
+```
+
+::: {.notes}
+- Null Hypothesis: Independent (no relationship)
+- Alt Hypothesis: Not Independent (relationship)
+
+p-value > 0.05, so there is a relationship between these two variables
+:::
+
+## Example: test of independence
+
+```{r}
+#| label: chisq-ex2-table
+#| code-fold: true
+anes_des %>%
+  drop_na(TrustPeople, TrustGovernment) %>%
+  group_by(TrustPeople, TrustGovernment) %>%
+  summarize(
+    Observed = round(survey_mean(vartype = "ci"), 3),
+    .groups = "drop"
+  ) %>%
+  mutate(prop = paste0(
+    Observed, " (", Observed_low, ", ",
+    Observed_upp, ")"
+  )) %>%
+  select(TrustGovernment, TrustPeople, prop) %>%
+  pivot_wider(names_from = TrustPeople, values_from = prop) %>%
+  gt(rowname_col = "TrustGovernment") %>%
+  tab_stubhead(label = "Trust in Government") %>%
+  tab_spanner(
+    label = "Trust in People",
+    columns = everything()
+  ) %>%
+  tab_options(page.orientation = "landscape")
+```
+
+
+# Your Turn {background-image="images/header.png"}
+
+Open `04-testing-exercises.qmd`
+
+```{r}
+#| label: chisq-ex-clock
+#| echo: false
+# 15 minutes, warning at 5 minutes
+countdown::countdown(minutes = 8, seconds = 0, play_sound = TRUE, warn_when = 3 * 60)
+```

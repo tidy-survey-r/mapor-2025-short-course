@@ -1,0 +1,294 @@
+---
+format: revealjs
+slide-number: true
+echo: true
+title-slide-attributes: 
+  data-background: "#087e8b"
+---
+
+# Warm Up {background-color='{{< brand color secondary >}}'}
+
+## Welcome to the Towny Data
+
+- We'll be using the `towny` data for warm-up exercises
+- Available in the {gt} package
+
+![](../images/towny.png){fig-align="center"}
+
+## Welcome to the Towny Data
+
+```{r}
+#| label: opt-set
+#| echo: false
+
+options(width = 77)
+```
+
+
+```{r}
+#| label: load_pack1
+#| error: false
+#| warning: false
+library(tidyverse)
+library(gt)
+glimpse(towny)
+```
+
+
+## Posit Cloud
+
+- We will be using Posit Cloud for exercises 
+- Posit Cloud has the same features and appearance as RStudio for ease of use
+- Access the project and files Posit Cloud (requires a free account)
+- Create a permanent copy if you want to save your work and access later
+
+
+# Your Turn {background-image="images/header.png"}
+
+```{r}
+#| label: gs-ex-time
+#| echo: false
+gs_ex_time <- 8
+gs_ex_warn <- 3
+```
+
+- Go to bit.ly/MAPOR-2025-short-course
+- Open `02-getting-started_exercises.qmd`
+
+```{r}
+#| label: gs-ex-clock
+#| echo: false
+countdown::countdown(minutes = gs_ex_time, seconds = 0, play_sound = TRUE, warn_when = gs_ex_warn * 60)
+```
+
+# Packages {background-color='{{< brand color secondary >}}'}
+
+## R Packages for Survey Analysis
+
+- {survey} package first on CRAN in 2003
+  - descriptive analysis
+  - statistical testing
+  - modeling
+  - weighting
+
+- {srvyr} package first on CRAN in 2016
+  - “wrapper” for {survey} with {tidyverse}-style syntax
+  - only descriptive analysis
+
+## Install Packages
+
+Install packages for data wrangling and survey analysis:
+
+```r
+install.packages(c("tidyverse", "survey", "srvyr"))
+```
+
+. . .
+
+Install {srvyrexploR} to access the survey data for today's short course:
+
+```r
+install.packages("pak")
+pak::pak("tidy-survey-r/srvyrexploR")
+```
+
+. . .
+
+Load the packages:
+
+```{r}
+#| label: load-pack-srv
+#| message: false
+#| warning: false
+library(tidyverse)
+library(survey)
+library(srvyr)
+library(srvyrexploR)
+```
+
+::: aside
+Note: Installation of packages is already done for you on Posit Cloud
+:::
+
+# Data and Design Object {background-color='{{< brand color secondary >}}'}
+
+## American National Election Studies (ANES) 2024 {.smaller}
+
+::: incremental
+- Stored as `anes_2024` in {srvyrexploR}
+- Pre- and post-election surveys fielded almost every 2 years since 1948
+- Topics include voter registration status, candidate preference, opinions on country and government, party and ideology affiliation, opinions on policy, news sources, and more
+- Collaboration of Stanford, University of Michigan - funding by the National Science Foundation
+- <b>Target Population</b>: US citizens, 18 and older living in US 
+- <b>Mode</b>: In-Person, Web, videoconference, Paper, or telephone
+- <b>Sample Information</b>: Pseudo-strata and pseudo-cluster included for variance estimation
+
+[https://electionstudies.org/](https://electionstudies.org/)
+
+:::
+
+## American National Election Studies (ANES) 2024
+
+```{r}
+#| label: anes-dat-glimpse
+anes_2024 %>%
+  select(-matches("^V\\d")) %>%
+  glimpse()
+```
+
+## Design Object
+
+::: incremental
+
+- Backbone for survey analysis
+- Specify the sampling design, weights, and other necessary information to account for errors in the data
+- Survey analysis and inference should be performed with the survey design objects, not the original survey data
+- **We will be covering survey design in more detail later!**
+
+:::
+
+## American National Election Studies Design Object
+
+```{r}
+#| label: anes-des-disp
+#| code-line-numbers: "|1|2|3|4-8"
+anes_des <- anes_2024 %>%
+  filter(InterviewMode_Post != "3. Paper (PAPI)") %>% 
+  mutate(Weight = V240108b / sum(V240108b) * 232449541) %>%
+  as_survey_design(
+    weights = Weight,
+    strata = V240108d,
+    ids = V240108c,
+    nest = TRUE
+  )
+```
+
+## American National Election Studies Design Object
+
+```{r}
+#| label: anes-des-show
+anes_des
+```
+
+# Comparison of {dplyr} and {srvyr} Functions {background-color='{{< brand color secondary >}}'}
+
+## Why use {srvyr} over {survey}?
+
+::: incremental
+
+* Use the pipe function `%>%` or `|>`
+* Ability to use tidy selection
+* Functions follow `snake_case` convention
+
+:::
+
+## Apply {dplyr} functions to survey objects
+
+- A few functions in {srvyr} have counterparts in {dplyr}
+  - `dplyr::summarize()` and `srvyr::summarize()`
+  - `dplyr::group_by()` and `srvyr::group_by()`
+- Based on the object class, R will recognize which package to use
+
+## Using `summarize()` to calculate mean and median
+
+### Tibble:
+
+```{r}
+#| label: summarize-tib-ex
+#| code-line-numbers: "|1|2,4|3|"
+towny %>%
+  summarize(
+    area_mean = mean(land_area_km2, na.rm=TRUE)
+  )
+```
+
+## Using `summarize()` to calculate mean and median
+
+### Survey object:
+
+```{r}
+#| label: summarize-sv-ex
+anes_des %>%
+  summarize(
+    age_mean = survey_mean(Age, na.rm=TRUE),
+  )
+```
+
+## Using {dplyr} functions
+
+### Tibble:
+
+```{r}
+#| label: filt-tib-ex
+towny %>%
+  filter(csd_type == "township") %>%
+  select(csd_type, name)
+```
+
+## Using {dplyr} functions
+
+### Survey object:
+
+```{r}
+#| label: filt-sv-ex
+anes_des %>%
+  filter(EducationGroup == "Graduate") %>%
+  select(Sex)
+```
+
+## Grouping
+
+### Tibble:
+
+```{r}
+#| label: group-tib-ex
+towny %>%
+  group_by(csd_type) %>%
+  summarize(area_mean = mean(land_area_km2))
+```
+
+## Grouping
+
+### Survey object:
+
+```{r}
+#| label: group-sv-ex
+anes_des %>%
+  group_by(EducationGroup) %>%
+  summarize(age_mean = survey_mean(Age, na.rm=TRUE))
+```
+
+## Using {srvyr} functions on non-survey objects
+
+```{r}
+#| label: sv-non-svobj
+#| eval: false
+towny %>%
+  summarize(area_mean = survey_mean(land_area_km2))
+```
+
+. . .
+
+```{r}
+#| label: sv-non-svobj
+#| eval: true
+#| error: true
+#| echo: false
+```
+
+# Survey Analysis Process {background-color='{{< brand color secondary >}}'}
+
+## Overview of Survey Analysis using {srvyr} Package
+
+::: incremental
+
+1. Create a `tbl_svy` object (a survey object) using: `as_survey_design()` or `as_survey_rep()`
+
+2. Subset data (if needed) using `filter()` (to create subpopulations)
+
+3. Specify domains of analysis using `group_by()`
+
+4. Within `summarize()`, specify variables to calculate, including means, totals, proportions, quantiles, and more
+
+:::
+

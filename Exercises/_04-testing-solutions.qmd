@@ -13,75 +13,42 @@ library(srvyrexploR)
 #| label: sol-design-obj
 #| include: false
 
-anes_des <- anes_2020 %>%
-  mutate(Weight = V200010b / sum(V200010b) * 231034125) %>%
+anes_des <- anes_2024 %>%
+  filter(InterviewMode_Pre != "3. Paper (PAPI)") %>% 
+  mutate(Weight = V240108b / sum(V240108b) * 232449541) %>%
   as_survey_design(
     weights = Weight,
-    strata = V200010d,
-    ids = V200010c,
+    strata = V240108d,
+    ids = V240108c,
     nest = TRUE
-  )
-
-recs_des <- recs_2020 %>%
-  as_survey_rep(
-    weights = NWEIGHT,
-    repweights = NWEIGHT1:NWEIGHT60,
-    type = "JK1",
-    scale = 59 / 60,
-    mse = TRUE
   )
 ```
 
-### Exercises - Part 1
+### Exercises
 
-1. For households that use thermostats, they are asked what temperature they set their home during the daytime in the winter (`WinterTempDay`) and in the summer (`SummerTempDay`). Test whether daytime winter and daytime summer temperatures of homes are set the same.
+1. Is there a relationship between party identification (`PartyID`) and whether people voted early (`EarlyVote2024`)?
 
 ```{r}
 #| label: testing-sol-1
 #| code-fold: true
 #| code-summary: "Show code"
 
-recs_des %>%
-  filter(!is.na(SummerTempDay), !is.na(WinterTempDay)) %>%
-  svyttest(WinterTempDay - SummerTempDay ~ 0, design = .)
-```
-
-2. In 2015, the average household spent $1,856 on energy expenditure^[<https://www.eia.gov/consumption/residential/data/2015/c&e/pdf/ce1.1.pdf>]. Accounting for inflation, this would be $2,036 in 2020. Test whether energy costs (`TOTALDOL`) have increased in 2020 from 2015, accounting for inflation.
-
-```{r}
-#| label: testing-sol-2
-#| code-fold: true
-#| code-summary: "Show code"
-
-recs_des %>%
-  svyttest(I(TOTALDOL - 2036) ~ 0, design = .)
-```
-
-### Exercises - Part 2
-
-4. Is there a relationship between party identification (`PartyID`) and whether people voted early (`EarlyVote2020`)?
-
-```{r}
-#| label: testing-sol-3
-#| code-fold: true
-#| code-summary: "Show code"
-
 anes_des %>%
-  filter(!is.na(PartyID), !is.na(EarlyVote2020)) %>%
-  group_by(PartyID, EarlyVote2020) %>%
+  filter(!is.na(PartyID), !is.na(EarlyVote2024)) %>%
+  group_by(PartyID, EarlyVote2024) %>%
   summarize(
     p = survey_mean()
   )
 
 anes_des %>%
-  filter(!is.na(PartyID), !is.na(EarlyVote2020)) %>%
-  svychisq(~ EarlyVote2020 + PartyID, design = .)
+  filter(!is.na(PartyID), !is.na(EarlyVote2024)) %>%
+  svychisq(~ EarlyVote2024 + PartyID, design = .)
 ```
 
-5. Is there a relationship between party identification (`PartyID`) and trust in the government (`TrustGovernment`)? Use Wald as the `statistic` option.
+2. Is there a relationship between party identification (`PartyID`) and trust in the government (`TrustGovernment`)? Use Wald as the `statistic` option.
 
 ```{r}
-#| label: testing-sol-4
+#| label: testing-sol-2
 #| code-fold: true
 #| code-summary: "Show code"
 
@@ -97,23 +64,21 @@ anes_des %>%
   svychisq(~ TrustGovernment + PartyID, design = ., statistic = "Wald")
 ```
 
-6. Is there a difference in the distribution of gender (`Gender`) across early voting status (`EarlyVote2020`)?
+3. Is there a difference in the distribution of sex (`Sex`) across early voting status (`EarlyVote2024`)?
 
 ```{r}
-#| label: testing-sol-5
+#| label: testing-sol-3
 #| code-fold: true
 #| code-summary: "Show code"
 
-# Hint - you'll need the anes_des object
-
 anes_des %>%
-  filter(!is.na(Gender), !is.na(EarlyVote2020)) %>%
-  group_by(Gender, EarlyVote2020) %>%
+  filter(!is.na(Sex), !is.na(EarlyVote2024)) %>%
+  group_by(Sex, EarlyVote2024) %>%
   summarize(
     p = survey_mean()
   )
 
 anes_des %>%
-  filter(!is.na(Gender), !is.na(EarlyVote2020)) %>%
-  svychisq(~ Gender + EarlyVote2020, design = ., statistic = "Wald")
+  filter(!is.na(Sex), !is.na(EarlyVote2024)) %>%
+  svychisq(~ Sex + EarlyVote2024, design = ., statistic = "Wald")
 ```
