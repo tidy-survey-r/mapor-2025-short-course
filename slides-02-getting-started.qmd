@@ -39,7 +39,8 @@ glimpse(towny)
 
 - We will be using Posit Cloud for exercises 
 - Posit Cloud has the same features and appearance as RStudio for ease of use
-- Access the project and files on Posit Cloud
+- Access the project and files Posit Cloud (requires a free account)
+- Create a permanent copy if you want to save your work and access later
 
 
 # Your Turn {background-image="images/header.png"}
