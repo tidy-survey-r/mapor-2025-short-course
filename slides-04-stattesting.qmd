@@ -21,7 +21,6 @@ anes_des <- anes_2024 %>%
 options(width = 77)
 ```
 
-
 # Chi-square tests {background-color='{{< brand color secondary >}}'}
 
 ## Chi-square tests

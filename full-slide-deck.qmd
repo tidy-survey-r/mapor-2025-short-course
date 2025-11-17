@@ -16,6 +16,8 @@ date: 2025-11-21
 slide-number: true
 title-slide-attributes: 
   data-background: "#087e8b"
+resource-path: 
+  - tabset.html
 --- 
 
 {{< include slides-01-introduction.qmd >}}

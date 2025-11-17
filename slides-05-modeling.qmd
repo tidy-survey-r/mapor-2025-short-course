@@ -16,6 +16,8 @@ anes_des <- anes_2024 %>%
   )
 ```
 
+# Modeling
+
 ## Introduction
 
 ::: incremental
