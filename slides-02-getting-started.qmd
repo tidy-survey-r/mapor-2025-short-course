@@ -40,7 +40,6 @@ glimpse(towny)
 - We will be using Posit Cloud for exercises 
 - Posit Cloud has the same features and appearance as RStudio for ease of use
 - Access the project and files on Posit Cloud
-- Navigate to "MAPOR 2025 Short Course" under Projects then click name to get started
 
 
 # Your Turn {background-image="images/header.png"}
