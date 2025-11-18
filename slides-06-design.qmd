@@ -438,4 +438,4 @@ acs_des <- acs_pums %>%
 
 :::
 
-# Thanks! {background-color='{{< brand color secondary >}}'}
+# Thanks! {background-image="images/header.png"}
