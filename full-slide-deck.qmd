@@ -14,6 +14,7 @@ format:
       - "tabset.html"
 date: 2025-11-21
 slide-number: true
+echo: true
 title-slide-attributes: 
   data-background: "#087e8b"
 resource-path: 

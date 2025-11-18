@@ -5,7 +5,7 @@
 - We'll be using the `towny` data for warm-up exercises
 - Available in the {gt} package
 
-![](../images/towny.png){fig-align="center"}
+![](images/towny.png){fig-align="center"}
 
 ## Welcome to the Towny Data
 
@@ -52,6 +52,10 @@ gs_ex_warn <- 3
 #| echo: false
 countdown::countdown(minutes = gs_ex_time, seconds = 0, play_sound = TRUE, warn_when = gs_ex_warn * 60)
 ```
+
+::: footer
+bit.ly/MAPOR-2025-short-course
+:::
 
 # Packages {background-color='{{< brand color secondary >}}'}
 

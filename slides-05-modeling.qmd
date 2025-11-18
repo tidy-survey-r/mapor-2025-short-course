@@ -1,22 +1,4 @@
-```{r}
-#| label: setup-modeling
-#| message: false
-library(tidyverse)
-library(survey)
-library(srvyr)
-library(srvyrexploR)
-anes_des <- anes_2024 %>%
-  filter(InterviewMode_Post != "3. Paper (PAPI)") %>% 
-  mutate(Weight = V240108b / sum(V240108b) * 232449541) %>%
-  as_survey_design(
-    weights = Weight,
-    strata = V240108d,
-    ids = V240108c,
-    nest = TRUE
-  )
-```
-
-# Modeling
+# Modeling {background-color='{{< brand color secondary >}}'}
 
 ## Introduction
 
@@ -238,7 +220,7 @@ log_harris_main <- anes_des_ind %>%
   )
 ```
 
-## Interaction effects
+## Interaction effects {.smaller}
 
 Results:
 
@@ -273,7 +255,7 @@ log_harris_int <- anes_des_ind %>%
   )
 ```
 
-## Interaction effects
+## Interaction effects {.smaller}
 
 Results:
 
