@@ -1,5 +1,14 @@
 # Warm Up {background-color='{{< brand color secondary >}}'}
 
+```{r}
+#| label: pkg-setup-02
+#| warning: false
+#| message: false
+#| include: false
+source("setup.R")
+options(width = 77)
+```
+
 ## Welcome to the Towny Data
 
 - We'll be using the `towny` data for warm-up exercises

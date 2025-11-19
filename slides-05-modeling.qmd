@@ -1,5 +1,14 @@
 # Modeling {background-color='{{< brand color secondary >}}'}
 
+```{r}
+#| label: pkg-setup-05
+#| warning: false
+#| message: false
+#| include: false
+source("setup.R")
+options(width = 77)
+```
+
 ## Introduction
 
 ::: incremental

@@ -1,11 +1,13 @@
-```{r}
-#| label: set-width
-#| echo: false
+# Chi-square tests {background-color='{{< brand color secondary >}}'}
 
+```{r}
+#| label: pkg-setup-04
+#| warning: false
+#| message: false
+#| include: false
+source("setup.R")
 options(width = 77)
 ```
-
-# Chi-square tests {background-color='{{< brand color secondary >}}'}
 
 ## Chi-square tests
 

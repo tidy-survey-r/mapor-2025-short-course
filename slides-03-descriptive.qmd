@@ -1,5 +1,14 @@
 # Descriptive Analysis {background-color='{{< brand color secondary >}}'}
 
+```{r}
+#| label: pkg-setup-03
+#| warning: false
+#| message: false
+#| include: false
+source("setup.R")
+options(width = 77)
+```
+
 ## Introduction
 
 Descriptive analyses lay the groundwork for the next steps of running statistical tests or developing models.
@@ -14,7 +23,7 @@ Calculate point estimates of...
 
 - *Uncertainty estimates*, such as confidence intervals.
 
-## Types of data
+## Types of data {.smaller}
 
 * **Categorical/nominal data**: variables with levels or descriptions that cannot be ordered, such as the region of the country (North, South, East, and West)
 

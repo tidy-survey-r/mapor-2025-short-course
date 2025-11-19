@@ -1,10 +1,13 @@
+# Sampling designs in {srvyr} {background-color='{{< brand color secondary >}}'}
+
 ```{r}
-#| label: set-width-06
-#| echo: false
+#| label: pkg-setup-06
+#| warning: false
+#| message: false
+#| include: false
+source("setup.R")
 options(width = 77)
 ```
-
-# Sampling designs in {srvyr} {background-color='{{< brand color secondary >}}'}
 
 ## Sampling methods
 
