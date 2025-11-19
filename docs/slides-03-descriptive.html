@@ -228,11 +228,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-5"><a href="#cb4-5"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 3
-  VotedPres2024                             N     N_se
-  &lt;fct&gt;                                 &lt;dbl&gt;    &lt;dbl&gt;
-1 1. Yes, voted for President      170473497. 4000913.
-2 2. No, didn't vote for President   1887456.  401215.
-3 &lt;NA&gt;                              60088589. 3058218.</code></pre>
+  VotedPres2024          N     N_se
+  &lt;chr&gt;              &lt;dbl&gt;    &lt;dbl&gt;
+1 No             50971079. 2982265.
+2 Yes           181039236. 4114842.
+3 &lt;NA&gt;             439226.  224682.</code></pre>
 </div>
 </div>
 </section>
@@ -329,11 +329,11 @@ This message is displayed once per session.</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 3
-  VotedPres2024                          p    p_se
-  &lt;fct&gt;                              &lt;dbl&gt;   &lt;dbl&gt;
-1 1. Yes, voted for President      0.733   0.0108 
-2 2. No, didn't vote for President 0.00812 0.00173
-3 &lt;NA&gt;                             0.259   0.0106 </code></pre>
+  VotedPres2024       p     p_se
+  &lt;chr&gt;           &lt;dbl&gt;    &lt;dbl&gt;
+1 No            0.219   0.0108  
+2 Yes           0.779   0.0105  
+3 &lt;NA&gt;          0.00189 0.000970</code></pre>
 </div>
 </div>
 </section>
@@ -347,18 +347,18 @@ This message is displayed once per session.</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 4
 # Groups:   VotedPres2024 [3]
-   VotedPres2024                    CampaignInterest              p    p_se
-   &lt;fct&gt;                            &lt;fct&gt;                     &lt;dbl&gt;   &lt;dbl&gt;
- 1 1. Yes, voted for President      1. Very much interested 0.537   0.0114 
- 2 1. Yes, voted for President      2. Somewhat interested  0.372   0.0115 
- 3 1. Yes, voted for President      3. Not much interested  0.0914  0.00653
- 4 2. No, didn't vote for President 1. Very much interested 0.191   0.0770 
- 5 2. No, didn't vote for President 2. Somewhat interested  0.359   0.0981 
- 6 2. No, didn't vote for President 3. Not much interested  0.451   0.108  
- 7 &lt;NA&gt;                             1. Very much interested 0.228   0.0187 
- 8 &lt;NA&gt;                             2. Somewhat interested  0.452   0.0211 
- 9 &lt;NA&gt;                             3. Not much interested  0.319   0.0196 
-10 &lt;NA&gt;                             &lt;NA&gt;                    0.00140 0.00140</code></pre>
+   VotedPres2024 CampaignInterest             p    p_se
+   &lt;chr&gt;         &lt;fct&gt;                    &lt;dbl&gt;   &lt;dbl&gt;
+ 1 No            1. Very much interested 0.149  0.0158 
+ 2 No            2. Somewhat interested  0.482  0.0231 
+ 3 No            3. Not much interested  0.369  0.0213 
+ 4 Yes           1. Very much interested 0.541  0.0110 
+ 5 Yes           2. Somewhat interested  0.367  0.0113 
+ 6 Yes           3. Not much interested  0.0920 0.00624
+ 7 &lt;NA&gt;          1. Very much interested 0.0424 0.0460 
+ 8 &lt;NA&gt;          2. Somewhat interested  0.516  0.255  
+ 9 &lt;NA&gt;          3. Not much interested  0.251  0.154  
+10 &lt;NA&gt;          &lt;NA&gt;                    0.191  0.158  </code></pre>
 </div>
 </div>
 </section>
@@ -371,18 +371,18 @@ This message is displayed once per session.</code></pre>
 <span id="cb16-3"><a href="#cb16-3"></a>  <span class="fu">summarize</span>(<span class="at">p =</span> <span class="fu">survey_prop</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 4
-   VotedPres2024                    CampaignInterest               p     p_se
-   &lt;fct&gt;                            &lt;fct&gt;                      &lt;dbl&gt;    &lt;dbl&gt;
- 1 1. Yes, voted for President      1. Very much interested 0.394    0.00999 
- 2 1. Yes, voted for President      2. Somewhat interested  0.272    0.00974 
- 3 1. Yes, voted for President      3. Not much interested  0.0671   0.00474 
- 4 2. No, didn't vote for President 1. Very much interested 0.00155  0.000681
- 5 2. No, didn't vote for President 2. Somewhat interested  0.00291  0.000959
- 6 2. No, didn't vote for President 3. Not much interested  0.00366  0.00126 
- 7 &lt;NA&gt;                             1. Very much interested 0.0589   0.00512 
- 8 &lt;NA&gt;                             2. Somewhat interested  0.117    0.00747 
- 9 &lt;NA&gt;                             3. Not much interested  0.0824   0.00626 
-10 &lt;NA&gt;                             &lt;NA&gt;                    0.000361 0.000361</code></pre>
+   VotedPres2024 CampaignInterest                p      p_se
+   &lt;chr&gt;         &lt;fct&gt;                       &lt;dbl&gt;     &lt;dbl&gt;
+ 1 No            1. Very much interested 0.0327    0.00374  
+ 2 No            2. Somewhat interested  0.106     0.00751  
+ 3 No            3. Not much interested  0.0810    0.00603  
+ 4 Yes           1. Very much interested 0.421     0.0101   
+ 5 Yes           2. Somewhat interested  0.286     0.00997  
+ 6 Yes           3. Not much interested  0.0717    0.00484  
+ 7 &lt;NA&gt;          1. Very much interested 0.0000801 0.0000803
+ 8 &lt;NA&gt;          2. Somewhat interested  0.000974  0.000741 
+ 9 &lt;NA&gt;          3. Not much interested  0.000474  0.000345 
+10 &lt;NA&gt;          &lt;NA&gt;                    0.000361  0.000361 </code></pre>
 </div>
 </div>
 </section>
@@ -411,11 +411,11 @@ This message is displayed once per session.</code></pre>
 <span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 3
-  VotedPres2024                       coef   `_se`
-  &lt;fct&gt;                              &lt;dbl&gt;   &lt;dbl&gt;
-1 1. Yes, voted for President      0.860   0.0102 
-2 2. No, didn't vote for President 0.00781 0.00189
-3 &lt;NA&gt;                             0.133   0.0101 </code></pre>
+  VotedPres2024    coef    `_se`
+  &lt;chr&gt;           &lt;dbl&gt;    &lt;dbl&gt;
+1 No            0.0847  0.00779 
+2 Yes           0.914   0.00791 
+3 &lt;NA&gt;          0.00116 0.000995</code></pre>
 </div>
 </div>
 </section>
@@ -454,12 +454,12 @@ Caused by warning:
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 3
-  VotedPres2024                       prop prop_se
-  &lt;fct&gt;                              &lt;dbl&gt;   &lt;dbl&gt;
-1 1. Yes, voted for President      0.733   0.0108 
-2 2. No, didn't vote for President 0.00812 0.00173
-3 &lt;NA&gt;                             0.259   0.0106 
-4 &lt;NA&gt;                             1.000   0      </code></pre>
+  VotedPres2024    prop  prop_se
+  &lt;chr&gt;           &lt;dbl&gt;    &lt;dbl&gt;
+1 No            0.219   0.0108  
+2 Yes           0.779   0.0105  
+3 &lt;NA&gt;          0.00189 0.000970
+4 &lt;NA&gt;          1.000   0       </code></pre>
 </div>
 </div>
 </section>
@@ -490,12 +490,12 @@ Caused by warning:
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 3
-  VotedPres2024                       prop prop_se
-  &lt;fct&gt;                              &lt;dbl&gt;   &lt;dbl&gt;
-1 All                              1.000   0      
-2 1. Yes, voted for President      0.733   0.0108 
-3 2. No, didn't vote for President 0.00812 0.00173
-4 &lt;NA&gt;                             0.259   0.0106 </code></pre>
+  VotedPres2024    prop  prop_se
+  &lt;chr&gt;           &lt;dbl&gt;    &lt;dbl&gt;
+1 All           1.000   0       
+2 No            0.219   0.0108  
+3 Yes           0.779   0.0105  
+4 &lt;NA&gt;          0.00189 0.000970</code></pre>
 </div>
 </div>
 </section>
@@ -508,7 +508,7 @@ Caused by warning:
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_d1c512a3" minutes="8" seconds="0" warn-when="180" update-every="1" play-sound="true" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_e4ef9193" minutes="8" seconds="0" warn-when="180" update-every="1" play-sound="true" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 <div class="footer">
