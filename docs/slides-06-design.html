@@ -121,17 +121,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'srvyr'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following object is masked from 'package:stats':
-
-    filter</code></pre>
-</div>
-</div>
 <section id="sampling-designs-in-srvyr" class="level1" data-background-color="#087e8b">
 <h1 data-background-color="#087e8b">Sampling designs in {srvyr}</h1>
 <section id="sampling-methods" class="level2">
@@ -182,7 +171,7 @@ Attaching package: 'srvyr'</code></pre>
 </section>
 </section>
 <section id="designs-without-replicate-weights" class="level1 page-columns page-full" data-background-color="#087e8b">
-<h1 data-background-color="#087e8b">Designs <strong>without</strong> replicate weights</h1>
+<h1 data-background-color="#087e8b">Designs <em>without</em> replicate weights</h1>
 <section id="as_survey_design-syntax" class="level2">
 <h2 class="anchored" data-anchor-id="as_survey_design-syntax"><code>as_survey_design()</code>: Syntax</h2>
 <ul>
@@ -191,37 +180,37 @@ Attaching package: 'srvyr'</code></pre>
 </ul>
 <p>. . .</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">as_survey_design</span>(</span>
-<span id="cb3-2"><a href="#cb3-2"></a>  .data,</span>
-<span id="cb3-3"><a href="#cb3-3"></a>  <span class="at">ids =</span> <span class="cn">NULL</span>, <span class="co"># cluster IDs/PSUs</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a>  <span class="at">strata =</span> <span class="cn">NULL</span>, <span class="co"># strata variables</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a>  <span class="at">variables =</span> <span class="cn">NULL</span>, <span class="co"># defaults to all in .data</span></span>
-<span id="cb3-6"><a href="#cb3-6"></a>  <span class="at">fpc =</span> <span class="cn">NULL</span>, <span class="co"># variables defining the fpc</span></span>
-<span id="cb3-7"><a href="#cb3-7"></a>  <span class="at">nest =</span> <span class="cn">FALSE</span>, <span class="co"># TRUE/FALSE - relabel clusters to nest within strata</span></span>
-<span id="cb3-8"><a href="#cb3-8"></a>  <span class="at">check_strata =</span> <span class="sc">!</span>nest, <span class="co"># check that clusters are nested in strata</span></span>
-<span id="cb3-9"><a href="#cb3-9"></a>  <span class="at">weights =</span> <span class="cn">NULL</span> <span class="co"># weight variable,</span></span>
-<span id="cb3-10"><a href="#cb3-10"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">as_survey_design</span>(</span>
+<span id="cb1-2"><a href="#cb1-2"></a>  .data,</span>
+<span id="cb1-3"><a href="#cb1-3"></a>  <span class="at">ids =</span> <span class="cn">NULL</span>, <span class="co"># cluster IDs/PSUs</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a>  <span class="at">strata =</span> <span class="cn">NULL</span>, <span class="co"># strata variables</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a>  <span class="at">variables =</span> <span class="cn">NULL</span>, <span class="co"># defaults to all in .data</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a>  <span class="at">fpc =</span> <span class="cn">NULL</span>, <span class="co"># variables defining the fpc</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a>  <span class="at">nest =</span> <span class="cn">FALSE</span>, <span class="co"># TRUE/FALSE - relabel clusters to nest within strata</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a>  <span class="at">check_strata =</span> <span class="sc">!</span>nest, <span class="co"># check that clusters are nested in strata</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a>  <span class="at">weights =</span> <span class="cn">NULL</span> <span class="co"># weight variable,</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="syntax-for-common-designs" class="level2 smaller page-columns page-full">
 <h2 class="smaller anchored" data-anchor-id="syntax-for-common-designs">Syntax for common designs</h2>
 <p>Load in the example data from {survey} package:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(api, <span class="at">package=</span><span class="st">"survey"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(api, <span class="at">package=</span><span class="st">"survey"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>. . .</p>
 <p>Simple Random Sample (SRS)</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>apisrs <span class="sc">%&gt;%</span> <span class="fu">as_survey_design</span>(<span class="at">fpc =</span> fpc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>apisrs <span class="sc">%&gt;%</span> <span class="fu">as_survey_design</span>(<span class="at">fpc =</span> fpc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>. . .</p>
 <p>Stratified SRS</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>apistrat <span class="sc">%&gt;%</span> <span class="fu">as_survey_design</span>(<span class="at">strata =</span> stype, <span class="at">weights =</span> pw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>apistrat <span class="sc">%&gt;%</span> <span class="fu">as_survey_design</span>(<span class="at">strata =</span> stype, <span class="at">weights =</span> pw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>. . .</p>
 <p>One-stage cluster sample with a FPC variable</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>apiclus1 <span class="sc">%&gt;%</span> <span class="fu">as_survey_design</span>(<span class="at">ids =</span> dnum, <span class="at">weights =</span> pw, <span class="at">fpc =</span> fpc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>apiclus1 <span class="sc">%&gt;%</span> <span class="fu">as_survey_design</span>(<span class="at">ids =</span> dnum, <span class="at">weights =</span> pw, <span class="at">fpc =</span> fpc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>. . .</p>
 <p>Two-stage cluster sample, weights computed from population size</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>apiclus2 <span class="sc">%&gt;%</span> <span class="fu">as_survey_design</span>(<span class="at">ids =</span> <span class="fu">c</span>(dnum, snum), <span class="at">fpc =</span> <span class="fu">c</span>(fpc1, fpc2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>apiclus2 <span class="sc">%&gt;%</span> <span class="fu">as_survey_design</span>(<span class="at">ids =</span> <span class="fu">c</span>(dnum, snum), <span class="at">fpc =</span> <span class="fu">c</span>(fpc1, fpc2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>. . .</p>
 <p>Stratified, cluster design</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>apistrat <span class="sc">%&gt;%</span> <span class="fu">as_survey_design</span>(<span class="at">ids =</span> dnum, <span class="at">strata =</span> stype, <span class="at">weights =</span>pw, <span class="at">nest =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>apistrat <span class="sc">%&gt;%</span> <span class="fu">as_survey_design</span>(<span class="at">ids =</span> dnum, <span class="at">strata =</span> stype, <span class="at">weights =</span>pw, <span class="at">nest =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 <div class="no-row-height column-margin column-container"><div class="margin-aside">
 <p>Examples from <code>srvyr</code> help documentation</p>
@@ -242,23 +231,23 @@ Attaching package: 'srvyr'</code></pre>
 <h2 class="anchored" data-anchor-id="example-anes-2024-1">Example: ANES 2024</h2>
 <div class="cell">
 <div class="cell-output-display">
-<div id="khmmohlgfn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#khmmohlgfn table {
+<div id="yqwyfzfugz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#yqwyfzfugz table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#khmmohlgfn thead, #khmmohlgfn tbody, #khmmohlgfn tfoot, #khmmohlgfn tr, #khmmohlgfn td, #khmmohlgfn th {
+#yqwyfzfugz thead, #yqwyfzfugz tbody, #yqwyfzfugz tfoot, #yqwyfzfugz tr, #yqwyfzfugz td, #yqwyfzfugz th {
   border-style: none;
 }
 
-#khmmohlgfn p {
+#yqwyfzfugz p {
   margin: 0;
   padding: 0;
 }
 
-#khmmohlgfn .gt_table {
+#yqwyfzfugz .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -284,12 +273,12 @@ Attaching package: 'srvyr'</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#khmmohlgfn .gt_caption {
+#yqwyfzfugz .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#khmmohlgfn .gt_title {
+#yqwyfzfugz .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -301,7 +290,7 @@ Attaching package: 'srvyr'</code></pre>
   border-bottom-width: 0;
 }
 
-#khmmohlgfn .gt_subtitle {
+#yqwyfzfugz .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -313,7 +302,7 @@ Attaching package: 'srvyr'</code></pre>
   border-top-width: 0;
 }
 
-#khmmohlgfn .gt_heading {
+#yqwyfzfugz .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -325,13 +314,13 @@ Attaching package: 'srvyr'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#khmmohlgfn .gt_bottom_border {
+#yqwyfzfugz .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#khmmohlgfn .gt_col_headings {
+#yqwyfzfugz .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -346,7 +335,7 @@ Attaching package: 'srvyr'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#khmmohlgfn .gt_col_heading {
+#yqwyfzfugz .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -366,7 +355,7 @@ Attaching package: 'srvyr'</code></pre>
   overflow-x: hidden;
 }
 
-#khmmohlgfn .gt_column_spanner_outer {
+#yqwyfzfugz .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -378,15 +367,15 @@ Attaching package: 'srvyr'</code></pre>
   padding-right: 4px;
 }
 
-#khmmohlgfn .gt_column_spanner_outer:first-child {
+#yqwyfzfugz .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#khmmohlgfn .gt_column_spanner_outer:last-child {
+#yqwyfzfugz .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#khmmohlgfn .gt_column_spanner {
+#yqwyfzfugz .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -398,11 +387,11 @@ Attaching package: 'srvyr'</code></pre>
   width: 100%;
 }
 
-#khmmohlgfn .gt_spanner_row {
+#yqwyfzfugz .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#khmmohlgfn .gt_group_heading {
+#yqwyfzfugz .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -428,7 +417,7 @@ Attaching package: 'srvyr'</code></pre>
   text-align: left;
 }
 
-#khmmohlgfn .gt_empty_group_heading {
+#yqwyfzfugz .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -443,15 +432,15 @@ Attaching package: 'srvyr'</code></pre>
   vertical-align: middle;
 }
 
-#khmmohlgfn .gt_from_md > :first-child {
+#yqwyfzfugz .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#khmmohlgfn .gt_from_md > :last-child {
+#yqwyfzfugz .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#khmmohlgfn .gt_row {
+#yqwyfzfugz .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -470,7 +459,7 @@ Attaching package: 'srvyr'</code></pre>
   overflow-x: hidden;
 }
 
-#khmmohlgfn .gt_stub {
+#yqwyfzfugz .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -483,7 +472,7 @@ Attaching package: 'srvyr'</code></pre>
   padding-right: 5px;
 }
 
-#khmmohlgfn .gt_stub_row_group {
+#yqwyfzfugz .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -497,15 +486,15 @@ Attaching package: 'srvyr'</code></pre>
   vertical-align: top;
 }
 
-#khmmohlgfn .gt_row_group_first td {
+#yqwyfzfugz .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#khmmohlgfn .gt_row_group_first th {
+#yqwyfzfugz .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#khmmohlgfn .gt_summary_row {
+#yqwyfzfugz .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -515,16 +504,16 @@ Attaching package: 'srvyr'</code></pre>
   padding-right: 5px;
 }
 
-#khmmohlgfn .gt_first_summary_row {
+#yqwyfzfugz .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#khmmohlgfn .gt_first_summary_row.thick {
+#yqwyfzfugz .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#khmmohlgfn .gt_last_summary_row {
+#yqwyfzfugz .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -534,7 +523,7 @@ Attaching package: 'srvyr'</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#khmmohlgfn .gt_grand_summary_row {
+#yqwyfzfugz .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -544,7 +533,7 @@ Attaching package: 'srvyr'</code></pre>
   padding-right: 5px;
 }
 
-#khmmohlgfn .gt_first_grand_summary_row {
+#yqwyfzfugz .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -554,7 +543,7 @@ Attaching package: 'srvyr'</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#khmmohlgfn .gt_last_grand_summary_row_top {
+#yqwyfzfugz .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -564,11 +553,11 @@ Attaching package: 'srvyr'</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#khmmohlgfn .gt_striped {
+#yqwyfzfugz .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#khmmohlgfn .gt_table_body {
+#yqwyfzfugz .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -577,7 +566,7 @@ Attaching package: 'srvyr'</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#khmmohlgfn .gt_footnotes {
+#yqwyfzfugz .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -591,7 +580,7 @@ Attaching package: 'srvyr'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#khmmohlgfn .gt_footnote {
+#yqwyfzfugz .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -600,7 +589,7 @@ Attaching package: 'srvyr'</code></pre>
   padding-right: 5px;
 }
 
-#khmmohlgfn .gt_sourcenotes {
+#yqwyfzfugz .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -614,7 +603,7 @@ Attaching package: 'srvyr'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#khmmohlgfn .gt_sourcenote {
+#yqwyfzfugz .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -622,72 +611,72 @@ Attaching package: 'srvyr'</code></pre>
   padding-right: 5px;
 }
 
-#khmmohlgfn .gt_left {
+#yqwyfzfugz .gt_left {
   text-align: left;
 }
 
-#khmmohlgfn .gt_center {
+#yqwyfzfugz .gt_center {
   text-align: center;
 }
 
-#khmmohlgfn .gt_right {
+#yqwyfzfugz .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#khmmohlgfn .gt_font_normal {
+#yqwyfzfugz .gt_font_normal {
   font-weight: normal;
 }
 
-#khmmohlgfn .gt_font_bold {
+#yqwyfzfugz .gt_font_bold {
   font-weight: bold;
 }
 
-#khmmohlgfn .gt_font_italic {
+#yqwyfzfugz .gt_font_italic {
   font-style: italic;
 }
 
-#khmmohlgfn .gt_super {
+#yqwyfzfugz .gt_super {
   font-size: 65%;
 }
 
-#khmmohlgfn .gt_footnote_marks {
+#yqwyfzfugz .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#khmmohlgfn .gt_asterisk {
+#yqwyfzfugz .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#khmmohlgfn .gt_indent_1 {
+#yqwyfzfugz .gt_indent_1 {
   text-indent: 5px;
 }
 
-#khmmohlgfn .gt_indent_2 {
+#yqwyfzfugz .gt_indent_2 {
   text-indent: 10px;
 }
 
-#khmmohlgfn .gt_indent_3 {
+#yqwyfzfugz .gt_indent_3 {
   text-indent: 15px;
 }
 
-#khmmohlgfn .gt_indent_4 {
+#yqwyfzfugz .gt_indent_4 {
   text-indent: 20px;
 }
 
-#khmmohlgfn .gt_indent_5 {
+#yqwyfzfugz .gt_indent_5 {
   text-indent: 25px;
 }
 
-#khmmohlgfn .katex-display {
+#yqwyfzfugz .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#khmmohlgfn div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#yqwyfzfugz div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -761,23 +750,23 @@ Attaching package: 'srvyr'</code></pre>
 <h2 class="anchored" data-anchor-id="example-anes-2024-2">Example: ANES 2024</h2>
 <div class="cell">
 <div class="cell-output-display">
-<div id="hqzlcbzujm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#hqzlcbzujm table {
+<div id="bxaqfopmyc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#bxaqfopmyc table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#hqzlcbzujm thead, #hqzlcbzujm tbody, #hqzlcbzujm tfoot, #hqzlcbzujm tr, #hqzlcbzujm td, #hqzlcbzujm th {
+#bxaqfopmyc thead, #bxaqfopmyc tbody, #bxaqfopmyc tfoot, #bxaqfopmyc tr, #bxaqfopmyc td, #bxaqfopmyc th {
   border-style: none;
 }
 
-#hqzlcbzujm p {
+#bxaqfopmyc p {
   margin: 0;
   padding: 0;
 }
 
-#hqzlcbzujm .gt_table {
+#bxaqfopmyc .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -803,12 +792,12 @@ Attaching package: 'srvyr'</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#hqzlcbzujm .gt_caption {
+#bxaqfopmyc .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#hqzlcbzujm .gt_title {
+#bxaqfopmyc .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -820,7 +809,7 @@ Attaching package: 'srvyr'</code></pre>
   border-bottom-width: 0;
 }
 
-#hqzlcbzujm .gt_subtitle {
+#bxaqfopmyc .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -832,7 +821,7 @@ Attaching package: 'srvyr'</code></pre>
   border-top-width: 0;
 }
 
-#hqzlcbzujm .gt_heading {
+#bxaqfopmyc .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -844,13 +833,13 @@ Attaching package: 'srvyr'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#hqzlcbzujm .gt_bottom_border {
+#bxaqfopmyc .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#hqzlcbzujm .gt_col_headings {
+#bxaqfopmyc .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -865,7 +854,7 @@ Attaching package: 'srvyr'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#hqzlcbzujm .gt_col_heading {
+#bxaqfopmyc .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -885,7 +874,7 @@ Attaching package: 'srvyr'</code></pre>
   overflow-x: hidden;
 }
 
-#hqzlcbzujm .gt_column_spanner_outer {
+#bxaqfopmyc .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -897,15 +886,15 @@ Attaching package: 'srvyr'</code></pre>
   padding-right: 4px;
 }
 
-#hqzlcbzujm .gt_column_spanner_outer:first-child {
+#bxaqfopmyc .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#hqzlcbzujm .gt_column_spanner_outer:last-child {
+#bxaqfopmyc .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#hqzlcbzujm .gt_column_spanner {
+#bxaqfopmyc .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -917,11 +906,11 @@ Attaching package: 'srvyr'</code></pre>
   width: 100%;
 }
 
-#hqzlcbzujm .gt_spanner_row {
+#bxaqfopmyc .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#hqzlcbzujm .gt_group_heading {
+#bxaqfopmyc .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -947,7 +936,7 @@ Attaching package: 'srvyr'</code></pre>
   text-align: left;
 }
 
-#hqzlcbzujm .gt_empty_group_heading {
+#bxaqfopmyc .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -962,15 +951,15 @@ Attaching package: 'srvyr'</code></pre>
   vertical-align: middle;
 }
 
-#hqzlcbzujm .gt_from_md > :first-child {
+#bxaqfopmyc .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#hqzlcbzujm .gt_from_md > :last-child {
+#bxaqfopmyc .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#hqzlcbzujm .gt_row {
+#bxaqfopmyc .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -989,7 +978,7 @@ Attaching package: 'srvyr'</code></pre>
   overflow-x: hidden;
 }
 
-#hqzlcbzujm .gt_stub {
+#bxaqfopmyc .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1002,7 +991,7 @@ Attaching package: 'srvyr'</code></pre>
   padding-right: 5px;
 }
 
-#hqzlcbzujm .gt_stub_row_group {
+#bxaqfopmyc .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1016,15 +1005,15 @@ Attaching package: 'srvyr'</code></pre>
   vertical-align: top;
 }
 
-#hqzlcbzujm .gt_row_group_first td {
+#bxaqfopmyc .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#hqzlcbzujm .gt_row_group_first th {
+#bxaqfopmyc .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#hqzlcbzujm .gt_summary_row {
+#bxaqfopmyc .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1034,16 +1023,16 @@ Attaching package: 'srvyr'</code></pre>
   padding-right: 5px;
 }
 
-#hqzlcbzujm .gt_first_summary_row {
+#bxaqfopmyc .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#hqzlcbzujm .gt_first_summary_row.thick {
+#bxaqfopmyc .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#hqzlcbzujm .gt_last_summary_row {
+#bxaqfopmyc .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1053,7 +1042,7 @@ Attaching package: 'srvyr'</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#hqzlcbzujm .gt_grand_summary_row {
+#bxaqfopmyc .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1063,7 +1052,7 @@ Attaching package: 'srvyr'</code></pre>
   padding-right: 5px;
 }
 
-#hqzlcbzujm .gt_first_grand_summary_row {
+#bxaqfopmyc .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1073,7 +1062,7 @@ Attaching package: 'srvyr'</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#hqzlcbzujm .gt_last_grand_summary_row_top {
+#bxaqfopmyc .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1083,11 +1072,11 @@ Attaching package: 'srvyr'</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#hqzlcbzujm .gt_striped {
+#bxaqfopmyc .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#hqzlcbzujm .gt_table_body {
+#bxaqfopmyc .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1096,7 +1085,7 @@ Attaching package: 'srvyr'</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#hqzlcbzujm .gt_footnotes {
+#bxaqfopmyc .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1110,7 +1099,7 @@ Attaching package: 'srvyr'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#hqzlcbzujm .gt_footnote {
+#bxaqfopmyc .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1119,7 +1108,7 @@ Attaching package: 'srvyr'</code></pre>
   padding-right: 5px;
 }
 
-#hqzlcbzujm .gt_sourcenotes {
+#bxaqfopmyc .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1133,7 +1122,7 @@ Attaching package: 'srvyr'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#hqzlcbzujm .gt_sourcenote {
+#bxaqfopmyc .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1141,72 +1130,72 @@ Attaching package: 'srvyr'</code></pre>
   padding-right: 5px;
 }
 
-#hqzlcbzujm .gt_left {
+#bxaqfopmyc .gt_left {
   text-align: left;
 }
 
-#hqzlcbzujm .gt_center {
+#bxaqfopmyc .gt_center {
   text-align: center;
 }
 
-#hqzlcbzujm .gt_right {
+#bxaqfopmyc .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#hqzlcbzujm .gt_font_normal {
+#bxaqfopmyc .gt_font_normal {
   font-weight: normal;
 }
 
-#hqzlcbzujm .gt_font_bold {
+#bxaqfopmyc .gt_font_bold {
   font-weight: bold;
 }
 
-#hqzlcbzujm .gt_font_italic {
+#bxaqfopmyc .gt_font_italic {
   font-style: italic;
 }
 
-#hqzlcbzujm .gt_super {
+#bxaqfopmyc .gt_super {
   font-size: 65%;
 }
 
-#hqzlcbzujm .gt_footnote_marks {
+#bxaqfopmyc .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#hqzlcbzujm .gt_asterisk {
+#bxaqfopmyc .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#hqzlcbzujm .gt_indent_1 {
+#bxaqfopmyc .gt_indent_1 {
   text-indent: 5px;
 }
 
-#hqzlcbzujm .gt_indent_2 {
+#bxaqfopmyc .gt_indent_2 {
   text-indent: 10px;
 }
 
-#hqzlcbzujm .gt_indent_3 {
+#bxaqfopmyc .gt_indent_3 {
   text-indent: 15px;
 }
 
-#hqzlcbzujm .gt_indent_4 {
+#bxaqfopmyc .gt_indent_4 {
   text-indent: 20px;
 }
 
-#hqzlcbzujm .gt_indent_5 {
+#bxaqfopmyc .gt_indent_5 {
   text-indent: 25px;
 }
 
-#hqzlcbzujm .katex-display {
+#bxaqfopmyc .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#hqzlcbzujm div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#bxaqfopmyc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1283,15 +1272,15 @@ Attaching package: 'srvyr'</code></pre>
 <section id="example-anes-2024-syntax" class="level2">
 <h2 class="anchored" data-anchor-id="example-anes-2024-syntax">Example: ANES 2024 Syntax</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>anes_des <span class="ot">&lt;-</span> anes_2024 <span class="sc">%&gt;%</span></span>
-<span id="cb10-2"><a href="#cb10-2"></a>  <span class="fu">filter</span>(InterviewMode_Post <span class="sc">!=</span> <span class="st">"3. Paper (PAPI)"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb10-3"><a href="#cb10-3"></a>  <span class="fu">mutate</span>(<span class="at">Weight =</span> V240108b <span class="sc">/</span> <span class="fu">sum</span>(V240108b) <span class="sc">*</span> <span class="dv">232449541</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb10-4"><a href="#cb10-4"></a>  <span class="fu">as_survey_design</span>(</span>
-<span id="cb10-5"><a href="#cb10-5"></a>    <span class="at">weights =</span> Weight,</span>
-<span id="cb10-6"><a href="#cb10-6"></a>    <span class="at">strata =</span> V240108d,</span>
-<span id="cb10-7"><a href="#cb10-7"></a>    <span class="at">ids =</span> V240108c,</span>
-<span id="cb10-8"><a href="#cb10-8"></a>    <span class="at">nest =</span> <span class="cn">TRUE</span></span>
-<span id="cb10-9"><a href="#cb10-9"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>anes_des <span class="ot">&lt;-</span> anes_2024 <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a>  <span class="fu">filter</span>(InterviewMode_Post <span class="sc">!=</span> <span class="st">"3. Paper (PAPI)"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-3"><a href="#cb8-3"></a>  <span class="fu">mutate</span>(<span class="at">Weight =</span> V240108b <span class="sc">/</span> <span class="fu">sum</span>(V240108b) <span class="sc">*</span> <span class="dv">232449541</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a>  <span class="fu">as_survey_design</span>(</span>
+<span id="cb8-5"><a href="#cb8-5"></a>    <span class="at">weights =</span> Weight,</span>
+<span id="cb8-6"><a href="#cb8-6"></a>    <span class="at">strata =</span> V240108d,</span>
+<span id="cb8-7"><a href="#cb8-7"></a>    <span class="at">ids =</span> V240108c,</span>
+<span id="cb8-8"><a href="#cb8-8"></a>    <span class="at">nest =</span> <span class="cn">TRUE</span></span>
+<span id="cb8-9"><a href="#cb8-9"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Target population: 232,449,541</li>
@@ -1301,7 +1290,7 @@ Attaching package: 'srvyr'</code></pre>
 <section id="example-anes-2024-design" class="level2">
 <h2 class="anchored" data-anchor-id="example-anes-2024-design">Example: ANES 2024 Design</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(anes_des)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(anes_des)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Stratified 1 - level Cluster Sampling design (with replacement)
 With (1934) clusters.
@@ -1381,22 +1370,22 @@ Data variables:
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Fill in the blank</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Solution</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<div class="sourceCode" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>nhanes_des <span class="ot">&lt;-</span> nhanes <span class="sc">%&gt;%</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">as_survey_design</span>(</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">weights =</span> ___________,</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">ids =</span> ___________, </span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">strata =</span> ___________, </span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">fpc =</span> ___________, </span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>   )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>nhanes_des <span class="ot">&lt;-</span> nhanes <span class="sc">%&gt;%</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">as_survey_design</span>(</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">weights =</span> ___________,</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">ids =</span> ___________, </span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">strata =</span> ___________, </span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">fpc =</span> ___________, </span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>   )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<div class="sourceCode" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>nhanes_des <span class="ot">&lt;-</span> nhanes <span class="sc">%&gt;%</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">as_survey_design</span>(</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">weights =</span> WTINT2YR,</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">ids =</span> VPSU,</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">strata =</span> SDMVSTRA,</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">fpc =</span> <span class="cn">NULL</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>   )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>nhanes_des <span class="ot">&lt;-</span> nhanes <span class="sc">%&gt;%</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">as_survey_design</span>(</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">weights =</span> WTINT2YR,</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">ids =</span> VPSU,</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">strata =</span> SDMVSTRA,</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">fpc =</span> <span class="cn">NULL</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>   )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1406,7 +1395,7 @@ Data variables:
 </section>
 </section>
 <section id="designs-with-replicate-weights" class="level1" data-background-color="#087e8b">
-<h1 data-background-color="#087e8b">Designs <strong>with</strong> replicate weights</h1>
+<h1 data-background-color="#087e8b">Designs <em>with</em> replicate weights</h1>
 <section id="replicate-weights-overview" class="level2">
 <h2 class="anchored" data-anchor-id="replicate-weights-overview">Replicate weights overview</h2>
 <ul>
@@ -1424,62 +1413,62 @@ Data variables:
 <h2 class="smaller anchored" data-anchor-id="as_survey_rep-syntax"><code>as_survey_rep()</code>: Syntax</h2>
 <p><code>as_survey_rep()</code> creates a <code>tbl_svy</code> object that then correctly calculates weighted estimates and SEs</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">as_survey_rep</span>(</span>
-<span id="cb15-2"><a href="#cb15-2"></a>  .data,</span>
-<span id="cb15-3"><a href="#cb15-3"></a>  <span class="at">variables =</span> <span class="cn">NULL</span>, <span class="co"># defaults to all in .data</span></span>
-<span id="cb15-4"><a href="#cb15-4"></a>  <span class="at">repweights =</span> <span class="cn">NULL</span>, <span class="co"># Variables specifying the replication weights</span></span>
-<span id="cb15-5"><a href="#cb15-5"></a>  <span class="at">weights =</span> <span class="cn">NULL</span>, <span class="co"># Variable specifying the analytic/main weight</span></span>
-<span id="cb15-6"><a href="#cb15-6"></a>  <span class="at">type =</span> <span class="fu">c</span>(</span>
-<span id="cb15-7"><a href="#cb15-7"></a>    <span class="st">"BRR"</span>, <span class="st">"Fay"</span>, <span class="st">"JK1"</span>, <span class="st">"JKn"</span>, <span class="st">"bootstrap"</span>,</span>
-<span id="cb15-8"><a href="#cb15-8"></a>    <span class="st">"successive-difference"</span>, <span class="st">"ACS"</span>, <span class="st">"other"</span></span>
-<span id="cb15-9"><a href="#cb15-9"></a>  ), <span class="co"># Type of replication weight</span></span>
-<span id="cb15-10"><a href="#cb15-10"></a>  <span class="at">combined_weights =</span> <span class="cn">TRUE</span>, <span class="co"># TRUE if repweights already include sampling weights, usually TRUE</span></span>
-<span id="cb15-11"><a href="#cb15-11"></a>  <span class="at">rho =</span> <span class="cn">NULL</span>, <span class="co"># Shrinkage factor for Fay's method</span></span>
-<span id="cb15-12"><a href="#cb15-12"></a>  <span class="at">bootstrap_average =</span> <span class="cn">NULL</span>, <span class="co"># For type="bootstrap", if the bootstrap weights have been averaged, gives the number of iterations averaged over</span></span>
-<span id="cb15-13"><a href="#cb15-13"></a>  <span class="at">scale =</span> <span class="cn">NULL</span>, <span class="co"># Scaling constant for variance</span></span>
-<span id="cb15-14"><a href="#cb15-14"></a>  <span class="at">rscales =</span> <span class="cn">NULL</span>, <span class="co"># Scaling constants for variance</span></span>
-<span id="cb15-15"><a href="#cb15-15"></a>  <span class="at">mse =</span> <span class="fu">getOption</span>(<span class="st">"survey.replicates.mse"</span>), <span class="co"># If TRUE, compute variance based around point estimates rather than mean of replicates</span></span>
-<span id="cb15-16"><a href="#cb15-16"></a>  <span class="at">degf =</span> <span class="cn">NULL</span>, <span class="co"># Design degrees of freedom, otherwise calculated based on number of replicate weights</span></span>
-<span id="cb15-17"><a href="#cb15-17"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">as_survey_rep</span>(</span>
+<span id="cb13-2"><a href="#cb13-2"></a>  .data,</span>
+<span id="cb13-3"><a href="#cb13-3"></a>  <span class="at">variables =</span> <span class="cn">NULL</span>, <span class="co"># defaults to all in .data</span></span>
+<span id="cb13-4"><a href="#cb13-4"></a>  <span class="at">repweights =</span> <span class="cn">NULL</span>, <span class="co"># Variables specifying the replication weights</span></span>
+<span id="cb13-5"><a href="#cb13-5"></a>  <span class="at">weights =</span> <span class="cn">NULL</span>, <span class="co"># Variable specifying the analytic/main weight</span></span>
+<span id="cb13-6"><a href="#cb13-6"></a>  <span class="at">type =</span> <span class="fu">c</span>(</span>
+<span id="cb13-7"><a href="#cb13-7"></a>    <span class="st">"BRR"</span>, <span class="st">"Fay"</span>, <span class="st">"JK1"</span>, <span class="st">"JKn"</span>, <span class="st">"bootstrap"</span>,</span>
+<span id="cb13-8"><a href="#cb13-8"></a>    <span class="st">"successive-difference"</span>, <span class="st">"ACS"</span>, <span class="st">"other"</span></span>
+<span id="cb13-9"><a href="#cb13-9"></a>  ), <span class="co"># Type of replication weight</span></span>
+<span id="cb13-10"><a href="#cb13-10"></a>  <span class="at">combined_weights =</span> <span class="cn">TRUE</span>, <span class="co"># TRUE if repweights already include sampling weights, usually TRUE</span></span>
+<span id="cb13-11"><a href="#cb13-11"></a>  <span class="at">rho =</span> <span class="cn">NULL</span>, <span class="co"># Shrinkage factor for Fay's method</span></span>
+<span id="cb13-12"><a href="#cb13-12"></a>  <span class="at">bootstrap_average =</span> <span class="cn">NULL</span>, <span class="co"># For type="bootstrap", if the bootstrap weights have been averaged, gives the number of iterations averaged over</span></span>
+<span id="cb13-13"><a href="#cb13-13"></a>  <span class="at">scale =</span> <span class="cn">NULL</span>, <span class="co"># Scaling constant for variance</span></span>
+<span id="cb13-14"><a href="#cb13-14"></a>  <span class="at">rscales =</span> <span class="cn">NULL</span>, <span class="co"># Scaling constants for variance</span></span>
+<span id="cb13-15"><a href="#cb13-15"></a>  <span class="at">mse =</span> <span class="fu">getOption</span>(<span class="st">"survey.replicates.mse"</span>), <span class="co"># If TRUE, compute variance based around point estimates rather than mean of replicates</span></span>
+<span id="cb13-16"><a href="#cb13-16"></a>  <span class="at">degf =</span> <span class="cn">NULL</span>, <span class="co"># Design degrees of freedom, otherwise calculated based on number of replicate weights</span></span>
+<span id="cb13-17"><a href="#cb13-17"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="syntax-for-common-replicate-methods" class="level2 smaller">
 <h2 class="smaller anchored" data-anchor-id="syntax-for-common-replicate-methods">Syntax for common replicate methods</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>brr_des <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span></span>
-<span id="cb16-2"><a href="#cb16-2"></a>  <span class="fu">as_survey_rep</span>(</span>
-<span id="cb16-3"><a href="#cb16-3"></a>    <span class="at">weights =</span> WT,</span>
-<span id="cb16-4"><a href="#cb16-4"></a>    <span class="at">repweights =</span> <span class="fu">starts_with</span>(<span class="st">"REPWT"</span>),</span>
-<span id="cb16-5"><a href="#cb16-5"></a>    <span class="at">type =</span> <span class="st">"BRR"</span>,</span>
-<span id="cb16-6"><a href="#cb16-6"></a>    <span class="at">mse =</span> <span class="cn">TRUE</span></span>
-<span id="cb16-7"><a href="#cb16-7"></a>  )</span>
-<span id="cb16-8"><a href="#cb16-8"></a></span>
-<span id="cb16-9"><a href="#cb16-9"></a>fay_des <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span></span>
-<span id="cb16-10"><a href="#cb16-10"></a>  <span class="fu">as_survey_rep</span>(</span>
-<span id="cb16-11"><a href="#cb16-11"></a>    <span class="at">weights =</span> WT0,</span>
-<span id="cb16-12"><a href="#cb16-12"></a>    <span class="at">repweights =</span> <span class="fu">num_range</span>(<span class="st">"WT"</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>),</span>
-<span id="cb16-13"><a href="#cb16-13"></a>    <span class="at">type =</span> <span class="st">"Fay"</span>,</span>
-<span id="cb16-14"><a href="#cb16-14"></a>    <span class="at">mse =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb16-15"><a href="#cb16-15"></a>    <span class="at">rho =</span> <span class="fl">0.3</span></span>
-<span id="cb16-16"><a href="#cb16-16"></a>  )</span>
-<span id="cb16-17"><a href="#cb16-17"></a></span>
-<span id="cb16-18"><a href="#cb16-18"></a>jkn_des <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span></span>
-<span id="cb16-19"><a href="#cb16-19"></a>  <span class="fu">as_survey_rep</span>(</span>
-<span id="cb16-20"><a href="#cb16-20"></a>    <span class="at">weights =</span> WT0,</span>
-<span id="cb16-21"><a href="#cb16-21"></a>    <span class="at">repweights =</span> WT1<span class="sc">:</span>WT20,</span>
-<span id="cb16-22"><a href="#cb16-22"></a>    <span class="at">type =</span> <span class="st">"JKN"</span>,</span>
-<span id="cb16-23"><a href="#cb16-23"></a>    <span class="at">mse =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb16-24"><a href="#cb16-24"></a>    <span class="at">rscales =</span> <span class="fu">rep</span>(<span class="fl">0.1</span>, <span class="dv">20</span>)</span>
-<span id="cb16-25"><a href="#cb16-25"></a>  )</span>
-<span id="cb16-26"><a href="#cb16-26"></a></span>
-<span id="cb16-27"><a href="#cb16-27"></a>bs_des <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span></span>
-<span id="cb16-28"><a href="#cb16-28"></a>  <span class="fu">as_survey_rep</span>(</span>
-<span id="cb16-29"><a href="#cb16-29"></a>    <span class="at">weights =</span> pw,</span>
-<span id="cb16-30"><a href="#cb16-30"></a>    <span class="at">repweights =</span> pw1<span class="sc">:</span>pw50,</span>
-<span id="cb16-31"><a href="#cb16-31"></a>    <span class="at">type =</span> <span class="st">"bootstrap"</span>,</span>
-<span id="cb16-32"><a href="#cb16-32"></a>    <span class="at">scale =</span> <span class="fl">0.02186589</span>,</span>
-<span id="cb16-33"><a href="#cb16-33"></a>    <span class="at">mse =</span> <span class="cn">TRUE</span></span>
-<span id="cb16-34"><a href="#cb16-34"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>brr_des <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a>  <span class="fu">as_survey_rep</span>(</span>
+<span id="cb14-3"><a href="#cb14-3"></a>    <span class="at">weights =</span> WT,</span>
+<span id="cb14-4"><a href="#cb14-4"></a>    <span class="at">repweights =</span> <span class="fu">starts_with</span>(<span class="st">"REPWT"</span>),</span>
+<span id="cb14-5"><a href="#cb14-5"></a>    <span class="at">type =</span> <span class="st">"BRR"</span>,</span>
+<span id="cb14-6"><a href="#cb14-6"></a>    <span class="at">mse =</span> <span class="cn">TRUE</span></span>
+<span id="cb14-7"><a href="#cb14-7"></a>  )</span>
+<span id="cb14-8"><a href="#cb14-8"></a></span>
+<span id="cb14-9"><a href="#cb14-9"></a>fay_des <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span></span>
+<span id="cb14-10"><a href="#cb14-10"></a>  <span class="fu">as_survey_rep</span>(</span>
+<span id="cb14-11"><a href="#cb14-11"></a>    <span class="at">weights =</span> WT0,</span>
+<span id="cb14-12"><a href="#cb14-12"></a>    <span class="at">repweights =</span> <span class="fu">num_range</span>(<span class="st">"WT"</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>),</span>
+<span id="cb14-13"><a href="#cb14-13"></a>    <span class="at">type =</span> <span class="st">"Fay"</span>,</span>
+<span id="cb14-14"><a href="#cb14-14"></a>    <span class="at">mse =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb14-15"><a href="#cb14-15"></a>    <span class="at">rho =</span> <span class="fl">0.3</span></span>
+<span id="cb14-16"><a href="#cb14-16"></a>  )</span>
+<span id="cb14-17"><a href="#cb14-17"></a></span>
+<span id="cb14-18"><a href="#cb14-18"></a>jkn_des <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span></span>
+<span id="cb14-19"><a href="#cb14-19"></a>  <span class="fu">as_survey_rep</span>(</span>
+<span id="cb14-20"><a href="#cb14-20"></a>    <span class="at">weights =</span> WT0,</span>
+<span id="cb14-21"><a href="#cb14-21"></a>    <span class="at">repweights =</span> WT1<span class="sc">:</span>WT20,</span>
+<span id="cb14-22"><a href="#cb14-22"></a>    <span class="at">type =</span> <span class="st">"JKN"</span>,</span>
+<span id="cb14-23"><a href="#cb14-23"></a>    <span class="at">mse =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb14-24"><a href="#cb14-24"></a>    <span class="at">rscales =</span> <span class="fu">rep</span>(<span class="fl">0.1</span>, <span class="dv">20</span>)</span>
+<span id="cb14-25"><a href="#cb14-25"></a>  )</span>
+<span id="cb14-26"><a href="#cb14-26"></a></span>
+<span id="cb14-27"><a href="#cb14-27"></a>bs_des <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span></span>
+<span id="cb14-28"><a href="#cb14-28"></a>  <span class="fu">as_survey_rep</span>(</span>
+<span id="cb14-29"><a href="#cb14-29"></a>    <span class="at">weights =</span> pw,</span>
+<span id="cb14-30"><a href="#cb14-30"></a>    <span class="at">repweights =</span> pw1<span class="sc">:</span>pw50,</span>
+<span id="cb14-31"><a href="#cb14-31"></a>    <span class="at">type =</span> <span class="st">"bootstrap"</span>,</span>
+<span id="cb14-32"><a href="#cb14-32"></a>    <span class="at">scale =</span> <span class="fl">0.02186589</span>,</span>
+<span id="cb14-33"><a href="#cb14-33"></a>    <span class="at">mse =</span> <span class="cn">TRUE</span></span>
+<span id="cb14-34"><a href="#cb14-34"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Note: this uses fake data and can’t be run, just syntax examples</li>
@@ -1500,35 +1489,35 @@ Data variables:
 <li>Includes R syntax for {survey} package which gets us what we need for {srvyr}</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>repweights <span class="ot">&lt;-</span> <span class="fu">select</span>(RECS2020, NWEIGHT1<span class="sc">:</span>NWEIGHT60)</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>RECS <span class="ot">&lt;-</span> <span class="fu">svrepdesign</span>(</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> RECS2020,</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">weight =</span> <span class="sc">~</span>NWEIGHT,</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">repweights =</span> repweights,</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">"JK1"</span>,</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">combined.weights =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">scale =</span> (<span class="fu">ncol</span>(repweights) <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> <span class="fu">ncol</span>(repweights),</span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">mse =</span> <span class="cn">TRUE</span></span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>repweights <span class="ot">&lt;-</span> <span class="fu">select</span>(RECS2020, NWEIGHT1<span class="sc">:</span>NWEIGHT60)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>RECS <span class="ot">&lt;-</span> <span class="fu">svrepdesign</span>(</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> RECS2020,</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">weight =</span> <span class="sc">~</span>NWEIGHT,</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">repweights =</span> repweights,</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">"JK1"</span>,</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">combined.weights =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">scale =</span> (<span class="fu">ncol</span>(repweights) <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> <span class="fu">ncol</span>(repweights),</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">mse =</span> <span class="cn">TRUE</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="example-recs-2020-syntax" class="level2">
 <h2 class="anchored" data-anchor-id="example-recs-2020-syntax">Example: RECS 2020 Syntax</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>recs_des <span class="ot">&lt;-</span> recs_2020 <span class="sc">%&gt;%</span></span>
-<span id="cb18-2"><a href="#cb18-2"></a>  <span class="fu">as_survey_rep</span>(</span>
-<span id="cb18-3"><a href="#cb18-3"></a>    <span class="at">weight =</span> NWEIGHT, </span>
-<span id="cb18-4"><a href="#cb18-4"></a>    <span class="at">repweights =</span> NWEIGHT1<span class="sc">:</span>NWEIGHT60, </span>
-<span id="cb18-5"><a href="#cb18-5"></a>    <span class="at">type =</span> <span class="st">"JK1"</span>, </span>
-<span id="cb18-6"><a href="#cb18-6"></a>    <span class="at">scale =</span> <span class="dv">59</span> <span class="sc">/</span> <span class="dv">60</span>, </span>
-<span id="cb18-7"><a href="#cb18-7"></a>    <span class="at">mse =</span> <span class="cn">TRUE</span> </span>
-<span id="cb18-8"><a href="#cb18-8"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>recs_des <span class="ot">&lt;-</span> recs_2020 <span class="sc">%&gt;%</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a>  <span class="fu">as_survey_rep</span>(</span>
+<span id="cb16-3"><a href="#cb16-3"></a>    <span class="at">weight =</span> NWEIGHT, </span>
+<span id="cb16-4"><a href="#cb16-4"></a>    <span class="at">repweights =</span> NWEIGHT1<span class="sc">:</span>NWEIGHT60, </span>
+<span id="cb16-5"><a href="#cb16-5"></a>    <span class="at">type =</span> <span class="st">"JK1"</span>, </span>
+<span id="cb16-6"><a href="#cb16-6"></a>    <span class="at">scale =</span> <span class="dv">59</span> <span class="sc">/</span> <span class="dv">60</span>, </span>
+<span id="cb16-7"><a href="#cb16-7"></a>    <span class="at">mse =</span> <span class="cn">TRUE</span> </span>
+<span id="cb16-8"><a href="#cb16-8"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="example-recs-2020-output" class="level2">
 <h2 class="anchored" data-anchor-id="example-recs-2020-output">Example: RECS 2020 Output</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(recs_des) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(recs_des) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Call: Called via srvyr
 Unstratified cluster jacknife (JK1) with 60 replicates and MSE variances.
@@ -1620,22 +1609,22 @@ Variables:
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Fill in the blank</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Solution</a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
-<div class="sourceCode" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>acs_des <span class="ot">&lt;-</span> acs_pums <span class="sc">%&gt;%</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">as_survey_rep</span>(</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">weights =</span> ___________,</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">repweights =</span> ___________,</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">type =</span> ___________,</span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">scale =</span> _________ </span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>   )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>acs_des <span class="ot">&lt;-</span> acs_pums <span class="sc">%&gt;%</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">as_survey_rep</span>(</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">weights =</span> ___________,</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">repweights =</span> ___________,</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">type =</span> ___________,</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">scale =</span> _________ </span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>   )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
-<div class="sourceCode" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>acs_des <span class="ot">&lt;-</span> acs_pums <span class="sc">%&gt;%</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">as_survey_rep</span>(</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">weights =</span> PWGTP,</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">repweights =</span> <span class="fu">num_range</span>(<span class="st">"PWGTP"</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">80</span>),</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">type =</span> <span class="st">"JK1"</span>,</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">scale =</span> <span class="dv">4</span><span class="sc">/</span><span class="dv">80</span></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>   )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>acs_des <span class="ot">&lt;-</span> acs_pums <span class="sc">%&gt;%</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">as_survey_rep</span>(</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">weights =</span> PWGTP,</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">repweights =</span> <span class="fu">num_range</span>(<span class="st">"PWGTP"</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">80</span>),</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">type =</span> <span class="st">"JK1"</span>,</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">scale =</span> <span class="dv">4</span><span class="sc">/</span><span class="dv">80</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>   )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1659,8 +1648,8 @@ Variables:
 </div>
 </section>
 </section>
-<section id="thanks" class="level1" data-background-color="#087e8b">
-<h1 data-background-color="#087e8b">Thanks!</h1>
+<section id="thanks" class="level1" data-background-image="images/header.png">
+<h1 data-background-image="images/header.png">Thanks!</h1>
 
 
 </section>

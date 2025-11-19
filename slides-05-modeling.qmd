@@ -1,22 +1,13 @@
-```{r}
-#| label: setup-modeling
-#| message: false
-library(tidyverse)
-library(survey)
-library(srvyr)
-library(srvyrexploR)
-anes_des <- anes_2024 %>%
-  filter(InterviewMode_Post != "3. Paper (PAPI)") %>% 
-  mutate(Weight = V240108b / sum(V240108b) * 232449541) %>%
-  as_survey_design(
-    weights = Weight,
-    strata = V240108d,
-    ids = V240108c,
-    nest = TRUE
-  )
-```
+# Modeling {background-color='{{< brand color secondary >}}'}
 
-# Modeling
+```{r}
+#| label: pkg-setup-05
+#| warning: false
+#| message: false
+#| include: false
+source("setup.R")
+options(width = 77)
+```
 
 ## Introduction
 
@@ -135,9 +126,9 @@ logistic_trust_vote <- anes_des_der %>%
 ```{r}
 #| echo: true
 #| code-line-numbers: "|2,5|3,6|1,7,8"
-library(gt)
 library(broom)
 library(prettyunits)
+library(gt)
 
 tidy(logistic_trust_vote) %>%
   mutate(p.value = pretty_p_value(p.value)) %>%
@@ -238,7 +229,7 @@ log_harris_main <- anes_des_ind %>%
   )
 ```
 
-## Interaction effects
+## Interaction effects {.smaller}
 
 Results:
 
@@ -273,7 +264,7 @@ log_harris_int <- anes_des_ind %>%
   )
 ```
 
-## Interaction effects
+## Interaction effects {.smaller}
 
 Results:
 

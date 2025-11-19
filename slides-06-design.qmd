@@ -1,13 +1,13 @@
-```{r}
-#| label: load-packages-data
-#| echo: false
-options(width = 77)
-library(srvyr)
-library(srvyrexploR)
-library(gt)
-```
-
 # Sampling designs in {srvyr} {background-color='{{< brand color secondary >}}'}
+
+```{r}
+#| label: pkg-setup-06
+#| warning: false
+#| message: false
+#| include: false
+source("setup.R")
+options(width = 77)
+```
 
 ## Sampling methods
 
@@ -54,7 +54,7 @@ Designs can also incorporate stratification and/or clustering:
 -   We will show both ANES and RECS examples when diving into code
 :::
 
-# Designs **without** replicate weights {background-color='{{< brand color secondary >}}'}
+# Designs *without* replicate weights {background-color='{{< brand color secondary >}}'}
 
 ## `as_survey_design()`: Syntax
 
@@ -198,6 +198,7 @@ weight_tbl |>
 ```{r}
 #| label: design-anes-example
 #| code-line-numbers: "|1|2|3|4-9|5|6|7,8"
+#| eval: false
 
 anes_des <- anes_2024 %>%
   filter(InterviewMode_Post != "3. Paper (PAPI)") %>% 
@@ -258,7 +259,7 @@ nhanes_des <- nhanes %>%
 :::: {.fragment .tabswitch}
 :::
 
-# Designs **with** replicate weights {background-color='{{< brand color secondary >}}'}
+# Designs *with* replicate weights {background-color='{{< brand color secondary >}}'}
 
 ## Replicate weights overview
 
@@ -440,4 +441,4 @@ acs_des <- acs_pums %>%
 
 :::
 
-# Thanks! {background-color='{{< brand color secondary >}}'}
+# Thanks! {background-image="images/header.png"}

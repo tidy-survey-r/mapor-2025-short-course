@@ -1,26 +1,15 @@
-# Descriptive Analysis
-
-## Introduction
+# Descriptive Analysis {background-color='{{< brand color secondary >}}'}
 
 ```{r}
-#| label: setup
+#| label: pkg-setup-03
+#| warning: false
+#| message: false
 #| include: false
-library(tidyverse)
-library(srvyr)
-library(srvyrexploR)
-
-data(anes_2024)
-
-anes_des <- anes_2024 %>%
-  filter(InterviewMode_Post != "3. Paper (PAPI)") %>%
-  mutate(Weight = V240108b / sum(V240108b) * 232449541) %>%
-  as_survey_design(
-    weights = Weight,
-    strata = V240108d,
-    ids = V240108c,
-    nest = TRUE
-  )
+source("setup.R")
+options(width = 77)
 ```
+
+## Introduction
 
 Descriptive analyses lay the groundwork for the next steps of running statistical tests or developing models.
 
@@ -34,7 +23,7 @@ Calculate point estimates of...
 
 - *Uncertainty estimates*, such as confidence intervals.
 
-## Types of data
+## Types of data {.smaller}
 
 * **Categorical/nominal data**: variables with levels or descriptions that cannot be ordered, such as the region of the country (North, South, East, and West)
 
@@ -211,7 +200,7 @@ anes_des %>%
   summarize(p = survey_prop())
 ```
 
-## `survey_prop()`: conditional proportions example
+## `survey_prop()`: conditional proportions example {.smaller}
 
 Calculate the proportion of whether someone voted by campaign interest:
 
@@ -225,7 +214,7 @@ anes_des %>%
   summarize(p = survey_prop())
 ```
 
-## `survey_prop()`: joint proportions example
+## `survey_prop()`: joint proportions example {.smaller}
 
 Calculate the joint proportions for each variable combination using `interact()`:
 
@@ -248,8 +237,6 @@ anes_des %>%
 - Use `filter()` to subset a survey object for analysis
 - Must be done after creating the survey design object
 :::
-
-# `filter()`: example {background-color='{{< brand color blue >}}'}
 
 ## `filter()`: example
 

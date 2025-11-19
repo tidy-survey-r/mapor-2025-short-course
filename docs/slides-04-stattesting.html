@@ -121,51 +121,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.1     ✔ stringr   1.6.0
-✔ ggplot2   4.0.0     ✔ tibble    3.3.0
-✔ lubridate 1.9.4     ✔ tidyr     1.3.1
-✔ purrr     1.2.0     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors
-Loading required package: grid
-
-Loading required package: Matrix
-
-
-Attaching package: 'Matrix'
-
-
-The following objects are masked from 'package:tidyr':
-
-    expand, pack, unpack
-
-
-Loading required package: survival
-
-
-Attaching package: 'survey'
-
-
-The following object is masked from 'package:graphics':
-
-    dotchart
-
-
-
-Attaching package: 'srvyr'
-
-
-The following object is masked from 'package:stats':
-
-    filter</code></pre>
-</div>
-</div>
 <section id="chi-square-tests" class="level1" data-background-color="#087e8b">
 <h1 data-background-color="#087e8b">Chi-square tests</h1>
 <section id="chi-square-tests-1" class="level2">
@@ -195,28 +150,28 @@ The following object is masked from 'package:stats':
 <section id="syntax-for-goodness-of-fit-tests" class="level2">
 <h2 class="anchored" data-anchor-id="syntax-for-goodness-of-fit-tests">Syntax for goodness-of-fit tests</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">svygofchisq</span>(</span>
-<span id="cb2-2"><a href="#cb2-2"></a>  formula,</span>
-<span id="cb2-3"><a href="#cb2-3"></a>  p,</span>
-<span id="cb2-4"><a href="#cb2-4"></a>  design,</span>
-<span id="cb2-5"><a href="#cb2-5"></a>  <span class="at">na.rm =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb2-6"><a href="#cb2-6"></a>  ...</span>
-<span id="cb2-7"><a href="#cb2-7"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">svygofchisq</span>(</span>
+<span id="cb1-2"><a href="#cb1-2"></a>  formula,</span>
+<span id="cb1-3"><a href="#cb1-3"></a>  p,</span>
+<span id="cb1-4"><a href="#cb1-4"></a>  design,</span>
+<span id="cb1-5"><a href="#cb1-5"></a>  <span class="at">na.rm =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb1-6"><a href="#cb1-6"></a>  ...</span>
+<span id="cb1-7"><a href="#cb1-7"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="syntax-for-tests-of-independence-and-homogeneity" class="level2">
 <h2 class="anchored" data-anchor-id="syntax-for-tests-of-independence-and-homogeneity">Syntax for tests of independence and homogeneity</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">svychisq</span>(</span>
-<span id="cb3-2"><a href="#cb3-2"></a>  formula,</span>
-<span id="cb3-3"><a href="#cb3-3"></a>  design,</span>
-<span id="cb3-4"><a href="#cb3-4"></a>  <span class="at">statistic =</span> <span class="fu">c</span>(</span>
-<span id="cb3-5"><a href="#cb3-5"></a>    <span class="st">"F"</span>, <span class="st">"Chisq"</span>, <span class="st">"Wald"</span>, <span class="st">"adjWald"</span>,</span>
-<span id="cb3-6"><a href="#cb3-6"></a>    <span class="st">"lincom"</span>, <span class="st">"saddlepoint"</span></span>
-<span id="cb3-7"><a href="#cb3-7"></a>  ),</span>
-<span id="cb3-8"><a href="#cb3-8"></a>  <span class="at">na.rm =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb3-9"><a href="#cb3-9"></a>  ...</span>
-<span id="cb3-10"><a href="#cb3-10"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">svychisq</span>(</span>
+<span id="cb2-2"><a href="#cb2-2"></a>  formula,</span>
+<span id="cb2-3"><a href="#cb2-3"></a>  design,</span>
+<span id="cb2-4"><a href="#cb2-4"></a>  <span class="at">statistic =</span> <span class="fu">c</span>(</span>
+<span id="cb2-5"><a href="#cb2-5"></a>    <span class="st">"F"</span>, <span class="st">"Chisq"</span>, <span class="st">"Wald"</span>, <span class="st">"adjWald"</span>,</span>
+<span id="cb2-6"><a href="#cb2-6"></a>    <span class="st">"lincom"</span>, <span class="st">"saddlepoint"</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a>  ),</span>
+<span id="cb2-8"><a href="#cb2-8"></a>  <span class="at">na.rm =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb2-9"><a href="#cb2-9"></a>  ...</span>
+<span id="cb2-10"><a href="#cb2-10"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -242,10 +197,10 @@ The following object is masked from 'package:stats':
 <li>Here is the education breakdown from our survey data</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>anes_des <span class="sc">%&gt;%</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(EducationGroup) <span class="sc">%&gt;%</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(EducationGroup) <span class="sc">%&gt;%</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">p =</span> <span class="fu">survey_mean</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>anes_des <span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(EducationGroup) <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(EducationGroup) <span class="sc">%&gt;%</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">p =</span> <span class="fu">survey_mean</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 3
   EducationGroup      p    p_se
@@ -268,22 +223,22 @@ The following object is masked from 'package:stats':
 <h2 class="anchored" data-anchor-id="example-goodness-of-fit-test-3">Example: goodness-of-fit test</h2>
 <p>Let’s collapse Bachelor’s and Graduate degrees into a single category for comparison.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>anes_des_educ <span class="ot">&lt;-</span> anes_des <span class="sc">%&gt;%</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb6-3"><a href="#cb6-3"></a>    <span class="at">Education2 =</span></span>
-<span id="cb6-4"><a href="#cb6-4"></a>      <span class="fu">fct_collapse</span>(EducationGroup,</span>
-<span id="cb6-5"><a href="#cb6-5"></a>        <span class="st">"Bachelor or Higher"</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"Bachelor's"</span>, <span class="st">"Graduate"</span>)</span>
-<span id="cb6-6"><a href="#cb6-6"></a>      )</span>
-<span id="cb6-7"><a href="#cb6-7"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>anes_des_educ <span class="ot">&lt;-</span> anes_des <span class="sc">%&gt;%</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb5-3"><a href="#cb5-3"></a>    <span class="at">Education2 =</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a>      <span class="fu">fct_collapse</span>(EducationGroup,</span>
+<span id="cb5-5"><a href="#cb5-5"></a>        <span class="st">"Bachelor or Higher"</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"Bachelor's"</span>, <span class="st">"Graduate"</span>)</span>
+<span id="cb5-6"><a href="#cb5-6"></a>      )</span>
+<span id="cb5-7"><a href="#cb5-7"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="example-goodness-of-fit-test-4" class="level2">
 <h2 class="anchored" data-anchor-id="example-goodness-of-fit-test-4">Example: goodness-of-fit test</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>anes_des_educ <span class="sc">%&gt;%</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(Education2) <span class="sc">%&gt;%</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Education2) <span class="sc">%&gt;%</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">p =</span> <span class="fu">survey_mean</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>anes_des_educ <span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(Education2) <span class="sc">%&gt;%</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Education2) <span class="sc">%&gt;%</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">p =</span> <span class="fu">survey_mean</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 3
   Education2              p    p_se
@@ -299,12 +254,12 @@ The following object is masked from 'package:stats':
 <h2 class="anchored" data-anchor-id="example-goodness-of-fit-test-5">Example: goodness-of-fit test</h2>
 <p>Test to see if the ANES education matches the population percentages</p>
 <div class="cell" data-output-location="fragment">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>anes_des_educ <span class="sc">%&gt;%</span></span>
-<span id="cb9-2"><a href="#cb9-2"></a>  <span class="fu">svygofchisq</span>(</span>
-<span id="cb9-3"><a href="#cb9-3"></a>    <span class="sc">~</span>Education2,</span>
-<span id="cb9-4"><a href="#cb9-4"></a>    <span class="at">p =</span> <span class="fu">c</span>(<span class="fl">0.10</span>, <span class="fl">0.27</span>, <span class="fl">0.29</span>, <span class="fl">0.34</span>),</span>
-<span id="cb9-5"><a href="#cb9-5"></a>    <span class="at">na.rm =</span> <span class="cn">TRUE</span></span>
-<span id="cb9-6"><a href="#cb9-6"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>anes_des_educ <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a>  <span class="fu">svygofchisq</span>(</span>
+<span id="cb8-3"><a href="#cb8-3"></a>    <span class="sc">~</span>Education2,</span>
+<span id="cb8-4"><a href="#cb8-4"></a>    <span class="at">p =</span> <span class="fu">c</span>(<span class="fl">0.10</span>, <span class="fl">0.27</span>, <span class="fl">0.29</span>, <span class="fl">0.34</span>),</span>
+<span id="cb8-5"><a href="#cb8-5"></a>    <span class="at">na.rm =</span> <span class="cn">TRUE</span></span>
+<span id="cb8-6"><a href="#cb8-6"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in UseMethod("svytotal", design): no applicable method for 'svytotal' applied to an object of class "formula"</code></pre>
 </div>
@@ -322,7 +277,7 @@ The following object is masked from 'package:stats':
 <h2 class="anchored" data-anchor-id="dot-notation-1">Dot notation</h2>
 <p>Let’s walk through an example using the <code>towny</code> data.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>towny</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>towny</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 414 × 25
    name   website status csd_type census_div latitude longitude land_area_km2
@@ -351,7 +306,7 @@ The following object is masked from 'package:stats':
 <h2 class="anchored" data-anchor-id="dot-notation-2">Dot notation</h2>
 <p>Using the <code>towny</code> data, let’s filter to only cities.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(towny, csd_type <span class="sc">==</span> <span class="st">"city"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(towny, csd_type <span class="sc">==</span> <span class="st">"city"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 52 × 25
    name   website status csd_type census_div latitude longitude land_area_km2
@@ -380,8 +335,8 @@ The following object is masked from 'package:stats':
 <h2 class="anchored" data-anchor-id="dot-notation-3">Dot notation</h2>
 <p>Using the <code>towny</code> data, let’s filter to only cities.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">filter</span>(towny, csd_type <span class="sc">==</span> <span class="st">"city"</span>)</span>
-<span id="cb15-2"><a href="#cb15-2"></a>towny <span class="sc">%&gt;%</span> <span class="fu">filter</span>(csd_type <span class="sc">==</span> <span class="st">"city"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">filter</span>(towny, csd_type <span class="sc">==</span> <span class="st">"city"</span>)</span>
+<span id="cb14-2"><a href="#cb14-2"></a>towny <span class="sc">%&gt;%</span> <span class="fu">filter</span>(csd_type <span class="sc">==</span> <span class="st">"city"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -412,9 +367,9 @@ The following object is masked from 'package:stats':
 <h2 class="anchored" data-anchor-id="dot-notation-4">Dot notation</h2>
 <p>Using the <code>towny</code> data, let’s filter to only cities.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">filter</span>(towny, csd_type <span class="sc">==</span> <span class="st">"city"</span>)</span>
-<span id="cb17-2"><a href="#cb17-2"></a>towny <span class="sc">%&gt;%</span> <span class="fu">filter</span>(csd_type <span class="sc">==</span> <span class="st">"city"</span>)</span>
-<span id="cb17-3"><a href="#cb17-3"></a>towny <span class="sc">%&gt;%</span> <span class="fu">filter</span>(., csd_type <span class="sc">==</span> <span class="st">"city"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">filter</span>(towny, csd_type <span class="sc">==</span> <span class="st">"city"</span>)</span>
+<span id="cb16-2"><a href="#cb16-2"></a>towny <span class="sc">%&gt;%</span> <span class="fu">filter</span>(csd_type <span class="sc">==</span> <span class="st">"city"</span>)</span>
+<span id="cb16-3"><a href="#cb16-3"></a>towny <span class="sc">%&gt;%</span> <span class="fu">filter</span>(., csd_type <span class="sc">==</span> <span class="st">"city"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -445,10 +400,10 @@ The following object is masked from 'package:stats':
 <h2 class="anchored" data-anchor-id="dot-notation-5">Dot notation</h2>
 <p>Using the <code>towny</code> data, let’s filter to only cities.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">filter</span>(towny, csd_type <span class="sc">==</span> <span class="st">"city"</span>)</span>
-<span id="cb19-2"><a href="#cb19-2"></a>towny <span class="sc">%&gt;%</span> <span class="fu">filter</span>(csd_type <span class="sc">==</span> <span class="st">"city"</span>)</span>
-<span id="cb19-3"><a href="#cb19-3"></a>towny <span class="sc">%&gt;%</span> <span class="fu">filter</span>(., csd_type <span class="sc">==</span> <span class="st">"city"</span>)</span>
-<span id="cb19-4"><a href="#cb19-4"></a>towny <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="at">.data =</span> ., csd_type <span class="sc">==</span> <span class="st">"city"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">filter</span>(towny, csd_type <span class="sc">==</span> <span class="st">"city"</span>)</span>
+<span id="cb18-2"><a href="#cb18-2"></a>towny <span class="sc">%&gt;%</span> <span class="fu">filter</span>(csd_type <span class="sc">==</span> <span class="st">"city"</span>)</span>
+<span id="cb18-3"><a href="#cb18-3"></a>towny <span class="sc">%&gt;%</span> <span class="fu">filter</span>(., csd_type <span class="sc">==</span> <span class="st">"city"</span>)</span>
+<span id="cb18-4"><a href="#cb18-4"></a>towny <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="at">.data =</span> ., csd_type <span class="sc">==</span> <span class="st">"city"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -479,13 +434,13 @@ The following object is masked from 'package:stats':
 <h2 class="anchored" data-anchor-id="results-goodness-of-fit-test">Results: goodness-of-fit test</h2>
 <p>Test to see if the ANES education matches the population percentages</p>
 <div class="cell" data-output-location="fragment">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>anes_des_educ <span class="sc">%&gt;%</span></span>
-<span id="cb21-2"><a href="#cb21-2"></a>  <span class="fu">svygofchisq</span>(</span>
-<span id="cb21-3"><a href="#cb21-3"></a>    <span class="at">formula =</span> <span class="sc">~</span>Education2,</span>
-<span id="cb21-4"><a href="#cb21-4"></a>    <span class="at">p =</span> <span class="fu">c</span>(<span class="fl">0.10</span>, <span class="fl">0.27</span>, <span class="fl">0.29</span>, <span class="fl">0.34</span>),</span>
-<span id="cb21-5"><a href="#cb21-5"></a>    <span class="at">design =</span> .,</span>
-<span id="cb21-6"><a href="#cb21-6"></a>    <span class="at">na.rm =</span> <span class="cn">TRUE</span></span>
-<span id="cb21-7"><a href="#cb21-7"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>anes_des_educ <span class="sc">%&gt;%</span></span>
+<span id="cb20-2"><a href="#cb20-2"></a>  <span class="fu">svygofchisq</span>(</span>
+<span id="cb20-3"><a href="#cb20-3"></a>    <span class="at">formula =</span> <span class="sc">~</span>Education2,</span>
+<span id="cb20-4"><a href="#cb20-4"></a>    <span class="at">p =</span> <span class="fu">c</span>(<span class="fl">0.10</span>, <span class="fl">0.27</span>, <span class="fl">0.29</span>, <span class="fl">0.34</span>),</span>
+<span id="cb20-5"><a href="#cb20-5"></a>    <span class="at">design =</span> .,</span>
+<span id="cb20-6"><a href="#cb20-6"></a>    <span class="at">na.rm =</span> <span class="cn">TRUE</span></span>
+<span id="cb20-7"><a href="#cb20-7"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Design-based chi-squared test for given probabilities
@@ -501,33 +456,33 @@ X-squared = 848588, scale = 1.7316e+05, df = 2.1514e+00, p-value =
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>anes_des_educ <span class="sc">%&gt;%</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(Education2) <span class="sc">%&gt;%</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Education2) <span class="sc">%&gt;%</span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Observed =</span> <span class="fu">survey_mean</span>(<span class="at">vartype =</span> <span class="st">"ci"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Education =</span> Education2) <span class="sc">%&gt;%</span></span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Expected =</span> <span class="fu">c</span>(<span class="fl">0.10</span>, <span class="fl">0.27</span>, <span class="fl">0.29</span>, <span class="fl">0.34</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Education, Expected, <span class="fu">everything</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">c</span>(<span class="st">"Expected"</span>, <span class="st">"Observed"</span>),</span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"Names"</span>,</span>
-<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"Proportion"</span></span>
-<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">Observed_low =</span> <span class="fu">if_else</span>(Names <span class="sc">==</span> <span class="st">"Observed"</span>, Observed_low, <span class="cn">NA_real_</span>),</span>
-<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">Observed_upp =</span> <span class="fu">if_else</span>(Names <span class="sc">==</span> <span class="st">"Observed"</span>, Observed_upp, <span class="cn">NA_real_</span>),</span>
-<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">Names =</span> <span class="fu">if_else</span>(Names <span class="sc">==</span> <span class="st">"Observed"</span>,</span>
-<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>      <span class="st">"ANES (observed)"</span>, <span class="st">"ACS (expected)"</span></span>
-<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Education, <span class="at">y =</span> Proportion, <span class="at">color =</span> Names)) <span class="sc">+</span></span>
-<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.75</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> Observed_low, <span class="at">ymax =</span> Observed_upp),</span>
-<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">width =</span> <span class="fl">0.25</span></span>
-<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">name =</span> <span class="st">"Type"</span>, <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#ff8484"</span>, <span class="st">"#0b3954"</span>)) <span class="sc">+</span></span>
-<span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>, <span class="at">legend.title =</span> <span class="fu">element_blank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>anes_des_educ <span class="sc">%&gt;%</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(Education2) <span class="sc">%&gt;%</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Education2) <span class="sc">%&gt;%</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Observed =</span> <span class="fu">survey_mean</span>(<span class="at">vartype =</span> <span class="st">"ci"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Education =</span> Education2) <span class="sc">%&gt;%</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Expected =</span> <span class="fu">c</span>(<span class="fl">0.10</span>, <span class="fl">0.27</span>, <span class="fl">0.29</span>, <span class="fl">0.34</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Education, Expected, <span class="fu">everything</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">c</span>(<span class="st">"Expected"</span>, <span class="st">"Observed"</span>),</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"Names"</span>,</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"Proportion"</span></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">Observed_low =</span> <span class="fu">if_else</span>(Names <span class="sc">==</span> <span class="st">"Observed"</span>, Observed_low, <span class="cn">NA_real_</span>),</span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">Observed_upp =</span> <span class="fu">if_else</span>(Names <span class="sc">==</span> <span class="st">"Observed"</span>, Observed_upp, <span class="cn">NA_real_</span>),</span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">Names =</span> <span class="fu">if_else</span>(Names <span class="sc">==</span> <span class="st">"Observed"</span>,</span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>      <span class="st">"ANES (observed)"</span>, <span class="st">"ACS (expected)"</span></span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Education, <span class="at">y =</span> Proportion, <span class="at">color =</span> Names)) <span class="sc">+</span></span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.75</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> Observed_low, <span class="at">ymax =</span> Observed_upp),</span>
+<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">width =</span> <span class="fl">0.25</span></span>
+<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">name =</span> <span class="st">"Type"</span>, <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#ff8484"</span>, <span class="st">"#0b3954"</span>)) <span class="sc">+</span></span>
+<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>, <span class="at">legend.title =</span> <span class="fu">element_blank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -554,13 +509,13 @@ X-squared = 848588, scale = 1.7316e+05, df = 2.1514e+00, p-value =
 <h2 class="anchored" data-anchor-id="example-test-of-independence-2">Example: test of independence</h2>
 <p>Run a test of independence to see if there is a relationship between these two questions.</p>
 <div class="cell" data-output-location="fragment">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>anes_des <span class="sc">%&gt;%</span></span>
-<span id="cb24-2"><a href="#cb24-2"></a>  <span class="fu">svychisq</span>(</span>
-<span id="cb24-3"><a href="#cb24-3"></a>    <span class="at">formula =</span> <span class="sc">~</span> TrustGovernment <span class="sc">+</span> TrustPeople,</span>
-<span id="cb24-4"><a href="#cb24-4"></a>    <span class="at">design =</span> .,</span>
-<span id="cb24-5"><a href="#cb24-5"></a>    <span class="at">statistic =</span> <span class="st">"Wald"</span>,</span>
-<span id="cb24-6"><a href="#cb24-6"></a>    <span class="at">na.rm =</span> <span class="cn">TRUE</span></span>
-<span id="cb24-7"><a href="#cb24-7"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>anes_des <span class="sc">%&gt;%</span></span>
+<span id="cb23-2"><a href="#cb23-2"></a>  <span class="fu">svychisq</span>(</span>
+<span id="cb23-3"><a href="#cb23-3"></a>    <span class="at">formula =</span> <span class="sc">~</span> TrustGovernment <span class="sc">+</span> TrustPeople,</span>
+<span id="cb23-4"><a href="#cb23-4"></a>    <span class="at">design =</span> .,</span>
+<span id="cb23-5"><a href="#cb23-5"></a>    <span class="at">statistic =</span> <span class="st">"Wald"</span>,</span>
+<span id="cb23-6"><a href="#cb23-6"></a>    <span class="at">na.rm =</span> <span class="cn">TRUE</span></span>
+<span id="cb23-7"><a href="#cb23-7"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Design-based Wald test of association
@@ -582,45 +537,45 @@ F = 13.611, ndf = 16, ddf = 1803, p-value &lt; 2.2e-16</code></pre>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>anes_des <span class="sc">%&gt;%</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(TrustPeople, TrustGovernment) <span class="sc">%&gt;%</span></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(TrustPeople, TrustGovernment) <span class="sc">%&gt;%</span></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">Observed =</span> <span class="fu">round</span>(<span class="fu">survey_mean</span>(<span class="at">vartype =</span> <span class="st">"ci"</span>), <span class="dv">3</span>),</span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">prop =</span> <span class="fu">paste0</span>(</span>
-<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>    Observed, <span class="st">" ("</span>, Observed_low, <span class="st">", "</span>,</span>
-<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>    Observed_upp, <span class="st">")"</span></span>
-<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>  )) <span class="sc">%&gt;%</span></span>
-<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(TrustGovernment, TrustPeople, prop) <span class="sc">%&gt;%</span></span>
-<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> TrustPeople, <span class="at">values_from =</span> prop) <span class="sc">%&gt;%</span></span>
-<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>(<span class="at">rowname_col =</span> <span class="st">"TrustGovernment"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_stubhead</span>(<span class="at">label =</span> <span class="st">"Trust in Government"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_spanner</span>(</span>
-<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="st">"Trust in People"</span>,</span>
-<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">everything</span>()</span>
-<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_options</span>(<span class="at">page.orientation =</span> <span class="st">"landscape"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>anes_des <span class="sc">%&gt;%</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(TrustPeople, TrustGovernment) <span class="sc">%&gt;%</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(TrustPeople, TrustGovernment) <span class="sc">%&gt;%</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">Observed =</span> <span class="fu">round</span>(<span class="fu">survey_mean</span>(<span class="at">vartype =</span> <span class="st">"ci"</span>), <span class="dv">3</span>),</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">prop =</span> <span class="fu">paste0</span>(</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>    Observed, <span class="st">" ("</span>, Observed_low, <span class="st">", "</span>,</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>    Observed_upp, <span class="st">")"</span></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>  )) <span class="sc">%&gt;%</span></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(TrustGovernment, TrustPeople, prop) <span class="sc">%&gt;%</span></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> TrustPeople, <span class="at">values_from =</span> prop) <span class="sc">%&gt;%</span></span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>(<span class="at">rowname_col =</span> <span class="st">"TrustGovernment"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_stubhead</span>(<span class="at">label =</span> <span class="st">"Trust in Government"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_spanner</span>(</span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="st">"Trust in People"</span>,</span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">everything</span>()</span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_options</span>(<span class="at">page.orientation =</span> <span class="st">"landscape"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div id="rgjnrxmgul" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#rgjnrxmgul table {
+<div id="ypijlvopzx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ypijlvopzx table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#rgjnrxmgul thead, #rgjnrxmgul tbody, #rgjnrxmgul tfoot, #rgjnrxmgul tr, #rgjnrxmgul td, #rgjnrxmgul th {
+#ypijlvopzx thead, #ypijlvopzx tbody, #ypijlvopzx tfoot, #ypijlvopzx tr, #ypijlvopzx td, #ypijlvopzx th {
   border-style: none;
 }
 
-#rgjnrxmgul p {
+#ypijlvopzx p {
   margin: 0;
   padding: 0;
 }
 
-#rgjnrxmgul .gt_table {
+#ypijlvopzx .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -646,12 +601,12 @@ F = 13.611, ndf = 16, ddf = 1803, p-value &lt; 2.2e-16</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#rgjnrxmgul .gt_caption {
+#ypijlvopzx .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#rgjnrxmgul .gt_title {
+#ypijlvopzx .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -663,7 +618,7 @@ F = 13.611, ndf = 16, ddf = 1803, p-value &lt; 2.2e-16</code></pre>
   border-bottom-width: 0;
 }
 
-#rgjnrxmgul .gt_subtitle {
+#ypijlvopzx .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -675,7 +630,7 @@ F = 13.611, ndf = 16, ddf = 1803, p-value &lt; 2.2e-16</code></pre>
   border-top-width: 0;
 }
 
-#rgjnrxmgul .gt_heading {
+#ypijlvopzx .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -687,13 +642,13 @@ F = 13.611, ndf = 16, ddf = 1803, p-value &lt; 2.2e-16</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#rgjnrxmgul .gt_bottom_border {
+#ypijlvopzx .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#rgjnrxmgul .gt_col_headings {
+#ypijlvopzx .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -708,7 +663,7 @@ F = 13.611, ndf = 16, ddf = 1803, p-value &lt; 2.2e-16</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#rgjnrxmgul .gt_col_heading {
+#ypijlvopzx .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -728,7 +683,7 @@ F = 13.611, ndf = 16, ddf = 1803, p-value &lt; 2.2e-16</code></pre>
   overflow-x: hidden;
 }
 
-#rgjnrxmgul .gt_column_spanner_outer {
+#ypijlvopzx .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -740,15 +695,15 @@ F = 13.611, ndf = 16, ddf = 1803, p-value &lt; 2.2e-16</code></pre>
   padding-right: 4px;
 }
 
-#rgjnrxmgul .gt_column_spanner_outer:first-child {
+#ypijlvopzx .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#rgjnrxmgul .gt_column_spanner_outer:last-child {
+#ypijlvopzx .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#rgjnrxmgul .gt_column_spanner {
+#ypijlvopzx .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -760,11 +715,11 @@ F = 13.611, ndf = 16, ddf = 1803, p-value &lt; 2.2e-16</code></pre>
   width: 100%;
 }
 
-#rgjnrxmgul .gt_spanner_row {
+#ypijlvopzx .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#rgjnrxmgul .gt_group_heading {
+#ypijlvopzx .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -790,7 +745,7 @@ F = 13.611, ndf = 16, ddf = 1803, p-value &lt; 2.2e-16</code></pre>
   text-align: left;
 }
 
-#rgjnrxmgul .gt_empty_group_heading {
+#ypijlvopzx .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -805,15 +760,15 @@ F = 13.611, ndf = 16, ddf = 1803, p-value &lt; 2.2e-16</code></pre>
   vertical-align: middle;
 }
 
-#rgjnrxmgul .gt_from_md > :first-child {
+#ypijlvopzx .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#rgjnrxmgul .gt_from_md > :last-child {
+#ypijlvopzx .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#rgjnrxmgul .gt_row {
+#ypijlvopzx .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -832,7 +787,7 @@ F = 13.611, ndf = 16, ddf = 1803, p-value &lt; 2.2e-16</code></pre>
   overflow-x: hidden;
 }
 
-#rgjnrxmgul .gt_stub {
+#ypijlvopzx .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -845,7 +800,7 @@ F = 13.611, ndf = 16, ddf = 1803, p-value &lt; 2.2e-16</code></pre>
   padding-right: 5px;
 }
 
-#rgjnrxmgul .gt_stub_row_group {
+#ypijlvopzx .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -859,15 +814,15 @@ F = 13.611, ndf = 16, ddf = 1803, p-value &lt; 2.2e-16</code></pre>
   vertical-align: top;
 }
 
-#rgjnrxmgul .gt_row_group_first td {
+#ypijlvopzx .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#rgjnrxmgul .gt_row_group_first th {
+#ypijlvopzx .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#rgjnrxmgul .gt_summary_row {
+#ypijlvopzx .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -877,16 +832,16 @@ F = 13.611, ndf = 16, ddf = 1803, p-value &lt; 2.2e-16</code></pre>
   padding-right: 5px;
 }
 
-#rgjnrxmgul .gt_first_summary_row {
+#ypijlvopzx .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#rgjnrxmgul .gt_first_summary_row.thick {
+#ypijlvopzx .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#rgjnrxmgul .gt_last_summary_row {
+#ypijlvopzx .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -896,7 +851,7 @@ F = 13.611, ndf = 16, ddf = 1803, p-value &lt; 2.2e-16</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#rgjnrxmgul .gt_grand_summary_row {
+#ypijlvopzx .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -906,7 +861,7 @@ F = 13.611, ndf = 16, ddf = 1803, p-value &lt; 2.2e-16</code></pre>
   padding-right: 5px;
 }
 
-#rgjnrxmgul .gt_first_grand_summary_row {
+#ypijlvopzx .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -916,7 +871,7 @@ F = 13.611, ndf = 16, ddf = 1803, p-value &lt; 2.2e-16</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#rgjnrxmgul .gt_last_grand_summary_row_top {
+#ypijlvopzx .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -926,11 +881,11 @@ F = 13.611, ndf = 16, ddf = 1803, p-value &lt; 2.2e-16</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#rgjnrxmgul .gt_striped {
+#ypijlvopzx .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#rgjnrxmgul .gt_table_body {
+#ypijlvopzx .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -939,7 +894,7 @@ F = 13.611, ndf = 16, ddf = 1803, p-value &lt; 2.2e-16</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#rgjnrxmgul .gt_footnotes {
+#ypijlvopzx .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -953,7 +908,7 @@ F = 13.611, ndf = 16, ddf = 1803, p-value &lt; 2.2e-16</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#rgjnrxmgul .gt_footnote {
+#ypijlvopzx .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -962,7 +917,7 @@ F = 13.611, ndf = 16, ddf = 1803, p-value &lt; 2.2e-16</code></pre>
   padding-right: 5px;
 }
 
-#rgjnrxmgul .gt_sourcenotes {
+#ypijlvopzx .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -976,7 +931,7 @@ F = 13.611, ndf = 16, ddf = 1803, p-value &lt; 2.2e-16</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#rgjnrxmgul .gt_sourcenote {
+#ypijlvopzx .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -984,72 +939,72 @@ F = 13.611, ndf = 16, ddf = 1803, p-value &lt; 2.2e-16</code></pre>
   padding-right: 5px;
 }
 
-#rgjnrxmgul .gt_left {
+#ypijlvopzx .gt_left {
   text-align: left;
 }
 
-#rgjnrxmgul .gt_center {
+#ypijlvopzx .gt_center {
   text-align: center;
 }
 
-#rgjnrxmgul .gt_right {
+#ypijlvopzx .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#rgjnrxmgul .gt_font_normal {
+#ypijlvopzx .gt_font_normal {
   font-weight: normal;
 }
 
-#rgjnrxmgul .gt_font_bold {
+#ypijlvopzx .gt_font_bold {
   font-weight: bold;
 }
 
-#rgjnrxmgul .gt_font_italic {
+#ypijlvopzx .gt_font_italic {
   font-style: italic;
 }
 
-#rgjnrxmgul .gt_super {
+#ypijlvopzx .gt_super {
   font-size: 65%;
 }
 
-#rgjnrxmgul .gt_footnote_marks {
+#ypijlvopzx .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#rgjnrxmgul .gt_asterisk {
+#ypijlvopzx .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#rgjnrxmgul .gt_indent_1 {
+#ypijlvopzx .gt_indent_1 {
   text-indent: 5px;
 }
 
-#rgjnrxmgul .gt_indent_2 {
+#ypijlvopzx .gt_indent_2 {
   text-indent: 10px;
 }
 
-#rgjnrxmgul .gt_indent_3 {
+#ypijlvopzx .gt_indent_3 {
   text-indent: 15px;
 }
 
-#rgjnrxmgul .gt_indent_4 {
+#ypijlvopzx .gt_indent_4 {
   text-indent: 20px;
 }
 
-#rgjnrxmgul .gt_indent_5 {
+#ypijlvopzx .gt_indent_5 {
   text-indent: 25px;
 }
 
-#rgjnrxmgul .katex-display {
+#ypijlvopzx .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#rgjnrxmgul div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ypijlvopzx div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1129,11 +1084,17 @@ Trust in People
 </section>
 <section id="your-turn" class="level1" data-background-image="images/header.png">
 <h1 data-background-image="images/header.png">Your Turn</h1>
-<p>Open <code>04-testing-exercises.qmd</code></p>
+<ul>
+<li>Go to bit.ly/MAPOR-2025-short-course</li>
+<li>Open <code>04-testing-exercises.qmd</code></li>
+</ul>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_031eb49e" minutes="8" seconds="0" warn-when="180" update-every="1" play-sound="true" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_e9e340bb" minutes="8" seconds="0" warn-when="180" update-every="1" play-sound="true" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
+</div>
+<div class="footer">
+<p>bit.ly/MAPOR-2025-short-course</p>
 </div>
 
 

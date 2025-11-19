@@ -1,27 +1,13 @@
+# Chi-square tests {background-color='{{< brand color secondary >}}'}
+
 ```{r}
-#| label: load-pkgs
-#| echo: false
-
-library(tidyverse)
-library(survey)
-library(srvyr)
-library(srvyrexploR)
-library(gt)
-
-anes_des <- anes_2024 %>%
-  filter(InterviewMode_Post != "3. Paper (PAPI)") %>% 
-  mutate(Weight = V240108b / sum(V240108b) * 232449541) %>%
-  as_survey_design(
-    weights = Weight,
-    strata = V240108d,
-    ids = V240108c,
-    nest = TRUE
-  )
-
+#| label: pkg-setup-04
+#| warning: false
+#| message: false
+#| include: false
+source("setup.R")
 options(width = 77)
 ```
-
-# Chi-square tests {background-color='{{< brand color secondary >}}'}
 
 ## Chi-square tests
 
@@ -47,7 +33,7 @@ There are two functions that we use to compare proportions:
 ```{r}
 #| label: syntax-chisq-1
 #| eval: false
-#| code-line-numbers: "|1|2|3"
+#| code-line-numbers: "|2|3|4"
 
 svygofchisq(
   formula,
@@ -63,7 +49,7 @@ svygofchisq(
 ```{r}
 #| label: syntax-chisq-2
 #| eval: false
-#| code-line-numbers: "|1|2|3-6"
+#| code-line-numbers: "|2|3|4-7"
 svychisq(
   formula,
   design,
@@ -357,7 +343,8 @@ anes_des %>%
 
 # Your Turn {background-image="images/header.png"}
 
-Open `04-testing-exercises.qmd`
+- Go to bit.ly/MAPOR-2025-short-course
+- Open `04-testing-exercises.qmd`
 
 ```{r}
 #| label: chisq-ex-clock
@@ -365,3 +352,7 @@ Open `04-testing-exercises.qmd`
 # 15 minutes, warning at 5 minutes
 countdown::countdown(minutes = 8, seconds = 0, play_sound = TRUE, warn_when = 3 * 60)
 ```
+
+::: footer
+bit.ly/MAPOR-2025-short-course
+:::

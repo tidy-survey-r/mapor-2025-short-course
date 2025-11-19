@@ -1,4 +1,4 @@
-# Introduction
+# Introduction {background-color='{{< brand color secondary >}}'}
 
 ## About Us
 
@@ -74,7 +74,7 @@ Each of us give a brief intro on our experience/background
    - Calculate point estimates and their standard errors with survey data 
       - Proportions, totals, and counts
    - Perform chi-squared tests
-   - Conduct regression
+   - Conduct basic logistic regression
    - Specify a survey design in R to create a survey object
    
 ## Roadmap for today
@@ -89,5 +89,5 @@ Each of us give a brief intro on our experience/background
 
   - We will be using Posit Cloud for exercises
   - All materials are found at:
-    - <https://tidy-survey-r.github.io/mapor-2025-short-course/> (Site)
+    - <https://tidy-survey-r.github.io/mapor-2025-short-course/full-slide-deck.html> (Site)
     - <https://github.com/tidy-survey-r/mapor-2025-short-course/> (Source)
