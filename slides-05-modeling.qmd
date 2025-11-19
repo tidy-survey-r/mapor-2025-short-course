@@ -126,9 +126,9 @@ logistic_trust_vote <- anes_des_der %>%
 ```{r}
 #| echo: true
 #| code-line-numbers: "|2,5|3,6|1,7,8"
-library(gt)
 library(broom)
 library(prettyunits)
+library(gt)
 
 tidy(logistic_trust_vote) %>%
   mutate(p.value = pretty_p_value(p.value)) %>%
