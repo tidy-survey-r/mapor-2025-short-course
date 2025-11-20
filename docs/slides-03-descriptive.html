@@ -340,25 +340,20 @@ This message is displayed once per session.</code></pre>
 <p>Calculate the proportion of whether someone voted by campaign interest:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>anes_des <span class="sc">%&gt;%</span></span>
-<span id="cb14-2"><a href="#cb14-2"></a>  <span class="fu">group_by</span>(Voted2024, TrustGovernment) <span class="sc">%&gt;%</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a>  <span class="fu">group_by</span>(Voted2024, CampaignInterest) <span class="sc">%&gt;%</span></span>
 <span id="cb14-3"><a href="#cb14-3"></a>  <span class="fu">summarize</span>(<span class="at">p =</span> <span class="fu">survey_prop</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 12 × 4
+<pre><code># A tibble: 7 × 4
 # Groups:   Voted2024 [2]
-   Voted2024 TrustGovernment              p     p_se
-   &lt;chr&gt;     &lt;fct&gt;                    &lt;dbl&gt;    &lt;dbl&gt;
- 1 No        1. Always              0.0104  0.00376 
- 2 No        2. Most of the time    0.0837  0.0126  
- 3 No        3. About half the time 0.267   0.0229  
- 4 No        4. Some of the time    0.407   0.0270  
- 5 No        5. Never               0.228   0.0203  
- 6 No        &lt;NA&gt;                   0.00469 0.00240 
- 7 Yes       1. Always              0.0133  0.00299 
- 8 Yes       2. Most of the time    0.140   0.00839 
- 9 Yes       3. About half the time 0.294   0.0110  
-10 Yes       4. Some of the time    0.425   0.0120  
-11 Yes       5. Never               0.125   0.00752 
-12 Yes       &lt;NA&gt;                   0.00290 0.000992</code></pre>
+  Voted2024 CampaignInterest              p    p_se
+  &lt;chr&gt;     &lt;fct&gt;                     &lt;dbl&gt;   &lt;dbl&gt;
+1 No        1. Very much interested 0.147   0.0162 
+2 No        2. Somewhat interested  0.485   0.0244 
+3 No        3. Not much interested  0.367   0.0225 
+4 No        &lt;NA&gt;                    0.00170 0.00170
+5 Yes       1. Very much interested 0.537   0.0109 
+6 Yes       2. Somewhat interested  0.367   0.0111 
+7 Yes       3. Not much interested  0.0956  0.00647</code></pre>
 </div>
 </div>
 </section>
@@ -516,7 +511,7 @@ Caused by warning:
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_9213cd68" minutes="8" seconds="0" warn-when="180" update-every="1" play-sound="true" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_9206d0e3" minutes="8" seconds="0" warn-when="180" update-every="1" play-sound="true" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 <div class="footer">

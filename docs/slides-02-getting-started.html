@@ -192,7 +192,7 @@ $ pop_change_2016_2021_pct &lt;dbl&gt; 0.0932, 0.0070, 0.0013, 0.0204, 0.0584, -
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_1fa5bf57" minutes="8" seconds="0" warn-when="180" update-every="1" play-sound="true" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_a1978764" minutes="8" seconds="0" warn-when="180" update-every="1" play-sound="true" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 <div class="footer">
@@ -312,14 +312,13 @@ $ VotedPres2024           &lt;chr&gt; "Yes", "No", "Yes", "No", "Yes", "No", "Ye
 <h2 class="anchored" data-anchor-id="american-national-election-studies-design-object">American National Election Studies Design Object</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>anes_des <span class="ot">&lt;-</span> anes_2024 <span class="sc">%&gt;%</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a>  <span class="fu">filter</span>(InterviewMode_Post <span class="sc">!=</span> <span class="st">"3. Paper (PAPI)"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb8-3"><a href="#cb8-3"></a>  <span class="fu">mutate</span>(<span class="at">Weight =</span> V240108b <span class="sc">/</span> <span class="fu">sum</span>(V240108b) <span class="sc">*</span> <span class="dv">232449541</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb8-4"><a href="#cb8-4"></a>  <span class="fu">as_survey_design</span>(</span>
-<span id="cb8-5"><a href="#cb8-5"></a>    <span class="at">weights =</span> Weight,</span>
-<span id="cb8-6"><a href="#cb8-6"></a>    <span class="at">strata =</span> V240108d,</span>
-<span id="cb8-7"><a href="#cb8-7"></a>    <span class="at">ids =</span> V240108c,</span>
-<span id="cb8-8"><a href="#cb8-8"></a>    <span class="at">nest =</span> <span class="cn">TRUE</span></span>
-<span id="cb8-9"><a href="#cb8-9"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-2"><a href="#cb8-2"></a>  <span class="fu">mutate</span>(<span class="at">Weight =</span> V240108b <span class="sc">/</span> <span class="fu">sum</span>(V240108b) <span class="sc">*</span> <span class="dv">232449541</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a>  <span class="fu">as_survey_design</span>(</span>
+<span id="cb8-4"><a href="#cb8-4"></a>    <span class="at">weights =</span> Weight,</span>
+<span id="cb8-5"><a href="#cb8-5"></a>    <span class="at">strata =</span> V240108d,</span>
+<span id="cb8-6"><a href="#cb8-6"></a>    <span class="at">ids =</span> V240108c,</span>
+<span id="cb8-7"><a href="#cb8-7"></a>    <span class="at">nest =</span> <span class="cn">TRUE</span></span>
+<span id="cb8-8"><a href="#cb8-8"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="american-national-election-studies-design-object-1" class="level2">

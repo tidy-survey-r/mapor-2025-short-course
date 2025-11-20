@@ -299,7 +299,7 @@ tidy(log_harris_int) %>%
   fmt_number()
 ```
 
-The interactions between early voting and education are significant.
+Early voting has very different associations with our outcome variable depending on the respondent's education background. For voters with less than high school education, early voters were much less likely to vote for Harris. For all other education groups, the interactions completely flip this relationship.
 
 # Your Turn {background-image="images/header.png"}
 

@@ -210,7 +210,7 @@ Calculate the proportion of whether someone voted by campaign interest:
 #| code-line-numbers: "|2|3"
 #| label: survey-prop-example-cond
 anes_des %>%
-  group_by(Voted2024, TrustGovernment) %>%
+  group_by(Voted2024, CampaignInterest) %>%
   summarize(p = survey_prop())
 ```
 
