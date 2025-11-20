@@ -125,7 +125,7 @@ logistic_trust_vote <- anes_des_der %>%
 
 ```{r}
 #| echo: true
-#| code-line-numbers: "|2,5|3,6|1,7,8"
+#| code-line-numbers: "|1,5|2,6|3,7,8"
 library(broom)
 library(prettyunits)
 library(gt)
@@ -197,7 +197,7 @@ The odds that a Trump voter usually trusts the government are about **29%** of t
 
 ## Interaction effects
 
-Next, examine the interaction between early voting and income group in the model.
+Next, examine the interaction between early voting and level of education in the model.
 
 1. Subset to 2024 voters and create an indicator for Harris voters.
 
@@ -213,7 +213,7 @@ anes_des_ind <- anes_des %>%
 
 ## Interaction effects
 
-2. Let’s look at the main effects of income grouping and early voting behavior.
+2. Let’s look at the main effects of education and early voting behavior.
 
 ```{r}
 #| echo: true
@@ -224,7 +224,7 @@ log_harris_main <- anes_des_ind %>%
   ) %>%
   svyglm(
     design = .,
-    formula = VoteHarris ~ EarlyVote2024 + Income7,
+    formula = VoteHarris ~ EarlyVote2024 + EducationGroup,
     family = quasibinomial
   )
 ```
@@ -234,13 +234,26 @@ log_harris_main <- anes_des_ind %>%
 Results:
 
 ```{r}
+#| echo: true
 tidy(log_harris_main) %>%
   mutate(p.value = pretty_p_value(p.value)) %>%
   gt() %>%
   fmt_number()
 ```
 
-This indicates that people with incomes of \$125,000 or more were more likely to vote for Harris in the 2024 election compared to people with incomes of $20,000 or less (reference level).
+## Interaction effects {.smaller}
+
+Results:
+
+```{r}
+#| echo: false
+tidy(log_harris_main) %>%
+  mutate(p.value = pretty_p_value(p.value)) %>%
+  gt() %>%
+  fmt_number()
+```
+
+This indicates that people with Bachelor's and graduate degrees were more likely to vote for Harris in the 2024 election compared to people with less than a high school diplomas (reference level).
 
 . . .
 
@@ -259,7 +272,7 @@ log_harris_int <- anes_des_ind %>%
   ) %>%
   svyglm(
     design = .,
-    formula = VoteHarris ~ (EarlyVote2024 + Income7)^2,
+    formula = VoteHarris ~ (EarlyVote2024 + EducationGroup)^2,
     family = quasibinomial
   )
 ```
@@ -269,12 +282,24 @@ log_harris_int <- anes_des_ind %>%
 Results:
 
 ```{r}
+#| echo: true
 tidy(log_harris_int) %>%
   mutate(p.value = pretty_p_value(p.value)) %>%
   gt() %>%
   fmt_number()
 ```
 
+## Interaction effects {.smaller}
+
+```{r}
+#| echo: false
+tidy(log_harris_int) %>%
+  mutate(p.value = pretty_p_value(p.value)) %>%
+  gt() %>%
+  fmt_number()
+```
+
+Early voting has very different associations with our outcome variable depending on the respondent's education background. For voters with less than high school education, early voters were much less likely to vote for Harris. For all other education groups, the interactions completely flip this relationship.
 
 # Your Turn {background-image="images/header.png"}
 

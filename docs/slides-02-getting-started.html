@@ -192,7 +192,7 @@ $ pop_change_2016_2021_pct &lt;dbl&gt; 0.0932, 0.0070, 0.0013, 0.0204, 0.0584, -
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_5544a174" minutes="8" seconds="0" warn-when="180" update-every="1" play-sound="true" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_a1978764" minutes="8" seconds="0" warn-when="180" update-every="1" play-sound="true" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 <div class="footer">
@@ -263,14 +263,14 @@ $ pop_change_2016_2021_pct &lt;dbl&gt; 0.0932, 0.0070, 0.0013, 0.0204, 0.0584, -
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">matches</span>(<span class="st">"^V</span><span class="sc">\\</span><span class="st">d"</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 4,964
-Columns: 23
+<pre><code>Rows: 4,764
+Columns: 29
 $ CaseID                  &lt;dbl&gt; 140001, 140002, 140003, 140004, 140005, 140…
-$ InterviewMode_Pre       &lt;fct&gt; 2. Internet (WEB), 2. Internet (WEB), 2. In…
-$ InterviewMode_Post      &lt;fct&gt; 2. Internet (WEB), 2. Internet (WEB), 2. In…
 $ Weight                  &lt;dbl&gt; 0.7809746, 2.5070750, 0.8144009, 0.2634901,…
 $ Stratum                 &lt;dbl&gt; 90, 107, 122, 110, 104, 118, 88, 118, 122, …
 $ VarUnit                 &lt;dbl&gt; 2, 2, 1, 2, 1, 2, 1, 2, 2, 1, 1, 2, 2, 2, 1…
+$ InterviewMode_Pre       &lt;fct&gt; 2. Internet (WEB), 2. Internet (WEB), 2. In…
+$ InterviewMode_Post      &lt;fct&gt; 2. Internet (WEB), 2. Internet (WEB), 2. In…
 $ CampaignInterest        &lt;fct&gt; 1. Very much interested, 3. Not much intere…
 $ VotedPres2020           &lt;fct&gt; "1. Yes, voted", "2. No, didn't vote", "1. …
 $ VotedPres2020_selection &lt;fct&gt; 2. Donald Trump, NA, 1. Joe Biden, NA, NA, …
@@ -282,12 +282,18 @@ $ Education               &lt;dbl&gt; 13, 10, 10, 11, 16, 10, 11, 10, 9, 9, 9, 9
 $ RaceEth                 &lt;fct&gt; "3. Hispanic", "4. Asian or Native Hawaiian…
 $ Sex                     &lt;fct&gt; 1. Male, 2. Female, 2. Female, 1. Male, 1. …
 $ Income                  &lt;fct&gt; "27. $175,000-249,999", "26. $150,000-174,9…
-$ EarlyVote2024           &lt;fct&gt; 2. Have not voted, 2. Have not voted, 2. Ha…
-$ VotedPres2024           &lt;fct&gt; "1. Yes, voted for President", NA, "1. Yes,…
+$ EarlyVote               &lt;fct&gt; 2. Have not voted, 2. Have not voted, 2. Ha…
+$ EarlyVoteGeneral        &lt;fct&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, "2.…
+$ Post_Vote24             &lt;fct&gt; "4. I am sure I voted", "3. I usually vote,…
+$ Pre_VotePres24          &lt;fct&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+$ Post_VotePres24         &lt;fct&gt; "1. Yes, voted for President", NA, "1. Yes,…
 $ VotedPres2024_selection &lt;fct&gt; 2. Donald Trump, NA, 1. Kamala Harris, NA, …
 $ AgeGroup                &lt;fct&gt; 50-59, 40-49, 40-49, 40-49, 70 or older, 70…
 $ EducationGroup          &lt;fct&gt; Bachelor's, Post HS, Post HS, Post HS, Grad…
-$ Income7                 &lt;fct&gt; "$125k or more", "$125k or more", "$100k to…</code></pre>
+$ Income7                 &lt;fct&gt; "$125k or more", "$125k or more", "$100k to…
+$ EarlyVote2024           &lt;chr&gt; "2. Have not voted", "2. Have not voted", "…
+$ Voted2024               &lt;chr&gt; "Yes", "No", "Yes", "No", "Yes", "No", "Yes…
+$ VotedPres2024           &lt;chr&gt; "Yes", "No", "Yes", "No", "Yes", "No", "Yes…</code></pre>
 </div>
 </div>
 </section>
@@ -306,14 +312,13 @@ $ Income7                 &lt;fct&gt; "$125k or more", "$125k or more", "$100k t
 <h2 class="anchored" data-anchor-id="american-national-election-studies-design-object">American National Election Studies Design Object</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>anes_des <span class="ot">&lt;-</span> anes_2024 <span class="sc">%&gt;%</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a>  <span class="fu">filter</span>(InterviewMode_Post <span class="sc">!=</span> <span class="st">"3. Paper (PAPI)"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb8-3"><a href="#cb8-3"></a>  <span class="fu">mutate</span>(<span class="at">Weight =</span> V240108b <span class="sc">/</span> <span class="fu">sum</span>(V240108b) <span class="sc">*</span> <span class="dv">232449541</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb8-4"><a href="#cb8-4"></a>  <span class="fu">as_survey_design</span>(</span>
-<span id="cb8-5"><a href="#cb8-5"></a>    <span class="at">weights =</span> Weight,</span>
-<span id="cb8-6"><a href="#cb8-6"></a>    <span class="at">strata =</span> V240108d,</span>
-<span id="cb8-7"><a href="#cb8-7"></a>    <span class="at">ids =</span> V240108c,</span>
-<span id="cb8-8"><a href="#cb8-8"></a>    <span class="at">nest =</span> <span class="cn">TRUE</span></span>
-<span id="cb8-9"><a href="#cb8-9"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-2"><a href="#cb8-2"></a>  <span class="fu">mutate</span>(<span class="at">Weight =</span> V240108b <span class="sc">/</span> <span class="fu">sum</span>(V240108b) <span class="sc">*</span> <span class="dv">232449541</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a>  <span class="fu">as_survey_design</span>(</span>
+<span id="cb8-4"><a href="#cb8-4"></a>    <span class="at">weights =</span> Weight,</span>
+<span id="cb8-5"><a href="#cb8-5"></a>    <span class="at">strata =</span> V240108d,</span>
+<span id="cb8-6"><a href="#cb8-6"></a>    <span class="at">ids =</span> V240108c,</span>
+<span id="cb8-7"><a href="#cb8-7"></a>    <span class="at">nest =</span> <span class="cn">TRUE</span></span>
+<span id="cb8-8"><a href="#cb8-8"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="american-national-election-studies-design-object-1" class="level2">
@@ -329,22 +334,24 @@ Sampling variables:
   - strata: V240108d 
   - weights: Weight 
 Data variables: 
-  - CaseID (dbl), InterviewMode_Pre (fct), InterviewMode_Post (fct), Weight
-    (dbl), Stratum (dbl), VarUnit (dbl), CampaignInterest (fct),
-    VotedPres2020 (fct), VotedPres2020_selection (fct), PartyID (fct),
-    TrustGovernment (fct), TrustPeople (fct), Age (dbl), Education (dbl),
-    RaceEth (fct), Sex (fct), Income (fct), EarlyVote2024 (fct),
-    VotedPres2024 (fct), VotedPres2024_selection (fct), AgeGroup (fct),
-    EducationGroup (fct), Income7 (fct), V240001 (dbl), V240002a (hvn_lbll),
-    V240002b (hvn_lbll), V240108b (dbl), V240108d (dbl), V240108c (dbl),
-    V241005 (hvn_lbll), V241103 (hvn_lbll), V241104 (hvn_lbll), V241038
-    (hvn_lbll), V241221 (hvn_lbll), V241222 (hvn_lbll), V241223 (hvn_lbll),
-    V241227x (hvn_lbll), V241229 (hvn_lbll), V241234 (hvn_lbll), V241458x
-    (hvn_lbll), V241463 (hvn_lbll), V241499 (hvn_lbll), V241501x (hvn_lbll),
-    V241550 (hvn_lbll), V241566x (hvn_lbll), V242065 (hvn_lbll), V241035
-    (hvn_lbll), V241037 (hvn_lbll), V242051 (hvn_lbll), V242095x (hvn_lbll),
-    V242066 (hvn_lbll), V241039 (hvn_lbll), V242067 (hvn_lbll), V242096x
-    (hvn_lbll)</code></pre>
+  - CaseID (dbl), Weight (dbl), Stratum (dbl), VarUnit (dbl),
+    InterviewMode_Pre (fct), InterviewMode_Post (fct), CampaignInterest
+    (fct), VotedPres2020 (fct), VotedPres2020_selection (fct), PartyID
+    (fct), TrustGovernment (fct), TrustPeople (fct), Age (dbl), Education
+    (dbl), RaceEth (fct), Sex (fct), Income (fct), EarlyVote (fct),
+    EarlyVoteGeneral (fct), Post_Vote24 (fct), Pre_VotePres24 (fct),
+    Post_VotePres24 (fct), VotedPres2024_selection (fct), AgeGroup (fct),
+    EducationGroup (fct), Income7 (fct), EarlyVote2024 (chr), Voted2024
+    (chr), VotedPres2024 (chr), V240001 (dbl), V240002a (hvn_lbll), V240002b
+    (hvn_lbll), V240108b (dbl), V240108d (dbl), V240108c (dbl), V241005
+    (hvn_lbll), V241103 (hvn_lbll), V241104 (hvn_lbll), V241038 (hvn_lbll),
+    V241221 (hvn_lbll), V241222 (hvn_lbll), V241223 (hvn_lbll), V241227x
+    (hvn_lbll), V241229 (hvn_lbll), V241234 (hvn_lbll), V241458x (hvn_lbll),
+    V241463 (hvn_lbll), V241499 (hvn_lbll), V241501x (hvn_lbll), V241550
+    (hvn_lbll), V241566x (hvn_lbll), V242065 (hvn_lbll), V241035 (hvn_lbll),
+    V241036 (hvn_lbll), V241037 (hvn_lbll), V242051 (hvn_lbll), V242095x
+    (hvn_lbll), V242066 (hvn_lbll), V241039 (hvn_lbll), V242067 (hvn_lbll),
+    V242096x (hvn_lbll)</code></pre>
 </div>
 </div>
 </section>

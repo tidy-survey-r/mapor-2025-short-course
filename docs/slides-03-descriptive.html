@@ -223,16 +223,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell" data-output-location="fragment">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>anes_des <span class="sc">%&gt;%</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a>  <span class="fu">survey_count</span>(</span>
-<span id="cb4-3"><a href="#cb4-3"></a>    VotedPres2024, </span>
+<span id="cb4-3"><a href="#cb4-3"></a>    Voted2024, </span>
 <span id="cb4-4"><a href="#cb4-4"></a>    <span class="at">name =</span> <span class="st">"N"</span></span>
 <span id="cb4-5"><a href="#cb4-5"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 3
-  VotedPres2024                             N     N_se
-  &lt;fct&gt;                                 &lt;dbl&gt;    &lt;dbl&gt;
-1 1. Yes, voted for President      170473497. 4000913.
-2 2. No, didn't vote for President   1887456.  401215.
-3 &lt;NA&gt;                              60088589. 3058218.</code></pre>
+<pre><code># A tibble: 2 × 3
+  Voted2024          N     N_se
+  &lt;chr&gt;          &lt;dbl&gt;    &lt;dbl&gt;
+1 No         49326605. 2859120.
+2 Yes       183122936. 4071109.</code></pre>
 </div>
 </div>
 </section>
@@ -320,7 +319,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Calculate the proportion of respondents by voting status in the 2024 election:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>anes_des <span class="sc">%&gt;%</span></span>
-<span id="cb11-2"><a href="#cb11-2"></a>  <span class="fu">group_by</span>(VotedPres2024) <span class="sc">%&gt;%</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a>  <span class="fu">group_by</span>(Voted2024) <span class="sc">%&gt;%</span></span>
 <span id="cb11-3"><a href="#cb11-3"></a>  <span class="fu">summarize</span>(<span class="at">p =</span> <span class="fu">survey_prop</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>When `proportion` is unspecified, `survey_prop()` now defaults to `proportion = TRUE`.
@@ -328,12 +327,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 This message is displayed once per session.</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 3
-  VotedPres2024                          p    p_se
-  &lt;fct&gt;                              &lt;dbl&gt;   &lt;dbl&gt;
-1 1. Yes, voted for President      0.733   0.0108 
-2 2. No, didn't vote for President 0.00812 0.00173
-3 &lt;NA&gt;                             0.259   0.0106 </code></pre>
+<pre><code># A tibble: 2 × 3
+  Voted2024     p   p_se
+  &lt;chr&gt;     &lt;dbl&gt;  &lt;dbl&gt;
+1 No        0.212 0.0102
+2 Yes       0.788 0.0102</code></pre>
 </div>
 </div>
 </section>
@@ -342,23 +340,20 @@ This message is displayed once per session.</code></pre>
 <p>Calculate the proportion of whether someone voted by campaign interest:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>anes_des <span class="sc">%&gt;%</span></span>
-<span id="cb14-2"><a href="#cb14-2"></a>  <span class="fu">group_by</span>(VotedPres2024, CampaignInterest) <span class="sc">%&gt;%</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a>  <span class="fu">group_by</span>(Voted2024, CampaignInterest) <span class="sc">%&gt;%</span></span>
 <span id="cb14-3"><a href="#cb14-3"></a>  <span class="fu">summarize</span>(<span class="at">p =</span> <span class="fu">survey_prop</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 10 × 4
-# Groups:   VotedPres2024 [3]
-   VotedPres2024                    CampaignInterest              p    p_se
-   &lt;fct&gt;                            &lt;fct&gt;                     &lt;dbl&gt;   &lt;dbl&gt;
- 1 1. Yes, voted for President      1. Very much interested 0.537   0.0114 
- 2 1. Yes, voted for President      2. Somewhat interested  0.372   0.0115 
- 3 1. Yes, voted for President      3. Not much interested  0.0914  0.00653
- 4 2. No, didn't vote for President 1. Very much interested 0.191   0.0770 
- 5 2. No, didn't vote for President 2. Somewhat interested  0.359   0.0981 
- 6 2. No, didn't vote for President 3. Not much interested  0.451   0.108  
- 7 &lt;NA&gt;                             1. Very much interested 0.228   0.0187 
- 8 &lt;NA&gt;                             2. Somewhat interested  0.452   0.0211 
- 9 &lt;NA&gt;                             3. Not much interested  0.319   0.0196 
-10 &lt;NA&gt;                             &lt;NA&gt;                    0.00140 0.00140</code></pre>
+<pre><code># A tibble: 7 × 4
+# Groups:   Voted2024 [2]
+  Voted2024 CampaignInterest              p    p_se
+  &lt;chr&gt;     &lt;fct&gt;                     &lt;dbl&gt;   &lt;dbl&gt;
+1 No        1. Very much interested 0.147   0.0162 
+2 No        2. Somewhat interested  0.485   0.0244 
+3 No        3. Not much interested  0.367   0.0225 
+4 No        &lt;NA&gt;                    0.00170 0.00170
+5 Yes       1. Very much interested 0.537   0.0109 
+6 Yes       2. Somewhat interested  0.367   0.0111 
+7 Yes       3. Not much interested  0.0956  0.00647</code></pre>
 </div>
 </div>
 </section>
@@ -367,22 +362,19 @@ This message is displayed once per session.</code></pre>
 <p>Calculate the joint proportions for each variable combination using <code>interact()</code>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>anes_des <span class="sc">%&gt;%</span></span>
-<span id="cb16-2"><a href="#cb16-2"></a>  <span class="fu">group_by</span>(<span class="fu">interact</span>(VotedPres2024, CampaignInterest)) <span class="sc">%&gt;%</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a>  <span class="fu">group_by</span>(<span class="fu">interact</span>(Voted2024, CampaignInterest)) <span class="sc">%&gt;%</span></span>
 <span id="cb16-3"><a href="#cb16-3"></a>  <span class="fu">summarize</span>(<span class="at">p =</span> <span class="fu">survey_prop</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 10 × 4
-   VotedPres2024                    CampaignInterest               p     p_se
-   &lt;fct&gt;                            &lt;fct&gt;                      &lt;dbl&gt;    &lt;dbl&gt;
- 1 1. Yes, voted for President      1. Very much interested 0.394    0.00999 
- 2 1. Yes, voted for President      2. Somewhat interested  0.272    0.00974 
- 3 1. Yes, voted for President      3. Not much interested  0.0671   0.00474 
- 4 2. No, didn't vote for President 1. Very much interested 0.00155  0.000681
- 5 2. No, didn't vote for President 2. Somewhat interested  0.00291  0.000959
- 6 2. No, didn't vote for President 3. Not much interested  0.00366  0.00126 
- 7 &lt;NA&gt;                             1. Very much interested 0.0589   0.00512 
- 8 &lt;NA&gt;                             2. Somewhat interested  0.117    0.00747 
- 9 &lt;NA&gt;                             3. Not much interested  0.0824   0.00626 
-10 &lt;NA&gt;                             &lt;NA&gt;                    0.000361 0.000361</code></pre>
+<pre><code># A tibble: 7 × 4
+  Voted2024 CampaignInterest               p     p_se
+  &lt;chr&gt;     &lt;fct&gt;                      &lt;dbl&gt;    &lt;dbl&gt;
+1 No        1. Very much interested 0.0312   0.00363 
+2 No        2. Somewhat interested  0.103    0.00732 
+3 No        3. Not much interested  0.0778   0.00612 
+4 No        &lt;NA&gt;                    0.000361 0.000361
+5 Yes       1. Very much interested 0.423    0.0102  
+6 Yes       2. Somewhat interested  0.289    0.00970 
+7 Yes       3. Not much interested  0.0753   0.00510 </code></pre>
 </div>
 </div>
 </section>
@@ -405,17 +397,16 @@ This message is displayed once per session.</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>anes_des <span class="sc">%&gt;%</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(VotedPres2020 <span class="sc">==</span> <span class="st">"1. Yes, voted"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(VotedPres2024) <span class="sc">%&gt;%</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Voted2024) <span class="sc">%&gt;%</span></span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
 <span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">survey_prop</span>()</span>
 <span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 3
-  VotedPres2024                       coef   `_se`
-  &lt;fct&gt;                              &lt;dbl&gt;   &lt;dbl&gt;
-1 1. Yes, voted for President      0.860   0.0102 
-2 2. No, didn't vote for President 0.00781 0.00189
-3 &lt;NA&gt;                             0.133   0.0101 </code></pre>
+<pre><code># A tibble: 2 × 3
+  Voted2024   coef   `_se`
+  &lt;chr&gt;      &lt;dbl&gt;   &lt;dbl&gt;
+1 No        0.0770 0.00767
+2 Yes       0.923  0.00767</code></pre>
 </div>
 </div>
 </section>
@@ -444,7 +435,7 @@ This message is displayed once per session.</code></pre>
 <p>Estimate the share of respondents who did and did not vote in the 2024 election, then demonstrate the features of <code>cascade()</code>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>anes_des <span class="sc">%&gt;%</span></span>
-<span id="cb21-2"><a href="#cb21-2"></a>  <span class="fu">group_by</span>(VotedPres2024) <span class="sc">%&gt;%</span></span>
+<span id="cb21-2"><a href="#cb21-2"></a>  <span class="fu">group_by</span>(Voted2024) <span class="sc">%&gt;%</span></span>
 <span id="cb21-3"><a href="#cb21-3"></a>  <span class="fu">cascade</span>(<span class="at">prop =</span> <span class="fu">survey_prop</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: There was 1 warning in `dplyr::summarise()`.
@@ -453,13 +444,12 @@ Caused by warning:
 ! glm.fit: algorithm did not converge</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 4 × 3
-  VotedPres2024                       prop prop_se
-  &lt;fct&gt;                              &lt;dbl&gt;   &lt;dbl&gt;
-1 1. Yes, voted for President      0.733   0.0108 
-2 2. No, didn't vote for President 0.00812 0.00173
-3 &lt;NA&gt;                             0.259   0.0106 
-4 &lt;NA&gt;                             1.000   0      </code></pre>
+<pre><code># A tibble: 3 × 3
+  Voted2024  prop prop_se
+  &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+1 No        0.212  0.0102
+2 Yes       0.788  0.0102
+3 &lt;NA&gt;      1.000  0     </code></pre>
 </div>
 </div>
 </section>
@@ -468,20 +458,9 @@ Caused by warning:
 <p>Give the summary row a better name with <code>.fill</code>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>anes_des <span class="sc">%&gt;%</span></span>
-<span id="cb24-2"><a href="#cb24-2"></a>  <span class="fu">group_by</span>(VotedPres2024) <span class="sc">%&gt;%</span></span>
+<span id="cb24-2"><a href="#cb24-2"></a>  <span class="fu">group_by</span>(Voted2024) <span class="sc">%&gt;%</span></span>
 <span id="cb24-3"><a href="#cb24-3"></a>  <span class="fu">cascade</span>(<span class="at">prop =</span> <span class="fu">survey_prop</span>(),</span>
 <span id="cb24-4"><a href="#cb24-4"></a>          <span class="at">.fill =</span> <span class="st">"All"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="cascade-example-2" class="level2">
-<h2 class="anchored" data-anchor-id="cascade-example-2"><code>cascade()</code>: example</h2>
-<p>Move the summary row to the top with <code>.fill_level_top = TRUE</code>:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>anes_des <span class="sc">%&gt;%</span></span>
-<span id="cb25-2"><a href="#cb25-2"></a>  <span class="fu">group_by</span>(VotedPres2024) <span class="sc">%&gt;%</span></span>
-<span id="cb25-3"><a href="#cb25-3"></a>  <span class="fu">cascade</span>(<span class="at">prop =</span> <span class="fu">survey_prop</span>(),</span>
-<span id="cb25-4"><a href="#cb25-4"></a>          <span class="at">.fill =</span> <span class="st">"All"</span>,</span>
-<span id="cb25-5"><a href="#cb25-5"></a>          <span class="at">.fill_level_top =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: There was 1 warning in `dplyr::summarise()`.
 ℹ In argument: `prop = survey_prop()`.
@@ -489,13 +468,37 @@ Caused by warning:
 ! glm.fit: algorithm did not converge</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 4 × 3
-  VotedPres2024                       prop prop_se
-  &lt;fct&gt;                              &lt;dbl&gt;   &lt;dbl&gt;
-1 All                              1.000   0      
-2 1. Yes, voted for President      0.733   0.0108 
-3 2. No, didn't vote for President 0.00812 0.00173
-4 &lt;NA&gt;                             0.259   0.0106 </code></pre>
+<pre><code># A tibble: 3 × 3
+  Voted2024  prop prop_se
+  &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+1 All       1.000  0     
+2 No        0.212  0.0102
+3 Yes       0.788  0.0102</code></pre>
+</div>
+</div>
+</section>
+<section id="cascade-example-2" class="level2">
+<h2 class="anchored" data-anchor-id="cascade-example-2"><code>cascade()</code>: example</h2>
+<p>Move the summary row to the top with <code>.fill_level_top = TRUE</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>anes_des <span class="sc">%&gt;%</span></span>
+<span id="cb27-2"><a href="#cb27-2"></a>  <span class="fu">group_by</span>(Voted2024) <span class="sc">%&gt;%</span></span>
+<span id="cb27-3"><a href="#cb27-3"></a>  <span class="fu">cascade</span>(<span class="at">prop =</span> <span class="fu">survey_prop</span>(),</span>
+<span id="cb27-4"><a href="#cb27-4"></a>          <span class="at">.fill =</span> <span class="st">"All"</span>,</span>
+<span id="cb27-5"><a href="#cb27-5"></a>          <span class="at">.fill_level_top =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: There was 1 warning in `dplyr::summarise()`.
+ℹ In argument: `prop = survey_prop()`.
+Caused by warning:
+! glm.fit: algorithm did not converge</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+  Voted2024  prop prop_se
+  &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+1 All       1.000  0     
+2 No        0.212  0.0102
+3 Yes       0.788  0.0102</code></pre>
 </div>
 </div>
 </section>
@@ -508,7 +511,7 @@ Caused by warning:
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_d1c512a3" minutes="8" seconds="0" warn-when="180" update-every="1" play-sound="true" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_9206d0e3" minutes="8" seconds="0" warn-when="180" update-every="1" play-sound="true" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 <div class="footer">

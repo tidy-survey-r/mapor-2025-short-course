@@ -103,11 +103,11 @@ Calculate the weighted estimate of respondents by voting status in the 2024 elec
 ```{r}
 #| output-location: fragment
 #| echo: true
-#| code-line-numbers: "|2|3"
+#| code-line-numbers: "|3|4"
 #| label: survey-count-subgroup-ex
 anes_des %>%
   survey_count(
-    VotedPres2024, 
+    Voted2024, 
     name = "N"
     )
 ```
@@ -196,7 +196,7 @@ Calculate the proportion of respondents by voting status in the 2024 election:
 #| code-line-numbers: "|2|3"
 #| label: survey-prop-example-one-var
 anes_des %>%
-  group_by(VotedPres2024) %>%
+  group_by(Voted2024) %>%
   summarize(p = survey_prop())
 ```
 
@@ -210,7 +210,7 @@ Calculate the proportion of whether someone voted by campaign interest:
 #| code-line-numbers: "|2|3"
 #| label: survey-prop-example-cond
 anes_des %>%
-  group_by(VotedPres2024, CampaignInterest) %>%
+  group_by(Voted2024, CampaignInterest) %>%
   summarize(p = survey_prop())
 ```
 
@@ -224,7 +224,7 @@ Calculate the joint proportions for each variable combination using `interact()`
 #| code-line-numbers: "|2|3"
 #| label: survey-prop-example-joint
 anes_des %>%
-  group_by(interact(VotedPres2024, CampaignInterest)) %>%
+  group_by(interact(Voted2024, CampaignInterest)) %>%
   summarize(p = survey_prop())
 ```
 
@@ -248,7 +248,7 @@ Estimate the proportion of 2024 voters among respondents who voted in 2020:
 #| label: filter-ex
 anes_des %>%
   filter(VotedPres2020 == "1. Yes, voted") %>%
-  group_by(VotedPres2024) %>%
+  group_by(Voted2024) %>%
   summarize(
     survey_prop()
   )
@@ -284,7 +284,7 @@ Estimate the share of respondents who did and did not vote in the 2024 election,
 #| code-line-numbers: "|2"
 #| label: cascade-ex-1
 anes_des %>%
-  group_by(VotedPres2024) %>%
+  group_by(Voted2024) %>%
   cascade(prop = survey_prop())
 ```
 
@@ -293,12 +293,11 @@ anes_des %>%
 Give the summary row a better name with `.fill`:
 
 ```{r}
-#| eval: false
 #| echo: true
 #| code-line-numbers: "|4"
 #| label: cascade-ex-2
 anes_des %>%
-  group_by(VotedPres2024) %>%
+  group_by(Voted2024) %>%
   cascade(prop = survey_prop(),
           .fill = "All")
 ```
@@ -313,7 +312,7 @@ Move the summary row to the top with `.fill_level_top = TRUE`:
 #| code-line-numbers: "|5"
 #| label: cascade-ex-3
 anes_des %>%
-  group_by(VotedPres2024) %>%
+  group_by(Voted2024) %>%
   cascade(prop = survey_prop(),
           .fill = "All",
           .fill_level_top = TRUE)
