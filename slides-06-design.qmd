@@ -197,11 +197,10 @@ weight_tbl |>
 
 ```{r}
 #| label: design-anes-example
-#| code-line-numbers: "|1|2|3|4-9|5|6|7,8"
+#| code-line-numbers: "|1|2|3-8|4|5|6,7"
 #| eval: false
 
 anes_des <- anes_2024 %>%
-  filter(InterviewMode_Post != "3. Paper (PAPI)") %>% 
   mutate(Weight = V240108b / sum(V240108b) * 232449541) %>%
   as_survey_design(
     weights = Weight,
