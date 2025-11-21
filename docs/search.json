@@ -53,7 +53,7 @@
     "href": "slides-03-descriptive.html#survey_count-example",
     "title": "Descriptive Analysis",
     "section": "survey_count: example",
-    "text": "survey_count: example\nEstimate the number of U.S. adults (18+) living in the continental United States using ANES data:\n\nanes_des %&gt;%\n  survey_count()\n\n# A tibble: 1 × 2\n          n     n_se\n      &lt;dbl&gt;    &lt;dbl&gt;\n1 232449541 5069171."
+    "text": "survey_count: example\nEstimate the number of U.S. adults (18+) living in the continental United States using ANES data:\n\nanes_des %&gt;%\n  survey_count()\n\n# A tibble: 1 × 2\n           n     n_se\n       &lt;dbl&gt;    &lt;dbl&gt;\n1 232449541. 5069171."
   },
   {
     "objectID": "slides-03-descriptive.html#survey_count-subgroup-example",
@@ -74,7 +74,7 @@
     "href": "slides-03-descriptive.html#survey_total-example",
     "title": "Descriptive Analysis",
     "section": "survey_total(): example",
-    "text": "survey_total(): example\nEstimate the number of U.S. adults (18+) living in the continental United States using ANES data:\n\nanes_des %&gt;%\n  summarize(\n    survey_total()\n  )\n\n# A tibble: 1 × 2\n       coef    `_se`\n      &lt;dbl&gt;    &lt;dbl&gt;\n1 232449541 5069171."
+    "text": "survey_total(): example\nEstimate the number of U.S. adults (18+) living in the continental United States using ANES data:\n\nanes_des %&gt;%\n  summarize(\n    survey_total()\n  )\n\n# A tibble: 1 × 2\n        coef    `_se`\n       &lt;dbl&gt;    &lt;dbl&gt;\n1 232449541. 5069171."
   },
   {
     "objectID": "slides-03-descriptive.html#unweighted",
@@ -88,7 +88,7 @@
     "href": "slides-03-descriptive.html#unweighted-example",
     "title": "Descriptive Analysis",
     "section": "unweighted(): example",
-    "text": "unweighted(): example\nCalculate the weighted and unweighted number of survey respondents:\n\nanes_des %&gt;%\n  summarize(\n    n_unweighted = unweighted(n()),\n    n_weighted = survey_total()\n  )\n\n# A tibble: 1 × 3\n  n_unweighted n_weighted n_weighted_se\n         &lt;int&gt;      &lt;dbl&gt;         &lt;dbl&gt;\n1         4764  232449541      5069171."
+    "text": "unweighted(): example\nCalculate the weighted and unweighted number of survey respondents:\n\nanes_des %&gt;%\n  summarize(\n    n_unweighted = unweighted(n()),\n    n_weighted = survey_total()\n  )\n\n# A tibble: 1 × 3\n  n_unweighted n_weighted n_weighted_se\n         &lt;int&gt;      &lt;dbl&gt;         &lt;dbl&gt;\n1         4764 232449541.      5069171."
   },
   {
     "objectID": "slides-03-descriptive.html#survey_prop",
@@ -158,21 +158,21 @@
     "href": "slides-03-descriptive.html#cascade-example",
     "title": "Descriptive Analysis",
     "section": "cascade(): example",
-    "text": "cascade(): example\nEstimate the share of respondents who did and did not vote in the 2024 election, then demonstrate the features of cascade():\n\nanes_des %&gt;%\n  group_by(Voted2024) %&gt;%\n  cascade(prop = survey_prop())\n\nWarning: There was 1 warning in `dplyr::summarise()`.\nℹ In argument: `prop = survey_prop()`.\nCaused by warning:\n! glm.fit: algorithm did not converge\n\n\n# A tibble: 3 × 3\n  Voted2024  prop prop_se\n  &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n1 No        0.212  0.0102\n2 Yes       0.788  0.0102\n3 &lt;NA&gt;      1.000  0"
+    "text": "cascade(): example\nEstimate the share of respondents who did and did not vote in the 2024 election, then demonstrate the features of cascade():\n\nanes_des %&gt;%\n  group_by(Voted2024) %&gt;%\n  cascade(prop = survey_prop())\n\nWarning: There was 1 warning in `dplyr::summarise()`.\nℹ In argument: `prop = survey_prop()`.\nCaused by warning:\n! glm.fit: algorithm did not converge\n\n\n# A tibble: 3 × 3\n  Voted2024  prop  prop_se\n  &lt;chr&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n1 No        0.212 1.02e- 2\n2 Yes       0.788 1.02e- 2\n3 &lt;NA&gt;      1.000 9.68e-18"
   },
   {
     "objectID": "slides-03-descriptive.html#cascade-example-1",
     "href": "slides-03-descriptive.html#cascade-example-1",
     "title": "Descriptive Analysis",
     "section": "cascade(): example",
-    "text": "cascade(): example\nGive the summary row a better name with .fill:\n\nanes_des %&gt;%\n  group_by(Voted2024) %&gt;%\n  cascade(prop = survey_prop(),\n          .fill = \"All\")\n\nWarning: There was 1 warning in `dplyr::summarise()`.\nℹ In argument: `prop = survey_prop()`.\nCaused by warning:\n! glm.fit: algorithm did not converge\n\n\n# A tibble: 3 × 3\n  Voted2024  prop prop_se\n  &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n1 All       1.000  0     \n2 No        0.212  0.0102\n3 Yes       0.788  0.0102"
+    "text": "cascade(): example\nGive the summary row a better name with .fill:\n\nanes_des %&gt;%\n  group_by(Voted2024) %&gt;%\n  cascade(prop = survey_prop(),\n          .fill = \"All\")\n\nWarning: There was 1 warning in `dplyr::summarise()`.\nℹ In argument: `prop = survey_prop()`.\nCaused by warning:\n! glm.fit: algorithm did not converge\n\n\n# A tibble: 3 × 3\n  Voted2024  prop  prop_se\n  &lt;chr&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n1 All       1.000 9.68e-18\n2 No        0.212 1.02e- 2\n3 Yes       0.788 1.02e- 2"
   },
   {
     "objectID": "slides-03-descriptive.html#cascade-example-2",
     "href": "slides-03-descriptive.html#cascade-example-2",
     "title": "Descriptive Analysis",
     "section": "cascade(): example",
-    "text": "cascade(): example\nMove the summary row to the top with .fill_level_top = TRUE:\n\nanes_des %&gt;%\n  group_by(Voted2024) %&gt;%\n  cascade(prop = survey_prop(),\n          .fill = \"All\",\n          .fill_level_top = TRUE)\n\nWarning: There was 1 warning in `dplyr::summarise()`.\nℹ In argument: `prop = survey_prop()`.\nCaused by warning:\n! glm.fit: algorithm did not converge\n\n\n# A tibble: 3 × 3\n  Voted2024  prop prop_se\n  &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n1 All       1.000  0     \n2 No        0.212  0.0102\n3 Yes       0.788  0.0102"
+    "text": "cascade(): example\nMove the summary row to the top with .fill_level_top = TRUE:\n\nanes_des %&gt;%\n  group_by(Voted2024) %&gt;%\n  cascade(prop = survey_prop(),\n          .fill = \"All\",\n          .fill_level_top = TRUE)\n\nWarning: There was 1 warning in `dplyr::summarise()`.\nℹ In argument: `prop = survey_prop()`.\nCaused by warning:\n! glm.fit: algorithm did not converge\n\n\n# A tibble: 3 × 3\n  Voted2024  prop  prop_se\n  &lt;chr&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n1 All       1.000 9.68e-18\n2 No        0.212 1.02e- 2\n3 Yes       0.788 1.02e- 2"
   },
   {
     "objectID": "slides-04-stattesting.html",
@@ -627,7 +627,7 @@
     "href": "full-slide-deck.html#background",
     "title": "Categorical Survey of Complex Survey Data in R",
     "section": "Background",
-    "text": "Background\n\nThis tutorial largely builds off our book written with Stephanie Zimmer (RTI): Exploring Complex Survey Data Analysis Using R\n\nhttps://tidy-survey-r.github.io/site/\n\nThe book covers additional topics outside this tutorial including:\n\nOverview of survey process\nLinear regression and logistic regression\nCommunication of results (tables and plots)\nReproducible research best practices\n\nNot covered\n\nWeighting (calibration, post-stratification, raking, etc.)\nSurvival analysis\nNonlinear models"
+    "text": "Background\n\nThis tutorial largely builds off our book written with Stephanie Zimmer (RTI): Exploring Complex Survey Data Analysis Using R\n\nhttps://tidy-survey-r.github.io/site/\n\nThe book covers additional topics outside this tutorial including:\n\nOverview of survey process\nWorking with continuous variables\nCommunication of results (tables and plots)\nReproducible research best practices\n\nNot covered\n\nWeighting (calibration, post-stratification, raking, etc.)\nSurvival analysis\nNonlinear models"
   },
   {
     "objectID": "full-slide-deck.html#motivation",
@@ -641,7 +641,7 @@
     "href": "full-slide-deck.html#prerequisites",
     "title": "Categorical Survey of Complex Survey Data in R",
     "section": "Prerequisites",
-    "text": "Prerequisites\nTidyverse familiarity\n\n\nSelecting a set of variables (select(starts_with(\"TOT\")))\nCreating new variables with mutate()\nSummarizing data with summarize()\nUsing group_by() with summarize() to create group summaries"
+    "text": "Prerequisites\nTidyverse familiarity\n\nSelecting a set of variables (select(starts_with(\"TOT\")))\nCreating new variables with mutate()\nSummarizing data with summarize()\nUsing group_by() with summarize() to create group summaries"
   },
   {
     "objectID": "full-slide-deck.html#overview-of-tutorial",
@@ -704,7 +704,7 @@
     "href": "full-slide-deck.html#american-national-election-studies-anes-2024",
     "title": "Categorical Survey of Complex Survey Data in R",
     "section": "American National Election Studies (ANES) 2024",
-    "text": "American National Election Studies (ANES) 2024\n\n\nStored as anes_2024 in {srvyrexploR}\nPre- and post-election surveys fielded almost every 2 years since 1948\nTopics include voter registration status, candidate preference, opinions on country and government, party and ideology affiliation, opinions on policy, news sources, and more\nCollaboration of Stanford, University of Michigan - funding by the National Science Foundation\nTarget Population: US citizens, 18 and older living in US\nMode: In-Person, Web, videoconference, Paper, or telephone\nSample Information: Pseudo-strata and pseudo-cluster included for variance estimation\n\nhttps://electionstudies.org/"
+    "text": "American National Election Studies (ANES) 2024\n\nStored as anes_2024 in {srvyrexploR}\nPre- and post-election surveys fielded almost every 2 years since 1948\nTopics include voter registration status, candidate preference, opinions on country and government, party and ideology affiliation, opinions on policy, news sources, and more\nCollaboration of Stanford, University of Michigan - funding by the National Science Foundation\nTarget Population: US citizens, 18 and older living in US\nMode: In-Person, Web, videoconference, Paper, or telephone\nSample Information: Pseudo-strata and pseudo-cluster included for variance estimation\n\nhttps://electionstudies.org/"
   },
   {
     "objectID": "full-slide-deck.html#american-national-election-studies-anes-2024-1",
@@ -718,7 +718,7 @@
     "href": "full-slide-deck.html#design-object",
     "title": "Categorical Survey of Complex Survey Data in R",
     "section": "Design Object",
-    "text": "Design Object\n\n\nBackbone for survey analysis\nSpecify the sampling design, weights, and other necessary information to account for errors in the data\nSurvey analysis and inference should be performed with the survey design objects, not the original survey data\nWe will be covering survey design in more detail later!"
+    "text": "Design Object\n\nBackbone for survey analysis\nSpecify the sampling design, weights, and other necessary information to account for errors in the data\nSurvey analysis and inference should be performed with the survey design objects, not the original survey data\nWe will be covering survey design in more detail later!"
   },
   {
     "objectID": "full-slide-deck.html#american-national-election-studies-design-object",
@@ -739,7 +739,7 @@
     "href": "full-slide-deck.html#why-use-srvyr-over-survey",
     "title": "Categorical Survey of Complex Survey Data in R",
     "section": "Why use {srvyr} over {survey}?",
-    "text": "Why use {srvyr} over {survey}?\n\n\nUse the pipe function %&gt;% or |&gt;\nAbility to use tidy selection\nFunctions follow snake_case convention"
+    "text": "Why use {srvyr} over {survey}?\n\nUse the pipe function %&gt;% or |&gt;\nAbility to use tidy selection\nFunctions follow snake_case convention"
   },
   {
     "objectID": "full-slide-deck.html#apply-dplyr-functions-to-survey-objects",
@@ -802,7 +802,7 @@
     "href": "full-slide-deck.html#overview-of-survey-analysis-using-srvyr-package",
     "title": "Categorical Survey of Complex Survey Data in R",
     "section": "Overview of Survey Analysis using {srvyr} Package",
-    "text": "Overview of Survey Analysis using {srvyr} Package\n\n\nCreate a tbl_svy object (a survey object) using: as_survey_design() or as_survey_rep()\nSubset data (if needed) using filter() (to create subpopulations)\nSpecify domains of analysis using group_by()\nWithin summarize(), specify variables to calculate, including means, totals, proportions, quantiles, and more"
+    "text": "Overview of Survey Analysis using {srvyr} Package\n\nCreate a tbl_svy object (a survey object) using: as_survey_design() or as_survey_rep()\nSubset data (if needed) using filter() (to create subpopulations)\nSpecify domains of analysis using group_by()\nWithin summarize(), specify variables to calculate, including means, totals, proportions, quantiles, and more"
   },
   {
     "objectID": "full-slide-deck.html#introduction-1",
@@ -837,7 +837,7 @@
     "href": "full-slide-deck.html#survey_count",
     "title": "Categorical Survey of Complex Survey Data in R",
     "section": "survey_count()",
-    "text": "survey_count()\n\n\nCalculate the estimated observation counts for a given variable or combination of variables\nApplied to categorical data\nSometimes called “cross-tabulations” or “cross-tabs”\nsurvey_count() functions similarly to dplyr::count() in that it is NOT called within summarize()"
+    "text": "survey_count()\n\nCalculate the estimated observation counts for a given variable or combination of variables\nApplied to categorical data\nSometimes called “cross-tabulations” or “cross-tabs”\nsurvey_count() functions similarly to dplyr::count() in that it is NOT called within summarize()"
   },
   {
     "objectID": "full-slide-deck.html#survey_count-syntax",
@@ -851,7 +851,7 @@
     "href": "full-slide-deck.html#survey_count-example",
     "title": "Categorical Survey of Complex Survey Data in R",
     "section": "survey_count: example",
-    "text": "survey_count: example\nEstimate the number of U.S. adults (18+) living in the continental United States using ANES data:\n\nanes_des %&gt;%\n  survey_count()\n\n\n\n# A tibble: 1 × 2\n          n     n_se\n      &lt;dbl&gt;    &lt;dbl&gt;\n1 232449541 5069171."
+    "text": "survey_count: example\nEstimate the number of U.S. adults (18+) living in the continental United States using ANES data:\n\nanes_des %&gt;%\n  survey_count()\n\n\n\n# A tibble: 1 × 2\n           n     n_se\n       &lt;dbl&gt;    &lt;dbl&gt;\n1 232449541. 5069171."
   },
   {
     "objectID": "full-slide-deck.html#survey_count-subgroup-example",
@@ -872,28 +872,28 @@
     "href": "full-slide-deck.html#survey_total-example",
     "title": "Categorical Survey of Complex Survey Data in R",
     "section": "survey_total(): example",
-    "text": "survey_total(): example\nEstimate the number of U.S. adults (18+) living in the continental United States using ANES data:\n\nanes_des %&gt;%\n  summarize(\n    survey_total()\n  )\n\n# A tibble: 1 × 2\n       coef    `_se`\n      &lt;dbl&gt;    &lt;dbl&gt;\n1 232449541 5069171."
+    "text": "survey_total(): example\nEstimate the number of U.S. adults (18+) living in the continental United States using ANES data:\n\nanes_des %&gt;%\n  summarize(\n    survey_total()\n  )\n\n# A tibble: 1 × 2\n        coef    `_se`\n       &lt;dbl&gt;    &lt;dbl&gt;\n1 232449541. 5069171."
   },
   {
     "objectID": "full-slide-deck.html#unweighted",
     "href": "full-slide-deck.html#unweighted",
     "title": "Categorical Survey of Complex Survey Data in R",
     "section": "unweighted()",
-    "text": "unweighted()\n\n\nSometimes, it is helpful to calculate an unweighted estimate of a given variable\nunweighted() does not extrapolate to a population estimate\nUsed in conjunction with any {dplyr} functions"
+    "text": "unweighted()\n\nSometimes, it is helpful to calculate an unweighted estimate of a given variable\nunweighted() does not extrapolate to a population estimate\nUsed in conjunction with any {dplyr} functions"
   },
   {
     "objectID": "full-slide-deck.html#unweighted-example",
     "href": "full-slide-deck.html#unweighted-example",
     "title": "Categorical Survey of Complex Survey Data in R",
     "section": "unweighted(): example",
-    "text": "unweighted(): example\nCalculate the weighted and unweighted number of survey respondents:\n\nanes_des %&gt;%\n  summarize(\n    n_unweighted = unweighted(n()),\n    n_weighted = survey_total()\n  )\n\n# A tibble: 1 × 3\n  n_unweighted n_weighted n_weighted_se\n         &lt;int&gt;      &lt;dbl&gt;         &lt;dbl&gt;\n1         4764  232449541      5069171."
+    "text": "unweighted(): example\nCalculate the weighted and unweighted number of survey respondents:\n\nanes_des %&gt;%\n  summarize(\n    n_unweighted = unweighted(n()),\n    n_weighted = survey_total()\n  )\n\n# A tibble: 1 × 3\n  n_unweighted n_weighted n_weighted_se\n         &lt;int&gt;      &lt;dbl&gt;         &lt;dbl&gt;\n1         4764 232449541.      5069171."
   },
   {
     "objectID": "full-slide-deck.html#survey_prop",
     "href": "full-slide-deck.html#survey_prop",
     "title": "Categorical Survey of Complex Survey Data in R",
     "section": "survey_prop()",
-    "text": "survey_prop()\n\n\nCalculate the estimated observation counts for a given variable or combination of variables\nsurvey_prop() to categorical data\nMust be called within summarize()"
+    "text": "survey_prop()\n\nCalculate the estimated observation counts for a given variable or combination of variables\nsurvey_prop() to categorical data\nMust be called within summarize()"
   },
   {
     "objectID": "full-slide-deck.html#survey_prop-syntax",
@@ -928,7 +928,7 @@
     "href": "full-slide-deck.html#filter",
     "title": "Categorical Survey of Complex Survey Data in R",
     "section": "filter()",
-    "text": "filter()\n\n\nAllows for subpopulation analysis\nUse filter() to subset a survey object for analysis\nMust be done after creating the survey design object"
+    "text": "filter()\n\nAllows for subpopulation analysis\nUse filter() to subset a survey object for analysis\nMust be done after creating the survey design object"
   },
   {
     "objectID": "full-slide-deck.html#filter-example",
@@ -942,7 +942,7 @@
     "href": "full-slide-deck.html#cascade",
     "title": "Categorical Survey of Complex Survey Data in R",
     "section": "cascade()",
-    "text": "cascade()\n\n\nThe {srvyr} package has the convenient cascade() function\nUsed instead of summarize()\nCreates a summary row for the estimate representing the entire population"
+    "text": "cascade()\n\nThe {srvyr} package has the convenient cascade() function\nUsed instead of summarize()\nCreates a summary row for the estimate representing the entire population"
   },
   {
     "objectID": "full-slide-deck.html#cascade-syntax",
@@ -956,28 +956,28 @@
     "href": "full-slide-deck.html#cascade-example",
     "title": "Categorical Survey of Complex Survey Data in R",
     "section": "cascade(): example",
-    "text": "cascade(): example\nEstimate the share of respondents who did and did not vote in the 2024 election, then demonstrate the features of cascade():\n\nanes_des %&gt;%\n  group_by(Voted2024) %&gt;%\n  cascade(prop = survey_prop())\n\n# A tibble: 3 × 3\n  Voted2024  prop prop_se\n  &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n1 No        0.212  0.0102\n2 Yes       0.788  0.0102\n3 &lt;NA&gt;      1.000  0"
+    "text": "cascade(): example\nEstimate the share of respondents who did and did not vote in the 2024 election, then demonstrate the features of cascade():\n\nanes_des %&gt;%\n  group_by(Voted2024) %&gt;%\n  cascade(prop = survey_prop())\n\n# A tibble: 3 × 3\n  Voted2024  prop  prop_se\n  &lt;chr&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n1 No        0.212 1.02e- 2\n2 Yes       0.788 1.02e- 2\n3 &lt;NA&gt;      1.000 9.68e-18"
   },
   {
     "objectID": "full-slide-deck.html#cascade-example-1",
     "href": "full-slide-deck.html#cascade-example-1",
     "title": "Categorical Survey of Complex Survey Data in R",
     "section": "cascade(): example",
-    "text": "cascade(): example\nGive the summary row a better name with .fill:\n\nanes_des %&gt;%\n  group_by(Voted2024) %&gt;%\n  cascade(prop = survey_prop(),\n          .fill = \"All\")\n\n# A tibble: 3 × 3\n  Voted2024  prop prop_se\n  &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n1 All       1.000  0     \n2 No        0.212  0.0102\n3 Yes       0.788  0.0102"
+    "text": "cascade(): example\nGive the summary row a better name with .fill:\n\nanes_des %&gt;%\n  group_by(Voted2024) %&gt;%\n  cascade(prop = survey_prop(),\n          .fill = \"All\")\n\n# A tibble: 3 × 3\n  Voted2024  prop  prop_se\n  &lt;chr&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n1 All       1.000 9.68e-18\n2 No        0.212 1.02e- 2\n3 Yes       0.788 1.02e- 2"
   },
   {
     "objectID": "full-slide-deck.html#cascade-example-2",
     "href": "full-slide-deck.html#cascade-example-2",
     "title": "Categorical Survey of Complex Survey Data in R",
     "section": "cascade(): example",
-    "text": "cascade(): example\nMove the summary row to the top with .fill_level_top = TRUE:\n\nanes_des %&gt;%\n  group_by(Voted2024) %&gt;%\n  cascade(prop = survey_prop(),\n          .fill = \"All\",\n          .fill_level_top = TRUE)\n\n# A tibble: 3 × 3\n  Voted2024  prop prop_se\n  &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n1 All       1.000  0     \n2 No        0.212  0.0102\n3 Yes       0.788  0.0102"
+    "text": "cascade(): example\nMove the summary row to the top with .fill_level_top = TRUE:\n\nanes_des %&gt;%\n  group_by(Voted2024) %&gt;%\n  cascade(prop = survey_prop(),\n          .fill = \"All\",\n          .fill_level_top = TRUE)\n\n# A tibble: 3 × 3\n  Voted2024  prop  prop_se\n  &lt;chr&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n1 All       1.000 9.68e-18\n2 No        0.212 1.02e- 2\n3 Yes       0.788 1.02e- 2"
   },
   {
     "objectID": "full-slide-deck.html#chi-square-tests-1",
     "href": "full-slide-deck.html#chi-square-tests-1",
     "title": "Categorical Survey of Complex Survey Data in R",
     "section": "Chi-square tests",
-    "text": "Chi-square tests\n\nCompare multiple proportions to see if they are statistically different from each other\n\n\n\nDifferent types:\n\nGoodness-of-fit tests compare observed data to expected data\nTests of independence compare two types of observed data to see if there is a relationship\nTests of homogeneity compare two distributions to see if they match"
+    "text": "Chi-square tests\n\nCompare multiple proportions to see if they are statistically different from each other\n\n\nDifferent types:\n\nGoodness-of-fit tests compare observed data to expected data\nTests of independence compare two types of observed data to see if there is a relationship\nTests of homogeneity compare two distributions to see if they match"
   },
   {
     "objectID": "full-slide-deck.html#chi-square-syntax",
@@ -1110,7 +1110,7 @@
     "href": "full-slide-deck.html#introduction-2",
     "title": "Categorical Survey of Complex Survey Data in R",
     "section": "Introduction",
-    "text": "Introduction\n\n\nModeling investigates the relationship between a single dependent variable and one or more independent variables.\nLogistic regression is a specific case of the generalized linear model (GLM).\nLogistic regression is used to model binary outcomes, such as whether or not someone voted."
+    "text": "Introduction\n\nModeling investigates the relationship between a single dependent variable and one or more independent variables.\nLogistic regression is a specific case of the generalized linear model (GLM).\nLogistic regression is used to model binary outcomes, such as whether or not someone voted."
   },
   {
     "objectID": "full-slide-deck.html#introduction-3",
@@ -1264,7 +1264,7 @@
     "href": "full-slide-deck.html#determining-the-design",
     "title": "Categorical Survey of Complex Survey Data in R",
     "section": "Determining the design",
-    "text": "Determining the design\n\n\nCheck the documentation such as methodology, design, analysis guide, or technical documentation\nDocumentation will indicate the variables needed to specify the design. Look for:\n\nweight (almost always)\nstrata and/or clusters/PSUs. Sometimes pseudo-strata and pseudo-cluster OR\nreplicate weights (this is used instead of strata/clusters for analysis)\nFinite population correction or population sizes (uncommon)\n\nDocumentation may include SAS, SUDAAN, Stata and/or R syntax\n\n\n\n\nWe will show both ANES and RECS examples when diving into code"
+    "text": "Determining the design\n\nCheck the documentation such as methodology, design, analysis guide, or technical documentation\nDocumentation will indicate the variables needed to specify the design. Look for:\n\nweight (almost always)\nstrata and/or clusters/PSUs. Sometimes pseudo-strata and pseudo-cluster OR\nreplicate weights (this is used instead of strata/clusters for analysis)\nFinite population correction or population sizes (uncommon)\n\nDocumentation may include SAS, SUDAAN, Stata and/or R syntax\n\n\n\nWe will show both ANES and RECS examples when diving into code"
   },
   {
     "objectID": "full-slide-deck.html#as_survey_design-syntax",
@@ -1376,14 +1376,14 @@
     "href": "full-slide-deck.html#tips-for-correctly-specifying",
     "title": "Categorical Survey of Complex Survey Data in R",
     "section": "Tips for correctly specifying",
-    "text": "Tips for correctly specifying\n\n\nFor public use datasets: Documentation, Documentation, Documentation\n\nRead through user guides\nSearch for keywords (e.g., “weight”, “strata”) in the user guides\nGoogle\nReach out to the study contact with questions\n\nFor data you create: Please provide good documentation!"
+    "text": "Tips for correctly specifying\n\nFor public use datasets: Documentation, Documentation, Documentation\n\nRead through user guides\nSearch for keywords (e.g., “weight”, “strata”) in the user guides\nGoogle\nReach out to the study contact with questions\n\nFor data you create: Please provide good documentation!"
   },
   {
     "objectID": "slides-01-introduction.html",
     "href": "slides-01-introduction.html",
     "title": "Introduction",
     "section": "",
-    "text": "Rebecca Powell\nFors Marsh\n\n\n\n\n\n\n\n\nIsabella Velásquez\nPosit\n\n\n\n\nEach of us give a brief intro on our experience/background\n\n\n\n\n\nThis tutorial largely builds off our book written with Stephanie Zimmer (RTI): Exploring Complex Survey Data Analysis Using R\n\nhttps://tidy-survey-r.github.io/site/\n\nThe book covers additional topics outside this tutorial including:\n\nOverview of survey process\nLinear regression and logistic regression\nCommunication of results (tables and plots)\nReproducible research best practices\n\nNot covered\n\nWeighting (calibration, post-stratification, raking, etc.)\nSurvival analysis\nNonlinear models\n\n\n\n\n\n\nWe are R users who work with survey data regularly\nWe wanted to share knowledge with\n\nR users who may be inaccurately analyzing survey data\nSAS/SUDAAN/Stata users who may not know about the capabilities of R\n\n{srvyr} package developed using tidyverse style syntax\n\n\n\n\nTidyverse familiarity\n\n\nSelecting a set of variables (select(starts_with(\"TOT\")))\nCreating new variables with mutate()\nSummarizing data with summarize()\nUsing group_by() with summarize() to create group summaries\n\n\n\n\n\n\nAt the end of this tutorial, you should be able to\n\nCalculate point estimates and their standard errors with survey data\n\nProportions, totals, and counts\n\nPerform chi-squared tests\nConduct basic logistic regression\nSpecify a survey design in R to create a survey object\n\n\n\n\n\n\nGetting started\nDescriptive analysis\nStatistical testing\nModeling\nSampling design\n\n\n\n\n\nWe will be using Posit Cloud for exercises\nAll materials are found at:\n\nhttps://tidy-survey-r.github.io/mapor-2025-short-course/full-slide-deck.html (Site)\nhttps://github.com/tidy-survey-r/mapor-2025-short-course/ (Source)"
+    "text": "Rebecca Powell\nFors Marsh\n\n\n\n\n\n\n\n\nIsabella Velásquez\nPosit\n\n\n\n\nEach of us give a brief intro on our experience/background\n\n\n\n\n\nThis tutorial largely builds off our book written with Stephanie Zimmer (RTI): Exploring Complex Survey Data Analysis Using R\n\nhttps://tidy-survey-r.github.io/site/\n\nThe book covers additional topics outside this tutorial including:\n\nOverview of survey process\nWorking with continuous variables\nCommunication of results (tables and plots)\nReproducible research best practices\n\nNot covered\n\nWeighting (calibration, post-stratification, raking, etc.)\nSurvival analysis\nNonlinear models\n\n\n\n\n\n\nWe are R users who work with survey data regularly\nWe wanted to share knowledge with\n\nR users who may be inaccurately analyzing survey data\nSAS/SUDAAN/Stata users who may not know about the capabilities of R\n\n{srvyr} package developed using tidyverse style syntax\n\n\n\n\nTidyverse familiarity\n\n\nSelecting a set of variables (select(starts_with(\"TOT\")))\nCreating new variables with mutate()\nSummarizing data with summarize()\nUsing group_by() with summarize() to create group summaries\n\n\n\n\n\n\nAt the end of this tutorial, you should be able to\n\nCalculate point estimates and their standard errors with survey data\n\nProportions, totals, and counts\n\nPerform chi-squared tests\nConduct basic logistic regression\nSpecify a survey design in R to create a survey object\n\n\n\n\n\n\nGetting started\nDescriptive analysis\nStatistical testing\nModeling\nSampling design\n\n\n\n\n\nWe will be using Posit Cloud for exercises\nAll materials are found at:\n\nhttps://tidy-survey-r.github.io/mapor-2025-short-course/full-slide-deck.html (Site)\nhttps://github.com/tidy-survey-r/mapor-2025-short-course/ (Source)"
   },
   {
     "objectID": "slides-01-introduction.html#about-us",
@@ -1397,7 +1397,7 @@
     "href": "slides-01-introduction.html#background",
     "title": "Introduction",
     "section": "",
-    "text": "This tutorial largely builds off our book written with Stephanie Zimmer (RTI): Exploring Complex Survey Data Analysis Using R\n\nhttps://tidy-survey-r.github.io/site/\n\nThe book covers additional topics outside this tutorial including:\n\nOverview of survey process\nLinear regression and logistic regression\nCommunication of results (tables and plots)\nReproducible research best practices\n\nNot covered\n\nWeighting (calibration, post-stratification, raking, etc.)\nSurvival analysis\nNonlinear models"
+    "text": "This tutorial largely builds off our book written with Stephanie Zimmer (RTI): Exploring Complex Survey Data Analysis Using R\n\nhttps://tidy-survey-r.github.io/site/\n\nThe book covers additional topics outside this tutorial including:\n\nOverview of survey process\nWorking with continuous variables\nCommunication of results (tables and plots)\nReproducible research best practices\n\nNot covered\n\nWeighting (calibration, post-stratification, raking, etc.)\nSurvival analysis\nNonlinear models"
   },
   {
     "objectID": "slides-01-introduction.html#motivation",

@@ -40,7 +40,7 @@ Each of us give a brief intro on our experience/background
   - <https://tidy-survey-r.github.io/site/>
 - The book covers additional topics outside this tutorial including:
   - Overview of survey process
-  - Linear regression and logistic regression
+  - Working with continuous variables
   - Communication of results (tables and plots)
   - Reproducible research best practices
 
