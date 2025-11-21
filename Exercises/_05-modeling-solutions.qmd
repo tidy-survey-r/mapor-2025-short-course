@@ -3,7 +3,7 @@
 #### Load necessary packages
 
 ```{r}
-#| label: set-up
+#| label: modeling-sol-set-up
 #| message: false
 #| warning: false
 library(tidyverse)
@@ -17,7 +17,7 @@ library(gt)
 #### Load in data and preview it
 
 ```{r}
-#| label: data-summary
+#| label: modeling-sol-data-summary
 glimpse(anes_2024)
 ```
 
@@ -26,8 +26,7 @@ Find codebook here: [ANES 2024](https://tidy-survey-r.github.io/srvyrexploR/refe
 #### Create design objects for usage
 
 ```{r}
-#| label: design-obj
-
+#| label: modeling-sol-design-obj
 anes_des <- anes_2024 %>%
   filter(InterviewMode_Pre != "3. Paper (PAPI)") %>% 
   mutate(Weight = V240108b / sum(V240108b) * 232449541) %>%
@@ -41,17 +40,32 @@ anes_des <- anes_2024 %>%
 
 ### Exercises
 
-1. Build a logistic model predicting early voting in 2020 (`EarlyVote2024`) using age (`Age`), education (`Education`), and party identification (`PartyID`). Include two-way interactions.
+1. Build a logistic model predicting early voting in 2024 (`EarlyVote`) using campaign interest (`CampaignInterest`).
 
 ```{r}
+#| label: modeling-sol-1
 earlyvote_mod <- anes_des %>%
-  filter(!is.na(EarlyVote2024)) %>%
+  filter(!is.na(EarlyVote)) %>%
   svyglm(
     design = .,
-    formula = EarlyVote2024 ~ (Age + Education + PartyID)^2,
+    formula = EarlyVote ~ CampaignInterest,
     family = quasibinomial
   )
 
 tidy(earlyvote_mod) %>% print(n = 50)
 ```
 
+2. Build a logistic model predicting early voting in 2024 (`EarlyVote`) using campaign interest (`CampaignInterest`) and whether they voted in 2020 (`VotedPres2020`). Include two-way interactions.
+
+```{r}
+#| label: modeling-sol-2
+earlyvote_mod <- anes_des %>%
+  filter(!is.na(EarlyVote)) %>%
+  svyglm(
+    design = .,
+    formula = EarlyVote ~ (CampaignInterest + VotedPres2020)^2,
+    family = quasibinomial
+  )
+
+tidy(earlyvote_mod) %>% print(n = 50)
+```
