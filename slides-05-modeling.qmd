@@ -261,7 +261,7 @@ Early voting behavior was not significant.
 
 ## Interaction effects
 
-To find the interaction between income and early voting behavior:
+To find the interaction between education level and early voting behavior:
 
 ```{r}
 #| echo: true
